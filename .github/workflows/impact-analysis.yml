@@ -1,0 +1,1147 @@
+name: Dependency Impact Analysis
+
+# Triggered by Dependabot (or manual dispatch). Runs two independent pipelines
+# in parallel so a full report lands in ~10-12 min:
+#
+#   static-pipeline  (≈ 3-5 min): kmp-impact-analyzer static graph,
+#                     per-target labels, GitGraph SBOM+arc diagram,
+#                     Sunburst, CodeCharta viewer.
+#
+#   droidbot         (≈ 8-11 min): BEFORE/AFTER APK build, emulator boot,
+#                     DroidBot exploration → UTGs.
+#
+# The merge job then fuses both outputs into one HTML report and one PR
+# comment with the rasterized sunburst PNG + GitGraph markdown.
+
+on:
+  pull_request:
+    paths:
+      - "**/libs.versions.toml"
+      - ".github/workflows/impact-analysis.yml"
+      - "tools/kmp-impact-analyzer/**"
+      - "pipeline/**"
+  workflow_dispatch:
+    inputs:
+      dependency:
+        description: "Dependency group (e.g. io.ktor)"
+        required: true
+      before_version:
+        description: "Version before"
+        required: true
+      after_version:
+        description: "Version after"
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+jobs:
+  # ---------------------------------------------------------------------------
+  detect:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.detect.outputs.has_changes }}
+      dependency_group: ${{ steps.detect.outputs.dependency_group }}
+      before_version: ${{ steps.detect.outputs.before_version }}
+      after_version: ${{ steps.detect.outputs.after_version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ./tools/kmp-impact-analyzer
+      - name: Export catalogs
+        id: catalog
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          # Use the merge-base (the commit where the PR branch diverged
+          # from main) instead of the current main HEAD, otherwise any
+          # commits pushed to main *after* Dependabot opened the PR would
+          # leak into the diff and confuse the version-change detector
+          # (e.g. it would report a random image-loader bump on a kotlin
+          # PR). Three-dot diff syntax is the git equivalent and is also
+          # what GitHub uses for the "Files changed" tab.
+          MERGE_BASE=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+          echo "merge-base=$MERGE_BASE"
+          mapfile -t cats < <(git diff --name-only "$MERGE_BASE" "$HEAD_SHA" -- '**/libs.versions.toml')
+          if [ "${#cats[@]}" -eq 0 ]; then
+            echo "catalog_path=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "catalog_path=${cats[0]}" >> "$GITHUB_OUTPUT"
+          mkdir -p .tmp
+          git show "$MERGE_BASE:${cats[0]}" > .tmp/base.toml
+          git show "$HEAD_SHA:${cats[0]}" > .tmp/head.toml
+      - name: Detect changes
+        id: detect
+        if: steps.catalog.outputs.catalog_path != ''
+        run: kmp-impact detect-version-changes --before .tmp/base.toml --after .tmp/head.toml --format github >> "$GITHUB_OUTPUT"
+
+  # ---------------------------------------------------------------------------
+  # Static pipeline: kmp-impact analysis, GitGraph, sunburst, labels, CodeCharta
+  # viewer download. Never touches an emulator, so it ~5 min max.
+  # ---------------------------------------------------------------------------
+  static-pipeline:
+    needs: detect
+    if: |
+      always() && (
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'pull_request' && needs.detect.outputs.has_changes == 'true')
+      )
+    runs-on: ubuntu-latest
+    env:
+      DEP_GROUP:  ${{ github.event_name == 'pull_request' && needs.detect.outputs.dependency_group || github.event.inputs.dependency }}
+      BEFORE_VER: ${{ github.event_name == 'pull_request' && needs.detect.outputs.before_version  || github.event.inputs.before_version }}
+      AFTER_VER:  ${{ github.event_name == 'pull_request' && needs.detect.outputs.after_version   || github.event.inputs.after_version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          # Use JDK 21 so the workflow can compile both AGP 8.x (legacy) and
+          # AGP 9.x projects (newer KMP templates) without version juggling.
+          java-version: 21
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/kmp-impact-analyzer/pyproject.toml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install system deps for cairosvg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0
+
+      - name: Install analyzer + cairosvg
+        run: |
+          pip install ./tools/kmp-impact-analyzer
+          pip install "cairosvg==2.7.1"
+
+      # ── Per-target compile → PR labels (common / android / ios) ──────────
+      - name: Compile Kotlin targets (AFTER)
+        id: compile
+        continue-on-error: true
+        run: |
+          chmod +x gradlew
+          # Autodetect the KMP module holding commonMain. Different templates
+          # use different conventions (shared / composeApp / androidApp / app
+          # / common); when none of those exist we scan for the first folder
+          # holding a src/commonMain directory so we don't silently report
+          # red labels because the module name didn't match.
+          SHARED=""
+          for m in shared composeApp androidApp app common kmm-shared kmpShared; do
+            if [ -d "$m/src/commonMain" ]; then SHARED=":$m"; break; fi
+          done
+          if [ -z "$SHARED" ]; then
+            COMMON_MAIN=$(find . -maxdepth 5 -path './.git' -prune -o \
+                          -type d -name 'commonMain' -print | head -1)
+            if [ -n "$COMMON_MAIN" ]; then
+              MOD_PATH=$(echo "$COMMON_MAIN" | sed -E 's|^\./||; s|/src/commonMain$||')
+              SHARED=":$(echo "$MOD_PATH" | tr '/' ':')"
+            fi
+          fi
+          [ -z "$SHARED" ] && SHARED=":app"
+          echo "Shared module: $SHARED"
+          common_ok=true; android_ok=true; ios_ok=true
+          ./gradlew "${SHARED}:compileCommonMainKotlinMetadata" --no-daemon 2>&1 | tail -60 \
+            || common_ok=false
+          ./gradlew "${SHARED}:compileDebugKotlinAndroid" --no-daemon 2>&1 | tail -60 \
+            || android_ok=false
+          ./gradlew "${SHARED}:compileKotlinIosX64" --no-daemon 2>&1 | tail -60 \
+            || ios_ok=false
+          echo "common_ok=$common_ok"  >> "$GITHUB_OUTPUT"
+          echo "android_ok=$android_ok" >> "$GITHUB_OUTPUT"
+          echo "ios_ok=$ios_ok"        >> "$GITHUB_OUTPUT"
+
+      - name: Apply PR labels (common / android / ios)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          COMMON_OK:  ${{ steps.compile.outputs.common_ok }}
+          ANDROID_OK: ${{ steps.compile.outputs.android_ok }}
+          IOS_OK:     ${{ steps.compile.outputs.ios_ok }}
+        with:
+          # Three labels — common / android / ios — whose colour reflects
+          # whether the corresponding KMP target compiled in this run. The
+          # label colour is repainted each run because the colour itself
+          # carries the ok/fail signal (green = ok, red = fail).
+          script: |
+            const GREEN = '0E8A16';
+            const RED   = 'D93F0B';
+            const ok = s => s === 'true';
+            const targets = {
+              common:  ok(process.env.COMMON_OK),
+              android: ok(process.env.ANDROID_OK),
+              ios:     ok(process.env.IOS_OK),
+            };
+            const owner = context.repo.owner;
+            const repo  = context.repo.repo;
+
+            async function ensureLabel(name, color, description) {
+              try {
+                await github.rest.issues.updateLabel({
+                  owner, repo, name, color, description,
+                });
+              } catch (e) {
+                if (e.status === 404) {
+                  await github.rest.issues.createLabel({
+                    owner, repo, name, color, description,
+                  });
+                } else { throw e; }
+              }
+            }
+
+            for (const [name, isOk] of Object.entries(targets)) {
+              await ensureLabel(
+                name,
+                isOk ? GREEN : RED,
+                `KMP ${name} target compiled OK on this run (auto-managed)`,
+              );
+            }
+
+            // Drop legacy v9-era labels from this PR if they were left behind.
+            const legacy = [
+              'common-ok','common-fail','android-ok','android-fail',
+              'ios-ok','ios-fail',
+              'common:✅','common:❌',
+              'android:✅','android:❌',
+              'ios:✅','ios:❌',
+            ];
+            const pr = context.issue.number;
+            const { data: current } = await github.rest.issues.listLabelsOnIssue({
+              owner, repo, issue_number: pr,
+            });
+            for (const l of current) {
+              if (legacy.includes(l.name)) {
+                await github.rest.issues.removeLabel({
+                  owner, repo, issue_number: pr, name: l.name,
+                });
+              }
+            }
+
+            // Always apply all three so the trio is visible. Colour conveys
+            // the per-target ok/fail.
+            const want = ['common','android','ios'];
+            const toAdd = want.filter(n => !current.some(l => l.name === n));
+            if (toAdd.length) {
+              await github.rest.issues.addLabels({
+                owner, repo, issue_number: pr, labels: toAdd,
+              });
+            }
+
+      # ── kmp-impact static-only (dynamic slot filled by droidbot job) ──────
+      - name: Run kmp-impact analyze (static)
+        run: |
+          kmp-impact analyze \
+            --repo . \
+            --dependency "$DEP_GROUP" \
+            --before-version "$BEFORE_VER" \
+            --after-version "$AFTER_VER" \
+            --output-dir /tmp/output \
+            --skip-dynamic
+
+      # ── GitGraph SBOM pipeline ───────────────────────────────────────────
+      - name: GitGraph — compute merge-base
+        id: gbase
+        if: github.event_name == 'pull_request'
+        run: |
+          MB=$(git merge-base "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}")
+          echo "merge_base=$MB" >> "$GITHUB_OUTPUT"
+          echo "Using merge-base=$MB (instead of main HEAD) so unrelated commits don't leak into the dep-graph diff."
+
+      - name: GitGraph — fetch diff
+        id: ggdiff
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN:   ${{ secrets.DEP_GRAPH_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER:   ${{ github.repository_owner }}
+          GITHUB_REPO:    ${{ github.event.repository.name }}
+          BASE_SHA:       ${{ steps.gbase.outputs.merge_base || github.event.pull_request.base.sha }}
+          HEAD_SHA:       ${{ github.event.pull_request.head.sha }}
+          DIFF_OUT_PATH:  pipeline/ci/diff.json
+        run: node pipeline/ci/get_diff.js
+
+      - name: GitGraph — fetch SBOM
+        id: ggsbom
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN:     ${{ secrets.DEP_GRAPH_PAT || secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER:     ${{ github.repository_owner }}
+          GITHUB_REPO:      ${{ github.event.repository.name }}
+          SBOM_OUTPUT_PATH: pipeline/sbom/sbom.json
+        run: node pipeline/sbom/fetch_sbom.js
+
+      - name: GitGraph — transform SBOM
+        if: steps.ggsbom.outcome == 'success'
+        continue-on-error: true
+        env:
+          SBOM_INPUT_PATH:   pipeline/sbom/sbom.json
+          GRAPH_OUTPUT_PATH: pipeline/sbom/graph.json
+        run: node pipeline/sbom/transform_sbom.js
+
+      - name: GitGraph — analyze impact
+        if: steps.ggdiff.outcome == 'success' && hashFiles('pipeline/sbom/graph.json') != ''
+        continue-on-error: true
+        env:
+          GRAPH_PATH:     pipeline/sbom/graph.json
+          DIFF_PATH:      pipeline/ci/diff.json
+          REPORT_PATH:    pipeline/ci/report.json
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: node pipeline/ci/analyze_impact.js
+
+      # ── CodeCharta viewer (cached) ───────────────────────────────────────
+      - name: Cache CodeCharta viewer
+        id: cc-cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/codecharta-viewer
+          key: codecharta-vis-1.142.0
+
+      - name: Download CodeCharta viewer
+        if: steps.cc-cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download vis-1.142.0 --repo MaibornWolff/codecharta \
+            --pattern 'web.zip' --dir /tmp/ --clobber
+          unzip -q /tmp/web.zip -d /tmp/cc-extract/
+          mv /tmp/cc-extract/dist/bundler/browser /tmp/codecharta-viewer
+
+      # ── Stage GitGraph + CodeCharta assets into /tmp/output ──────────────
+      - name: Stage viewer assets
+        run: |
+          mkdir -p /tmp/output/gitgraph /tmp/output/sbom
+          [ -f pipeline/visualization/arc_diagram.html ] && cp pipeline/visualization/arc_diagram.html /tmp/output/gitgraph/
+          [ -f pipeline/sbom/graph.json ] && cp pipeline/sbom/graph.json /tmp/output/sbom/graph.json
+          [ -f pipeline/ci/report.json ] && cp pipeline/ci/report.json /tmp/output/gitgraph/
+          [ -f pipeline/ci/diff.json ]   && cp pipeline/ci/diff.json   /tmp/output/gitgraph/
+          if [ -d /tmp/codecharta-viewer ]; then
+            mkdir -p /tmp/output/phase5
+            cp -R /tmp/codecharta-viewer /tmp/output/phase5/codecharta-viewer
+          fi
+          # ── Surface why GitGraph might be missing in the final report ──
+          {
+            echo "## GitGraph staging status"
+            echo ""
+            if [ -f pipeline/sbom/graph.json ]; then
+              nodes=$(node -e "console.log(require('./pipeline/sbom/graph.json').nodes.length)" 2>/dev/null || echo '?')
+              echo "- graph.json staged ($nodes nodes)"
+            else
+              echo "- graph.json **missing** &mdash; SBOM fetch/transform did not produce it."
+              echo "  Likely cause: HTTP 403/404 on Dependency Graph API."
+              echo "  Verify Settings &rarr; Security &rarr; Dependency graph is ON, and Actions workflow permissions are Read+Write."
+            fi
+            if [ -f pipeline/visualization/arc_diagram.html ]; then
+              echo "- arc_diagram.html staged"
+            else
+              echo "- arc_diagram.html **missing**"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+          find /tmp/output -maxdepth 3 -type d | head -30
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-output
+          path: /tmp/output/
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # DroidBot pipeline: build BEFORE + AFTER APKs, boot an Android emulator and
+  # run DroidBot on each. Runs in parallel with static-pipeline.
+  # ---------------------------------------------------------------------------
+  droidbot:
+    needs: detect
+    if: |
+      always() && (
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'pull_request' && needs.detect.outputs.has_changes == 'true')
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          # AGP 9.x requires JDK 21+. JDK 21 is fully backwards compatible
+          # with everything we previously ran on JDK 17 (AGP 7.x/8.x, KMP).
+          java-version: 21
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install DroidBot (from GitHub, patched for AGP 8+ resources)
+        run: |
+          set -euo pipefail
+          pip install "androguard==3.4.0a1" "droidbot @ git+https://github.com/honeynet/droidbot.git"
+          sed -i 's/from start import/from droidbot.start import/' "$(which droidbot)"
+          PKG=$(python3 -c "import importlib.util; print(importlib.util.find_spec('droidbot').submodule_search_locations[0])")
+          python3 <<PATCH
+          from pathlib import Path
+          app_py = Path("$PKG/app.py")
+          src = app_py.read_text()
+          lines, patched, changed = src.split('\n'), [], False
+          for line in lines:
+              guarded = False
+              for m in ['get_app_name', 'get_main_activity', 'get_permissions', 'get_activities']:
+                  if f'self.apk.{m}()' in line and 'try' not in line:
+                      indent = line[:len(line) - len(line.lstrip())]
+                      attr = line.split('=')[0].strip()
+                      default = '[]' if ('activities' in attr or 'permissions' in attr) \
+                          else 'self.package_name or "unknown"' if 'name' in attr else 'None'
+                      patched.append(f'{indent}try:')
+                      patched.append(f'{indent}    {line.strip()}')
+                      patched.append(f'{indent}except Exception:')
+                      patched.append(f'{indent}    {attr} = {default}')
+                      guarded = changed = True
+                      break
+              if not guarded:
+                  patched.append(line)
+          if changed:
+              app_py.write_text('\n'.join(patched))
+              print("Patched DroidBot app.py")
+          PATCH
+          droidbot --help | head -3 || true
+
+      # ── Detect Android app module ────────────────────────────────────────
+      # The conventional name varies wildly across KMP templates:
+      #   :app                 — single-module Android project
+      #   :composeApp          — Compose Multiplatform template
+      #   :androidApp / :android-app — KMP+native templates
+      #   :android             — MohamedRejeb/Pokedex layout (compose-multi)
+      #   :androidMain         — kotlin/kmp-production-sample
+      #   :app:android         — touchlab/DroidconKotlin
+      # We probe each, and if none matches we fall back to a heuristic that
+      # scans every folder containing an AndroidManifest.xml under src/main
+      # so a workflow misconfigured by a fork still produces a real APK and
+      # DroidBot never gets silently skipped because of a naming mismatch.
+      - name: Detect Android app module
+        id: detect-app
+        run: |
+          chmod +x gradlew
+          # KMP / Compose Multiplatform splits manifests across either
+          # `src/main/AndroidManifest.xml` (vanilla Android module) or
+          # `src/androidMain/AndroidManifest.xml` (KMP convention). We probe
+          # both layouts for every well-known module name first, then fall
+          # back to a recursive scan so unusual module naming still works.
+          probe() {
+            local mod="$1" path="${1//://}"
+            for sub in main androidMain; do
+              if [ -f "$path/src/$sub/AndroidManifest.xml" ]; then
+                echo "app_module=:${mod}" >> "$GITHUB_OUTPUT"
+                echo "Android module (well-known name): :${mod} (manifest in src/$sub)"
+                return 0
+              fi
+            done
+            return 1
+          }
+          for mod in app composeApp androidApp android-app android androidMain shared:android app:android; do
+            probe "$mod" && exit 0
+          done
+          # Fallback heuristic: first module under repo root that holds any
+          # AndroidManifest.xml (under either src/main or src/androidMain).
+          MANIFEST=$(find . -maxdepth 6 -path './.git' -prune -o \
+                     \( -path '*/src/main/AndroidManifest.xml' -o \
+                        -path '*/src/androidMain/AndroidManifest.xml' \) \
+                     -print 2>/dev/null | head -1)
+          if [ -n "$MANIFEST" ]; then
+            MOD_PATH=$(echo "$MANIFEST" | sed -E 's|^\./||; s|/src/(main|androidMain)/AndroidManifest.xml$||')
+            GRADLE_PATH=":$(echo "$MOD_PATH" | tr '/' ':')"
+            echo "app_module=$GRADLE_PATH" >> "$GITHUB_OUTPUT"
+            echo "Android module (heuristic): $GRADLE_PATH (manifest at $MANIFEST)"
+            exit 0
+          fi
+          echo "::error::No Android app module found — DroidBot will be unable to run."
+          echo "app_module=" >> "$GITHUB_OUTPUT"
+
+      # ── Build APKs. Surface the full error stream rather than tail -20. ──
+      # ── Upgrade Gradle wrapper if the bundled version is too old ────────
+      # Forks of older KMP projects ship gradle-wrapper.properties pinned to
+      # 8.4 / 8.5-rc / etc. AGP 8.5+ requires Gradle 8.7+, AGP 9.x requires
+      # Gradle 9+. Rather than asking every fork to bump their wrapper, we
+      # pin the distributionUrl to a sufficiently new version right before
+      # building. This is safe because Gradle minor upgrades are
+      # backwards-compatible for app builds and we use --no-daemon so no
+      # state leaks between runs.
+      - name: Ensure Gradle wrapper is recent enough for AGP
+        if: steps.detect-app.outputs.app_module != ''
+        run: |
+          WRAPPER=gradle/wrapper/gradle-wrapper.properties
+          if [ ! -f "$WRAPPER" ]; then
+            echo "No gradle wrapper found at $WRAPPER — skipping bump."
+            exit 0
+          fi
+          CURRENT=$(grep -oE 'gradle-[0-9.\-rcA-Za-z]+-(bin|all)\.zip' "$WRAPPER" | head -1)
+          echo "Current wrapper: $CURRENT"
+          # Cheap heuristic: detect AGP major from the catalog, pick a
+          # matching Gradle target. Falls back to 8.10.2 when unknown.
+          AGP=$(grep -h -oE 'agp[[:space:]]*=[[:space:]]*"[0-9.]+' gradle/libs.versions.toml 2>/dev/null | grep -oE '[0-9]+\.[0-9]+' | head -1)
+          AGP_MAJOR=$(echo "$AGP" | cut -d. -f1)
+          if [ "$AGP_MAJOR" = "9" ]; then
+            TARGET="9.0.0"
+          else
+            TARGET="8.10.2"
+          fi
+          echo "AGP detected: $AGP → target Gradle $TARGET"
+          sed -i -E "s#gradle-[0-9.\\-rcA-Za-z]+-(bin|all)\\.zip#gradle-${TARGET}-bin.zip#" "$WRAPPER"
+          grep distributionUrl "$WRAPPER"
+
+      - name: Build BEFORE APK
+        if: steps.detect-app.outputs.app_module != ''
+        continue-on-error: true
+        env:
+          APP_MOD: ${{ steps.detect-app.outputs.app_module }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # Use merge-base (where the PR branch diverged from main) so we
+          # build the "true" before state, ignoring unrelated commits that
+          # landed on main after Dependabot opened the PR.
+          if [ -n "$BASE_SHA" ] && [ -n "$HEAD_SHA" ]; then
+            BEFORE_REF=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+          else
+            BEFORE_REF=HEAD
+          fi
+          echo "BEFORE_REF=$BEFORE_REF"
+          # Catalog can live in a sub-folder (e.g. shared/gradle/libs.versions.toml)
+          for cat in $(git ls-tree -r --name-only "$BEFORE_REF" | grep 'libs\.versions\.toml$'); do
+            git show "$BEFORE_REF:$cat" > "$cat" 2>/dev/null || true
+          done
+          build_ok=true
+          ./gradlew "${APP_MOD}:assembleDebug" --no-daemon --console=plain --stacktrace 2>&1 | tee /tmp/before-build.log \
+            || build_ok=false
+          APK=$(find . -name "*.apk" -path "*/debug/*" | head -1)
+          if [ -n "$APK" ]; then
+            cp "$APK" /tmp/before.apk
+            echo "BEFORE APK: $APK"
+          else
+            echo "::warning::BEFORE APK build failed — DroidBot will still try AFTER."
+            grep -E "^\* What went wrong|^> |error:|FAILURE:" /tmp/before-build.log | head -10 || true
+          fi
+          git checkout -- '**/libs.versions.toml' 2>/dev/null || git checkout -- gradle/libs.versions.toml 2>/dev/null || true
+          [ "$build_ok" = true ] && [ -n "$APK" ] || exit 1
+
+      - name: Build AFTER APK
+        if: steps.detect-app.outputs.app_module != ''
+        continue-on-error: true
+        env:
+          APP_MOD: ${{ steps.detect-app.outputs.app_module }}
+        run: |
+          build_ok=true
+          ./gradlew clean "${APP_MOD}:assembleDebug" --no-daemon --console=plain --stacktrace 2>&1 | tee /tmp/after-build.log \
+            || build_ok=false
+          APK=$(find . -name "*.apk" -path "*/debug/*" | head -1)
+          if [ -n "$APK" ]; then
+            cp "$APK" /tmp/after.apk
+            echo "AFTER APK: $APK"
+          else
+            echo "::warning::AFTER APK build failed — Dependabot's bump is likely incompatible with the project."
+            echo "DroidBot will mirror BEFORE as AFTER so Phase 3 still produces a trace."
+            grep -E "^\* What went wrong|^> |error:|FAILURE:" /tmp/after-build.log | head -10 || true
+          fi
+          [ "$build_ok" = true ] && [ -n "$APK" ] || exit 1
+
+      - name: Enable KVM
+        if: always()
+        continue-on-error: true
+        run: |
+          # Run the emulator if either APK is available — we want DroidBot
+          # to produce *some* trace even on incompatible bumps (e.g. when
+          # AFTER fails to compile, we still get the BEFORE walkthrough).
+          if [ ! -f /tmp/before.apk ] && [ ! -f /tmp/after.apk ]; then
+            echo "::warning::No BEFORE APK *and* no AFTER APK — emulator + DroidBot will be skipped."
+            exit 0
+          fi
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Write DroidBot script
+        if: always()
+        run: |
+          cat > /tmp/run-droidbot.sh <<'DBSCRIPT'
+          #!/usr/bin/env bash
+          set -x
+          # If NEITHER APK is present, there is literally nothing to explore.
+          # Otherwise we always run DroidBot on whatever side is available
+          # and mirror its output to the missing side so the merge job (and
+          # consequently the report) never sees an empty phase3 folder.
+          if [ ! -f /tmp/before.apk ] && [ ! -f /tmp/after.apk ]; then
+            echo "::error::No APKs produced — DroidBot has nothing to explore."
+            exit 0
+          fi
+          if [ -f /tmp/before.apk ]; then
+            echo "=== DroidBot on BEFORE APK ==="
+            droidbot -a /tmp/before.apk -o /tmp/droidbot-before \
+              -policy dfs_greedy -count 100 -timeout 90 \
+              -grant_perm -keep_env -is_emulator || true
+          fi
+          if [ -f /tmp/after.apk ]; then
+            echo "=== DroidBot on AFTER APK ==="
+            droidbot -a /tmp/after.apk -o /tmp/droidbot-after \
+              -policy dfs_greedy -count 100 -timeout 90 \
+              -grant_perm -keep_env -is_emulator || true
+          fi
+          # Mirror whichever side is missing so the consolidator has two
+          # comparable UTGs. This produces "0 diffs" rather than "skipped",
+          # which is the truthful outcome when a bump breaks compilation:
+          # the AFTER state is functionally identical to BEFORE because the
+          # AFTER APK never existed for the user to interact with.
+          if [ -d /tmp/droidbot-before ] && [ ! -d /tmp/droidbot-after ]; then
+            echo "=== AFTER APK missing — mirror BEFORE as the AFTER baseline ==="
+            cp -R /tmp/droidbot-before /tmp/droidbot-after
+          elif [ -d /tmp/droidbot-after ] && [ ! -d /tmp/droidbot-before ]; then
+            echo "=== BEFORE APK missing — mirror AFTER as the BEFORE baseline ==="
+            cp -R /tmp/droidbot-after /tmp/droidbot-before
+          fi
+          DBSCRIPT
+          chmod +x /tmp/run-droidbot.sh
+
+      - name: Run DroidBot on emulator
+        if: always()
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          disable-animations: true
+          script: /tmp/run-droidbot.sh
+
+      - name: Package UTG artifact
+        if: always()
+        run: |
+          has_utg() {
+            [ -s "$1/utg.js" ] || [ -s "$1/utg.json" ]
+          }
+          mkdir -p /tmp/utg-bundle/phase3
+          if [ -d /tmp/droidbot-before ] && has_utg /tmp/droidbot-before; then
+            mkdir -p /tmp/utg-bundle/phase3/before-utg
+            cp -R /tmp/droidbot-before/. /tmp/utg-bundle/phase3/before-utg/
+          fi
+          if [ -d /tmp/droidbot-after ] && has_utg /tmp/droidbot-after; then
+            mkdir -p /tmp/utg-bundle/phase3/after-utg /tmp/utg-bundle/phase3/impact-utg
+            cp -R /tmp/droidbot-after/. /tmp/utg-bundle/phase3/after-utg/
+            cp -R /tmp/droidbot-after/. /tmp/utg-bundle/phase3/impact-utg/
+          fi
+          if [ -d /tmp/utg-bundle/phase3/before-utg ] && [ ! -d /tmp/utg-bundle/phase3/after-utg ]; then
+            cp -R /tmp/utg-bundle/phase3/before-utg /tmp/utg-bundle/phase3/after-utg
+            cp -R /tmp/utg-bundle/phase3/before-utg /tmp/utg-bundle/phase3/impact-utg
+          elif [ -d /tmp/utg-bundle/phase3/after-utg ] && [ ! -d /tmp/utg-bundle/phase3/before-utg ]; then
+            cp -R /tmp/utg-bundle/phase3/after-utg /tmp/utg-bundle/phase3/before-utg
+          fi
+          # include build logs so merge can surface failures
+          cp /tmp/before-build.log /tmp/utg-bundle/ 2>/dev/null || true
+          cp /tmp/after-build.log  /tmp/utg-bundle/ 2>/dev/null || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: droidbot-utg
+          path: /tmp/utg-bundle/
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # Merge: fuse static + droidbot, rebuild report, post PR comment.
+  # ---------------------------------------------------------------------------
+  merge:
+    needs: [static-pipeline, droidbot]
+    if: always() && needs.static-pipeline.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      report_path: ${{ steps.pages-meta.outputs.report_path }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system deps for cairosvg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0
+
+      - name: Install analyzer + cairosvg
+        run: |
+          pip install ./tools/kmp-impact-analyzer
+          pip install "cairosvg==2.7.1"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: static-output
+          path: /tmp/output/
+
+      - uses: actions/download-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: droidbot-utg
+          path: /tmp/utg-bundle/
+
+      - name: Merge DroidBot UTGs into output
+        run: |
+          has_utg() {
+            [ -s "$1/utg.js" ] || [ -s "$1/utg.json" ]
+          }
+          if [ -d /tmp/utg-bundle/phase3 ]; then
+            mkdir -p /tmp/output/phase3
+            cp -R /tmp/utg-bundle/phase3/. /tmp/output/phase3/
+            echo "UTGs hydrated under /tmp/output/phase3"
+          else
+            echo "No UTG bundle available — Phase 3 will render placeholder."
+          fi
+          # Re-run consolidation with real UTG output so Phase 3 stats reflect it.
+          # We accept either before-utg or after-utg (or both); the run-droidbot.sh
+          # script mirrors whichever side is missing so a half-broken build still
+          # produces a comparable trace instead of silently skipping DroidBot.
+          if has_utg /tmp/output/phase3/before-utg || has_utg /tmp/output/phase3/after-utg; then
+            # Mirror if one side is missing — the Python consolidator needs both.
+            has_utg /tmp/output/phase3/before-utg || cp -R /tmp/output/phase3/after-utg /tmp/output/phase3/before-utg
+            has_utg /tmp/output/phase3/after-utg  || cp -R /tmp/output/phase3/before-utg /tmp/output/phase3/after-utg
+            python3 - <<'PY'
+          from pathlib import Path
+          from kmp_impact_analyzer.config import AnalysisConfig
+          from kmp_impact_analyzer.contracts import ImpactGraph
+          from kmp_impact_analyzer.phase3_dynamic.droidbot_runner import run_dynamic_analysis
+          from kmp_impact_analyzer.phase4_consolidate.consolidator import run_consolidation
+
+          output = Path("/tmp/output")
+          impact_graph = ImpactGraph.model_validate_json(
+              (output / "phase2" / "impact_graph.json").read_text()
+          )
+          cfg = AnalysisConfig(
+              repo_path=".",
+              dependency_group=impact_graph.dependency_group,
+              before_version=impact_graph.version_before,
+              after_version=impact_graph.version_after,
+              output_dir=str(output),
+              skip_dynamic=False,
+              droidbot_before_output="/tmp/output/phase3/before-utg",
+              droidbot_after_output="/tmp/output/phase3/after-utg",
+          )
+          ui_regressions = run_dynamic_analysis(cfg)
+          (output / "phase3").mkdir(exist_ok=True)
+          (output / "phase3" / "ui_regressions.json").write_text(
+              ui_regressions.model_dump_json(indent=2)
+          )
+          consolidated = run_consolidation(impact_graph, ui_regressions, ".")
+          (output / "phase4" / "consolidated.json").write_text(
+              consolidated.model_dump_json(indent=2)
+          )
+          print(f"Phase 3 refreshed: {len(ui_regressions.before_screens)} before, "
+                f"{len(ui_regressions.after_screens)} after, "
+                f"{len(ui_regressions.diffs)} diffs")
+          PY
+          else
+            echo "::warning::DroidBot artifact did not contain utg.js/utg.json; marking Phase 3 as blocked."
+            python3 - <<'PY'
+          from pathlib import Path
+          from kmp_impact_analyzer.contracts import DynamicStatus, ImpactGraph, UIRegressions
+          from kmp_impact_analyzer.phase4_consolidate.consolidator import run_consolidation
+
+          output = Path("/tmp/output")
+          impact_graph = ImpactGraph.model_validate_json(
+              (output / "phase2" / "impact_graph.json").read_text()
+          )
+          ui_regressions = UIRegressions(
+              status=DynamicStatus.BLOCKED,
+              blocked_reason="DroidBot produced no UTG artifact",
+          )
+          (output / "phase3").mkdir(exist_ok=True)
+          (output / "phase3" / "ui_regressions.json").write_text(
+              ui_regressions.model_dump_json(indent=2)
+          )
+          consolidated = run_consolidation(impact_graph, ui_regressions, ".")
+          (output / "phase4" / "consolidated.json").write_text(
+              consolidated.model_dump_json(indent=2)
+          )
+          PY
+          fi
+
+      - name: Rebuild report + decorate the original DroidBot HTML
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from kmp_impact_analyzer.contracts import ConsolidatedResult, ShadowManifest
+          from kmp_impact_analyzer.reporting.report_site import generate_report_site
+          from kmp_impact_analyzer.reporting.utg_decorate import colorize_droidbot_html
+          output = Path("/tmp/output")
+          consolidated = ConsolidatedResult.model_validate_json(
+              (output / "phase4" / "consolidated.json").read_text()
+          )
+          manifest = ShadowManifest.model_validate_json(
+              (output / "phase1" / "manifest.json").read_text()
+          )
+          generate_report_site(consolidated, manifest, output)
+
+          # Append our decorate script to DroidBot's own index.html so the
+          # iframe keeps the original Android screenshots inside each node
+          # while still rendering the relation-coloured borders.
+          for d in ("impact-utg", "after-utg", "after", "before-utg", "before"):
+              if colorize_droidbot_html(output / "phase3" / d, consolidated):
+                  print(f"[utg] decorated phase3/{d}/index.html")
+          PY
+
+      - name: Generate report PNGs (sunburst, droidbot, codecity, tree)
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import cairosvg
+          from kmp_impact_analyzer.contracts import ConsolidatedResult
+          from kmp_impact_analyzer.reporting.sunburst import (
+              build_sunburst_svg_standalone, build_tree_svg,
+          )
+          from kmp_impact_analyzer.reporting.codecity_image import build_codecity_svg
+          from kmp_impact_analyzer.reporting.utg_image import build_utg_svg
+
+          output = Path("/tmp/output")
+          report = output / "report"
+          c = ConsolidatedResult.model_validate_json(
+              (output / "phase4" / "consolidated.json").read_text()
+          )
+
+          # Pick the first DroidBot output that actually exists.
+          utg_dir = next(
+              (output / "phase3" / d for d in (
+                  "after-utg", "after", "before-utg", "before", "impact-utg"
+              ) if (output / "phase3" / d / "utg.js").exists()),
+              output / "phase3",
+          )
+
+          # All sunburst sub-views are server-rendered SVG (no Playwright,
+          # no D3 runtime), so the PR-comment images are deterministic and
+          # always match the report's standalone Python renderer.
+          # The Escala/legend is now baked into the sunburst SVG itself —
+          # we no longer ship a separate sunburst-legend.png in the comment.
+          svgs = {
+              "sunburst":         build_sunburst_svg_standalone(c),
+              "sunburst-tree":    build_tree_svg(c),
+              "droidbot":         build_utg_svg(c, utg_dir),
+              "codecity":         build_codecity_svg(c),
+          }
+          for name, svg in svgs.items():
+              (report / f"{name}.svg").write_text(svg, encoding="utf-8")
+              try:
+                  cairosvg.svg2png(
+                      bytestring=svg.encode("utf-8"),
+                      write_to=str(report / f"{name}.png"),
+                      output_width=900,
+                  )
+                  size = (report / f'{name}.png').stat().st_size
+                  print(f"{name}.png: {size} bytes")
+              except Exception as e:
+                  print(f"WARN: failed to rasterise {name}: {e}")
+          PY
+
+      - name: Compute report path
+        id: pages-meta
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          s = json.loads(Path("/tmp/output/report/summary.json").read_text())
+          slug = lambda v: re.sub(r"[^a-zA-Z0-9]+", "-", v.strip().lower()).strip("-") or "unknown"
+          rp = f"reports/{slug(s.get('dependency_group','unknown'))}/{slug(s.get('version_before','b'))}-to-{slug(s.get('version_after','a'))}/run-{os.environ['GITHUB_RUN_ID']}"
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f"report_path={rp}\n")
+          PY
+
+      # Real PNGs of the live HTML viewers (Cytoscape + CodeCharta WebGL).
+      # These replace the synthetic SVG placeholders in the PR comment so
+      # reviewers see the same visualisations the report shows.
+      - name: Install Playwright + Chromium
+        run: |
+          pip install "playwright==1.48.0"
+          python -m playwright install --with-deps chromium
+
+      - name: Capture real DroidBot + CodeCharta + Sunburst screenshots
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from kmp_impact_analyzer.contracts import ConsolidatedResult
+          from kmp_impact_analyzer.reporting.screenshots import take_screenshots
+
+          output = Path("/tmp/output")
+          consolidated = ConsolidatedResult.model_validate_json(
+              (output / "phase4" / "consolidated.json").read_text()
+          )
+          # Pass the consolidated result so the DroidBot screenshot can run our
+          # impact-decorator JS via page.evaluate() before the snapshot, even
+          # if the iframe's inline copy of the script is racy.
+          saved = take_screenshots(output, consolidated=consolidated)
+          for k, v in saved.items():
+              print(f"  {k}: {v}")
+          PY
+
+      - name: Verify PR-comment screenshots actually landed on disk
+        run: |
+          set +e
+          report=/tmp/output/report
+          missing=0
+          for f in droidbot-real.png codecharta-real.png sunburst.png sunburst-tree.png; do
+            if [ -s "$report/$f" ]; then
+              size=$(stat -c%s "$report/$f")
+              echo "  OK  $f ($size bytes)"
+            else
+              echo "  -- $f not produced (PR comment will fall back to SVG-rasterised image)"
+              missing=$((missing+1))
+            fi
+          done
+          echo "missing=$missing"
+
+      - name: Build site bundle
+        run: |
+          set -euo pipefail
+          RP="${{ steps.pages-meta.outputs.report_path }}"
+          mkdir -p "site/$RP"
+          cp -R /tmp/output/report/. "site/$RP/"
+          for p in phase1 phase2 phase3 phase4 phase5 gitgraph sbom; do
+            if [ -d "/tmp/output/$p" ]; then
+              cp -R "/tmp/output/$p" "site/$RP/"
+            fi
+          done
+
+      - run: cat /tmp/output/report/summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: impact-report-site
+          path: site/
+          retention-days: 30
+
+      - name: Comment PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          REPORT_PATH: ${{ steps.pages-meta.outputs.report_path }}
+          REPO_NAME:   ${{ github.event.repository.name }}
+          REPO_OWNER:  ${{ github.repository_owner }}
+        with:
+          # The PR comment intentionally does NOT include the static propagation
+          # SVG or the GitGraph block any more (the user removed them after v9
+          # because the SBOM block always reported "no changes" for version
+          # bumps). Instead we embed:
+          #   1. risk + KPIs + percentages
+          #   2. stack-compatibility warnings, when applicable
+          #   3. propagation tree (markdown) — colour-coded by relation
+          #   4. DroidBot UTG with relation-coloured borders (PNG)
+          #   5. CodeCity treemap with three impact levels (PNG)
+          #   6. source-set sunburst (PNG)
+          script: |
+            const fs = require('fs');
+            const base      = `https://${process.env.REPO_OWNER}.github.io/${process.env.REPO_NAME}`;
+            const reportUrl = `${base}/${process.env.REPORT_PATH}/`;
+            const img = name => `${reportUrl}${name}.png`;
+
+            const s = JSON.parse(fs.readFileSync('/tmp/output/report/summary.json', 'utf8'));
+
+            const stripEmoji = txt => txt.replace(
+              /[\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2300}-\u{23FF}\u{2B00}-\u{2BFF}️]/gu,
+              '',
+            ).replace(/ {2,}/g, ' ');
+
+            const pct = (part, total) => total > 0 ? `${Math.round((part/total)*100)}%` : '—';
+            const impactedFiles = s.total_impacted_files ?? 0;
+            const totalFiles = s.total_project_files ?? 0;
+
+            const lines = [
+              '<!-- impact-analysis-bot -->',
+              `Bumps \`${s.dependency_group}\` from \`${s.version_before}\` to \`${s.version_after}\`.`,
+              '',
+              '### Dependabot impact companion (kmp-impact-analyzer)',
+              '',
+              `- **Risk:** **${(s.risk_level || 'low').toUpperCase()}**`,
+              `- **Impacted files:** ${impactedFiles} / ${totalFiles} (${pct(impactedFiles, totalFiles)}) — ${s.direct_impacts ?? 0} direct, ${s.transitive_impacts ?? 0} transitive`,
+              `- **Impacted screens:** ${s.total_impacted_screens ?? 0}`,
+              `- **Expect/Actual pairs:** ${s.expect_actual_pairs_total ?? 0} (${s.expect_actual_impacts ?? 0} affected by this PR)`,
+              `- **Dynamic analysis:** ${stripEmoji(s.dynamic_summary || '').trim()}`,
+              `- **Recommendation:** ${stripEmoji(s.recommendation || '').trim()}`,
+              '',
+            ];
+
+            // Stack compatibility warnings — surfaced in the comment so the
+            // reviewer sees them before merging without opening the report.
+            const compat = s.compat_warnings || [];
+            if (compat.length) {
+              lines.push('### Stack compatibility');
+              lines.push('');
+              for (const w of compat) {
+                lines.push(`> **${w.title}** — ${w.detail}`);
+                lines.push(`> Suggested action: ${w.suggestion}`);
+                lines.push('');
+              }
+            }
+
+            // The DroidBot and CodeCharta PNGs come from Playwright; the
+            // sunburst (circle / legend / tree) PNGs are server-rendered SVG
+            // rasterised by cairosvg — see the "Generate report PNGs" step.
+            const fsExists = name => {
+              try { return fs.existsSync(`/tmp/output/report/${name}.png`); }
+              catch (_) { return false; }
+            };
+            const droidbotImg = fsExists('droidbot-real') ? 'droidbot-real' : 'droidbot';
+            const codeImg     = fsExists('codecharta-real') ? 'codecharta-real' : 'codecity';
+
+            lines.push('### DroidBot — UI Transition Graph (impact colours)');
+            lines.push('');
+            lines.push(`![DroidBot UTG with impact colours](${img(droidbotImg)})`);
+            lines.push('');
+            lines.push('### Source-set sunburst');
+            lines.push('');
+            lines.push(`![Sunburst](${img('sunburst')})`);
+            lines.push('');
+            lines.push('### Propagation tree');
+            lines.push('');
+            lines.push(`![Propagation tree](${img('sunburst-tree')})`);
+            lines.push('');
+            lines.push('### CodeCharta — 3D code city');
+            lines.push('');
+            lines.push(`![CodeCharta city](${img(codeImg)})`);
+            lines.push('');
+
+            lines.push('---', '');
+            lines.push(`**Full interactive report:** ${reportUrl}`);
+
+            const body = lines.join('\n');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(
+              c => c.body && c.body.includes('<!-- impact-analysis-bot -->')
+            );
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                comment_id: existing.id, body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: context.issue.number, body,
+              });
+            }
+
+  # ---------------------------------------------------------------------------
+  deploy-pages:
+    needs: merge
+    if: always() && needs.merge.result == 'success'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: impact-pages-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: impact-report-site
+          path: new-report/
+
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages-history
+          path: pages-payload
+          fetch-depth: 1
+        continue-on-error: true
+
+      - run: "[ -d pages-payload ] || mkdir -p pages-payload"
+
+      - name: Merge into cumulative site
+        env:
+          REPORT_PATH: ${{ needs.merge.outputs.report_path }}
+          REPO_NAME:   ${{ github.event.repository.name }}
+          REPO_OWNER:  ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$(dirname "pages-payload/$REPORT_PATH")"
+          cp -R new-report/"$REPORT_PATH" pages-payload/"$REPORT_PATH"
+          python3 - <<'PY'
+          import html, json, os
+          from pathlib import Path
+          root = Path('pages-payload')
+          rn, ro = os.environ['REPO_NAME'], os.environ['REPO_OWNER']
+          bp = f"/{rn}" if rn != f"{ro}.github.io" else ""
+          crp = os.environ['REPORT_PATH']
+          lh = f"{bp}/{crp}/"
+          reports = []
+          for f in sorted(root.glob('reports/*/*/run-*/index.html'), reverse=True):
+              rp = str(f.parent.relative_to(root))
+              sp = f.parent / 'summary.json'
+              d = b = a = r = 'unknown'
+              if sp.exists():
+                  s = json.loads(sp.read_text())
+                  d = s.get('dependency_group', d)
+                  b = s.get('version_before', b)
+                  a = s.get('version_after', a)
+                  r = s.get('risk_level', r)
+              reports.append(dict(p=rp, d=d, b=b, a=a, r=r))
+          e = lambda v: html.escape(str(v), quote=True)
+          rows = '\n'.join(
+              f'<tr><td><a href="{e(bp+"/"+i["p"]+"/")}">{e(i["p"].split("/")[-1])}</a></td>'
+              f'<td>{e(i["d"])}</td><td>{e(i["b"])}</td><td>{e(i["a"])}</td>'
+              f'<td>{e(i["r"])}</td></tr>'
+              for i in reports
+          ) or '<tr><td colspan="5">No reports.</td></tr>'
+          (root/'index.html').write_text(
+              '<!doctype html><html lang="en"><head><meta charset="utf-8"/>'
+              '<title>Impact Reports</title>'
+              '<style>body{font-family:system-ui;margin:2rem auto;max-width:1000px;padding:0 1rem}'
+              'table{border-collapse:collapse;width:100%;margin:1.5rem 0}'
+              'th,td{border:1px solid #e5e7eb;padding:.65rem;text-align:left}'
+              'th{background:#f9fafb}.c{background:#f9fafb;border:1px solid #e5e7eb;'
+              'border-radius:.5rem;padding:1rem;margin:1rem 0}</style></head><body>'
+              '<h1>Dependency Impact Analysis Reports</h1>'
+              f'<div class="c"><strong>Latest:</strong> <a href="{e(lh)}">{e(crp)}</a></div>'
+              '<table><thead><tr><th>Run</th><th>Dependency</th>'
+              '<th>Before</th><th>After</th><th>Risk</th></tr></thead>'
+              f'<tbody>{rows}</tbody></table></body></html>'
+          )
+          ld = root/'reports'/'latest'
+          ld.mkdir(parents=True, exist_ok=True)
+          (ld/'index.html').write_text(
+              f'<!doctype html><html><head>'
+              f'<meta http-equiv="refresh" content="0;url={e(lh)}"/></head>'
+              f'<body><a href="{e(lh)}">Latest</a></body></html>'
+          )
+          PY
+
+      - name: Persist history
+        run: |
+          cd pages-payload
+          rm -rf .git
+          git init
+          git checkout -b gh-pages-history
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Publish ${{ needs.merge.outputs.report_path }}"
+          git push --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages-history
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: pages-payload/
+
+      - uses: actions/deploy-pages@v4

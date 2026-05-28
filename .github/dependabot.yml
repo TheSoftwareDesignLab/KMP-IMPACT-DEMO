@@ -1,0 +1,47 @@
+version: 2
+# We bias Dependabot toward minor/patch bumps so the impact-analysis pipeline
+# always has a compilable AFTER APK. Major bumps of foundational tooling
+# (Kotlin, Compose, Coroutines, Serialization, Ktor, AGP) often introduce
+# ABI breaks that block APK assembly — when that happens DroidBot has no
+# AFTER state to explore and the dynamic phase degrades to a mirror of
+# BEFORE. We still want patch bumps of those libraries; we only block the
+# breaking-by-design major bumps.
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.kotlinx:kotlinx-coroutines*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.kotlinx:kotlinx-serialization*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.compose*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "androidx.compose*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "androidx.activity*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "androidx.lifecycle*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "androidx.navigation*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "androidx.compose:compose-bom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "io.ktor:*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "com.android.application"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "com.android.library"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "com.google.devtools.ksp"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "pip"
+    directory: "/pipeline/sbom"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
