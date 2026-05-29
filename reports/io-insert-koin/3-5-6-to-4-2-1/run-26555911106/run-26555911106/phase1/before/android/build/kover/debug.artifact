@@ -1,0 +1,10 @@
+:android
+android/src/debug/kotlin
+android/src/debug/java
+android/src/main/kotlin
+android/src/main/java
+
+android/build/tmp/kotlin-classes/debug
+android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes
+
+android/build/kover/bin-reports/testDebugUnitTest.ic

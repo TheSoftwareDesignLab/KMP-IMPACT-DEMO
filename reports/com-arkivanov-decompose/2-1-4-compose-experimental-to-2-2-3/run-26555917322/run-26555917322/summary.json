@@ -1,0 +1,179 @@
+{
+  "dependency_group": "com.arkivanov.decompose",
+  "version_before": "2.1.4-compose-experimental",
+  "version_after": "2.2.3",
+  "risk_level": "high",
+  "recommendation": "Hold merge until impacted files are reviewed and targeted regression checks pass.",
+  "report_url": "",
+  "total_impacted_files": 40,
+  "total_impacted_screens": 6,
+  "direct_impacts": 10,
+  "transitive_impacts": 30,
+  "expect_actual_impacts": 0,
+  "expect_actual_pairs_total": 3,
+  "total_project_files": 90,
+  "dynamic_status": "completed",
+  "dynamic_summary": "completed (0 screen diffs)",
+  "dynamic_diffs": 0,
+  "before_screens": 6,
+  "after_screens": 6,
+  "dynamic_nodes_before": 9,
+  "dynamic_nodes_after": 9,
+  "dynamic_structures_before": 6,
+  "dynamic_structures_after": 6,
+  "screen_mappings": 6,
+  "trace_entries": 40,
+  "seed_files": [
+    "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+    "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+    "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+  ],
+  "impacted_screens": [
+    "ComingSoon",
+    "ContentView",
+    "Details",
+    "Favorite",
+    "Main",
+    "Pokedex"
+  ],
+  "top_impacted_files": [
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 128,
+      "mcc": 7,
+      "declarations": [
+        "com.mocoding.pokedex.ui.root.RootComponent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "ios",
+      "rloc": 50,
+      "mcc": 2,
+      "declarations": [
+        "com.mocoding.pokedex.MainViewController"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 25,
+      "mcc": 2,
+      "declarations": [
+        "com.mocoding.pokedex.ui.root.RootContent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "jvmMain",
+      "rloc": 40,
+      "mcc": 1,
+      "declarations": [
+        "main",
+        "invokeOnAwtSync"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 36,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.ui.main.MainComponent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 36,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.ui.pokedex.PokedexComponent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 34,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.ui.details.DetailsComponent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "main",
+      "rloc": 33,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.android.MainActivity"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 33,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.ui.favorite.FavoriteComponent"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 13,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent"
+      ]
+    }
+  ],
+  "compat_warnings": [],
+  "stack_detected": {
+    "kotlin": "2.0.21",
+    "agp": "8.5.0",
+    "compose": "1.6.10",
+    "compose-compiler": "1.5.14"
+  },
+  "version_key": "decompose",
+  "compilation_after": "success",
+  "compile_errors": 0,
+  "has_detekt": false,
+  "has_kover": true,
+  "tools_used": {
+    "tree_sitter": true,
+    "ksp": true,
+    "detekt": false,
+    "kover": true,
+    "droidbot": true,
+    "codecharta": true
+  }
+}

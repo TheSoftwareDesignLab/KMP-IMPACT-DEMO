@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" width="760" height="880" font-family="system-ui,sans-serif">
+<rect width="100%" height="100%" fill="#F5F4F0"/>
+<text x="380.0" y="30" text-anchor="middle" fill="#1E293B" font-size="18" font-weight="700">KMP Impact . androidx.activity</text>
+<text x="380.0" y="52" text-anchor="middle" fill="#64748b" font-size="12">1.9.0 -&gt; 1.13.0 . 90 archivos</text>
+<path d="M 380.00 350.00 A 100.00 100.00 0 1 1 380.00 350.00 L 380.00 380.00 A 70.00 70.00 0 1 0 380.00 380.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 318.00 A 132.00 132.00 0 1 1 380.00 318.00 L 380.00 348.00 A 102.00 102.00 0 1 0 380.00 348.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 286.00 A 164.00 164.00 0 1 1 380.00 286.00 L 380.00 316.00 A 134.00 134.00 0 1 0 380.00 316.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 254.00 A 196.00 196.00 0 1 1 380.00 254.00 L 380.00 284.00 A 166.00 166.00 0 1 0 380.00 284.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 222.00 A 228.00 228.00 0 1 1 380.00 222.00 L 380.00 252.00 A 198.00 198.00 0 1 0 380.00 252.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<text x="380.0" y="535.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.0 380.0 535.0)" font-size="11" font-weight="700" fill="#FFFFFF">main</text>
+<text x="380.0" y="567.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.0 380.0 567.0)" font-size="11" font-weight="700" fill="#FFFFFF">java</text>
+<text x="380.0" y="599.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.0 380.0 599.0)" font-size="11" font-weight="700" fill="#FFFFFF">com</text>
+<text x="380.0" y="631.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.0 380.0 631.0)" font-size="11" font-weight="700" fill="#FFFFFF">mocoding</text>
+<text x="380.0" y="663.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(90.0 380.0 663.0)" font-size="11" font-weight="700" fill="#FFFFFF">pokedex</text>
+<text x="380.0" y="694.0" text-anchor="start" dominant-baseline="middle" transform="rotate(90.0 380.0 694.0)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">MainActivity</text>
+<circle cx="380.0" cy="450.0" r="70" fill="#F5F4F0" stroke="#D8D6D0"/><text x="380.0" y="454.0" text-anchor="middle" font-size="13" font-weight="700" fill="#64748B">src</text>
+<rect x="20" y="850" width="14" height="14" rx="3" fill="#B91C1C"/><text x="40" y="861" fill="#475569" font-size="11">Directo</text>
+<rect x="164" y="850" width="14" height="14" rx="3" fill="#1D4ED8"/><text x="184" y="861" fill="#475569" font-size="11">Transitivo d1</text>
+<rect x="308" y="850" width="14" height="14" rx="3" fill="#60A5FA"/><text x="328" y="861" fill="#475569" font-size="11">Transitivo d2+</text>
+<rect x="452" y="850" width="14" height="14" rx="3" fill="#94A3B8"/><text x="472" y="861" fill="#475569" font-size="11">Sin impacto</text>
+<rect x="596" y="850" width="14" height="14" rx="3" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,2"/><text x="616" y="861" fill="#475569" font-size="11">Expect/Actual</text>
+</svg>

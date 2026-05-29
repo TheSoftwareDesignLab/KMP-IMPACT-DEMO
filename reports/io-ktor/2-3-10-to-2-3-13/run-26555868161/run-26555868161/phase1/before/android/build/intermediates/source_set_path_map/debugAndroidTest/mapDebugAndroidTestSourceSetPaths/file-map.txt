@@ -1,0 +1,4 @@
+com.mocoding.pokedex.android.test.android-androidTest-0 /tmp/output/phase1/before/android/build/generated/res/resValues/androidTest/debug
+com.mocoding.pokedex.android.test.android-mergeDebugAndroidTestResources-1 /tmp/output/phase1/before/android/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.mocoding.pokedex.android.test.android-mergeDebugAndroidTestResources-2 /tmp/output/phase1/before/android/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.mocoding.pokedex.android.test.android-debugAndroidTest-3 /tmp/output/phase1/before/android/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

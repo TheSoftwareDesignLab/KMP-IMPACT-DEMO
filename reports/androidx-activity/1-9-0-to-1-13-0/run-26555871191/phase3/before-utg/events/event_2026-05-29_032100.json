@@ -1,0 +1,11 @@
+{
+  "tag": "2026-05-29_032100",
+  "event": {
+    "event_type": "key",
+    "log_lines": null,
+    "name": "BACK"
+  },
+  "start_state": "80ce9e8b100b508a9c2f13bb94112bdd",
+  "stop_state": "052812ac517ede05d7cb4f98a078dbb4",
+  "event_str": "KeyEvent(state=80ce9e8b100b508a9c2f13bb94112bdd, name=BACK)"
+}

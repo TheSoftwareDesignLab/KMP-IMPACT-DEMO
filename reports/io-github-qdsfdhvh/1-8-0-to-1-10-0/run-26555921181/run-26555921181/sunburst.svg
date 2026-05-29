@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" width="760" height="880" font-family="system-ui,sans-serif">
+<rect width="100%" height="100%" fill="#F5F4F0"/>
+<text x="380.0" y="30" text-anchor="middle" fill="#1E293B" font-size="18" font-weight="700">KMP Impact . io.github.qdsfdhvh</text>
+<text x="380.0" y="52" text-anchor="middle" fill="#64748b" font-size="12">1.8.0 -&gt; 1.10.0 . 90 archivos</text>
+<circle cx="380.0" cy="450.0" r="70" fill="#F5F4F0" stroke="#D8D6D0"/><text x="380.0" y="454.0" text-anchor="middle" font-size="13" font-weight="700" fill="#64748B">src</text>
+<rect x="20" y="850" width="14" height="14" rx="3" fill="#B91C1C"/><text x="40" y="861" fill="#475569" font-size="11">Directo</text>
+<rect x="164" y="850" width="14" height="14" rx="3" fill="#1D4ED8"/><text x="184" y="861" fill="#475569" font-size="11">Transitivo d1</text>
+<rect x="308" y="850" width="14" height="14" rx="3" fill="#60A5FA"/><text x="328" y="861" fill="#475569" font-size="11">Transitivo d2+</text>
+<rect x="452" y="850" width="14" height="14" rx="3" fill="#94A3B8"/><text x="472" y="861" fill="#475569" font-size="11">Sin impacto</text>
+<rect x="596" y="850" width="14" height="14" rx="3" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,2"/><text x="616" y="861" fill="#475569" font-size="11">Expect/Actual</text>
+</svg>

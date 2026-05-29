@@ -1,0 +1,55 @@
+{
+  "tag": "2026-05-28_051456",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.mocoding.pokedex.android",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": "Coming Soon",
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          110,
+          377
+        ],
+        [
+          210,
+          477
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.widget.ImageView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 6,
+      "temp_id": 9,
+      "size": "100*100",
+      "signature": "[class]android.widget.ImageView[resource_id]None[text]None[enabled,,]",
+      "view_str": "26c52130c267c6b904884f52f1f09676",
+      "content_free_signature": "[class]android.widget.ImageView[resource_id]None",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "2",
+      "desc": "<p text='Coming Soon' bound_box=110,377,210,477></p>"
+    }
+  },
+  "start_state": "0ccdee7820f53ec0f8bf3b544bd0b8bc",
+  "stop_state": "0ccdee7820f53ec0f8bf3b544bd0b8bc",
+  "event_str": "TouchEvent(state=0ccdee7820f53ec0f8bf3b544bd0b8bc, view=26c52130c267c6b904884f52f1f09676(MainActivity/ImageView-))"
+}

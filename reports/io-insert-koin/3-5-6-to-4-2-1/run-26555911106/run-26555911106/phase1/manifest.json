@@ -1,0 +1,48 @@
+{
+  "before_dir": "/tmp/output/phase1/before",
+  "after_dir": "/tmp/output/phase1/after",
+  "version_change": {
+    "dependency_group": "io.insert-koin",
+    "version_key": "koin",
+    "before": "3.5.6",
+    "after": "4.2.1"
+  },
+  "init_script_injected": false,
+  "detekt_reports": {},
+  "kover_reports": {
+    "android": "/tmp/output/phase1/before/android/build/reports/kover/report.xml",
+    "desktop": "/tmp/output/phase1/before/desktop/build/reports/kover/report.xml"
+  },
+  "compilation_after": {
+    "status": "failure",
+    "errors": [
+      "e: org.jetbrains.kotlin.util.FileAnalysisException: While analysing /tmp/output/phase1/after/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonEntityQueries.kt:36:3: java.lang.IllegalArgumentException: source must not be null",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-core-annotations-jvm/4.2.1/3288fc54a9fcf84283054319faf13ab35ecf25f2/koin-core-annotations-jvm-4.2.1.jar!/META-INF/koin-core-annotations.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-core-jvm/4.2.1/fed4f1d828b769a8ebf45ee79291e341423b0e31/koin-core-jvm-4.2.1.jar!/META-INF/koin-core.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-test-jvm/4.2.1/528008214ddf97930249078ddb01833ab6403670/koin-test-jvm-4.2.1.jar!/META-INF/koin-test.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/compiler.common.jvm.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.2.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/compiler.common.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.2.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/descriptors.jvm.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/descriptors.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.2.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/descriptors.runtime.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/deserialization.common.jvm.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/deserialization.common.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/deserialization.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/kotlin-metadata-jvm.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/kotlin-metadata.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/kotlin-reflection.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/metadata.jvm.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/2.3.20/3a78af768b3747778b9db000088ea1cbfb996942/kotlin-reflect-2.3.20.jar!/META-INF/util.runtime.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.2.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.20/ed866de74ad3d49086a27bbd75952cd186479436/kotlin-stdlib-2.3.20.jar!/META-INF/kotlin-stdlib-jdk7.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.20/ed866de74ad3d49086a27bbd75952cd186479436/kotlin-stdlib-2.3.20.jar!/META-INF/kotlin-stdlib-jdk8.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.3.20/ed866de74ad3d49086a27bbd75952cd186479436/kotlin-stdlib-2.3.20.jar!/META-INF/kotlin-stdlib.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0.",
+      "e: file:///home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/2.3.20/f01df9a21f429ec9f9f7f8cda8eefa92f741ea4a/kotlin-test-2.3.20.jar!/META-INF/kotlin-test.kotlin_module Module was compiled with an incompatible version of Kotlin. The binary version of its metadata is 2.3.0, expected version is 2.0.0."
+    ],
+    "tasks": [
+      "shared:compileKotlinIosSimulatorArm64",
+      "shared:compileKotlinIosX64",
+      "desktop:compileKotlinJvm"
+    ]
+  },
+  "compile_targets": {}
+}

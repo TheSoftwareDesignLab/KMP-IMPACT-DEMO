@@ -1,0 +1,367 @@
+[
+  {
+    "moduleId": "module org.jetbrains.compose.runtime:runtime:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.runtime-runtime-1.6.10-commonMain-CVJWAg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.foundation:foundation:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.foundation-foundation-1.6.10-commonMain-dXXsCQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-1.6.10-commonMain-tGo7Ag.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material3:material3:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material3-material3-1.6.10-commonMain-0hrc0g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-icons-extended:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-icons-extended-1.6.10-commonMain-qXLT1g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-client-core:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-client-core-2.3.11-commonMain-FU-9lg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization-kotlinx-json:2.3.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-kotlinx-json-2.3.10-commonMain-sJ8SDA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-client-content-negotiation:2.3.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-client-content-negotiation-2.3.10-commonMain-jI37cw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-client-logging:2.3.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-client-logging-2.3.10-commonMain-grxlVw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module app.cash.sqldelight:coroutines-extensions:2.0.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/app.cash.sqldelight-coroutines-extensions-2.0.0-commonMain-gHG3nQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module app.cash.sqldelight:primitive-adapters:2.0.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/app.cash.sqldelight-primitive-adapters-2.0.0-commonMain-7vLl9w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.insert-koin:koin-core:3.5.6",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.insert-koin-koin-core-3.5.6-commonMain-RJJFfg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.insert-koin:koin-test:3.5.6",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.insert-koin-koin-test-3.5.6-commonMain-ratT0A.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.mvikotlin:mvikotlin:3.3.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.mvikotlin-mvikotlin-3.3.0-commonMain-nLvodQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.mvikotlin:mvikotlin-main:3.3.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.mvikotlin-mvikotlin-main-3.3.0-commonMain-Io2CVQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:3.3.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.mvikotlin-mvikotlin-extensions-coroutines-3.3.0-commonMain-VzEKyg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.decompose:decompose:2.1.4-compose-experimental",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.decompose-decompose-2.1.4-compose-experimental-nonJsMain-sZTdLw.klib",
+    "sourceSetName": "nonJsMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.decompose:decompose:2.1.4-compose-experimental",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.decompose-decompose-2.1.4-compose-experimental-commonMain-sZTdLw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.decompose:extensions-compose-jetbrains:2.1.4-compose-experimental",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.decompose-extensions-compose-jetbrains-2.1.4-compose-experimental-commonMain-UUJSMA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.github.qdsfdhvh:image-loader:1.8.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.github.qdsfdhvh-image-loader-1.8.0-commonMain-zz-JHw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module app.cash.sqldelight:runtime:2.0.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/app.cash.sqldelight-runtime-2.0.0-commonMain-Vv32EQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlin:kotlin-stdlib:2.0.21",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlin-kotlin-stdlib-2.0.21-commonMain-WPEnbA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module ch.qos.logback:logback-classic:1.2.11",
+    "file": "/home/runner/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.11/4741689214e9d1e8408b206506cbe76d1c6a7d60/logback-classic-1.2.11.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-serialization-json-1.7.0-commonMain-cusUiw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-coroutines-core-1.8.1-concurrentMain-XanZ2w.klib",
+    "sourceSetName": "concurrentMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-coroutines-core-1.8.1-commonMain-XanZ2w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.essenty:lifecycle:1.2.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.essenty-lifecycle-1.2.0-commonMain-gwSrmA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.animation:animation:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.animation-animation-1.6.10-commonMain-5jNXZw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-1.6.10-commonMain-Eh674w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.animation:animation-core:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.animation-animation-core-1.6.10-jbMain-jNz1Aw.klib",
+    "sourceSetName": "jbMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.animation:animation-core:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.animation-animation-core-1.6.10-commonMain-jNz1Aw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-icons-core:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-icons-core-1.6.10-commonMain-XjyzjQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-ripple:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-ripple-1.6.10-commonMain-8kHg7A.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-text:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-text-1.6.10-skikoMain-aUvkxg.klib",
+    "sourceSetName": "skikoMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-text:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-text-1.6.10-commonMain-aUvkxg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-graphics:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-graphics-1.6.10-skikoExcludingWebMain-jqr5iw.klib",
+    "sourceSetName": "skikoExcludingWebMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-graphics:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-graphics-1.6.10-skikoMain-jqr5iw.klib",
+    "sourceSetName": "skikoMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-graphics:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-graphics-1.6.10-commonMain-jqr5iw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-http:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-http-2.3.11-commonMain-QgEQ0Q.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-events:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-events-2.3.11-commonMain-_htHDg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-websocket-serialization:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-websocket-serialization-2.3.11-commonMain-8xBQEg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization-kotlinx:2.3.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-kotlinx-2.3.10-commonMain-s53Slg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-2.3.11-commonMain-NxrIfg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module co.touchlab:stately-concurrency:2.0.6",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/co.touchlab-stately-concurrency-2.0.6-commonMain-CAw19g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module co.touchlab:stately-concurrent-collections:2.0.6",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/co.touchlab-stately-concurrent-collections-2.0.6-commonMain-cAetxQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.essenty:instance-keeper:1.2.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.essenty-instance-keeper-1.2.0-commonMain-QBmUCw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.essenty:state-keeper:1.2.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.essenty-state-keeper-1.2.0-commonMain-uO7_sA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.arkivanov.essenty:back-handler:1.2.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.essenty-back-handler-1.2.0-commonMain-5UuQFA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.github.qdsfdhvh:image-loader-core:1.8.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.github.qdsfdhvh-image-loader-core-1.8.0-noJsAndWasmMain-RIjsBQ.klib",
+    "sourceSetName": "noJsAndWasmMain"
+  },
+  {
+    "moduleId": "module io.github.qdsfdhvh:image-loader-core:1.8.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.github.qdsfdhvh-image-loader-core-1.8.0-commonMain-RIjsBQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.github.qdsfdhvh:image-loader-extension-ktor-network:1.8.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.github.qdsfdhvh-image-loader-extension-ktor-network-1.8.0-commonMain-ZLehCQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.github.qdsfdhvh:image-loader-extension-svg:1.8.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.github.qdsfdhvh-image-loader-extension-svg-1.8.0-commonMain-yqtZlQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module ch.qos.logback:logback-core:1.2.11",
+    "file": "/home/runner/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.11/a01230df5ca5c34540cdaa3ad5efb012f1f1f792/logback-core-1.2.11.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module org.slf4j:slf4j-api:1.7.32",
+    "file": "/home/runner/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.32/cdcff33940d9f2de763bc41ea05a0be5941176c3/slf4j-api-1.7.32.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-serialization-core-1.7.0-commonMain-8gwKMQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.foundation:foundation-layout:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.foundation-foundation-layout-1.6.10-skikoMain-89e7lw.klib",
+    "sourceSetName": "skikoMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.foundation:foundation-layout:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.foundation-foundation-layout-1.6.10-commonMain-89e7lw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-geometry:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-geometry-1.6.10-commonMain-zDj2GQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.runtime:runtime-saveable:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.runtime-runtime-saveable-1.6.10-commonMain-pCPplQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-unit:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-unit-1.6.10-jbMain-vwDMdg.klib",
+    "sourceSetName": "jbMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-unit:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-unit-1.6.10-commonMain-vwDMdg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-util:1.6.10",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-util-1.6.10-commonMain-LLOBPg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.skiko:skiko:0.8.4",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.skiko-skiko-0.8.4-commonMain-DbI_Jg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-utils:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-utils-2.3.11-commonMain-kEcFvw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-websockets:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-websockets-2.3.11-commonMain-8-9-_g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlin:kotlin-test-common:1.9.22",
+    "file": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-common/1.9.22/14ea4fd3255a0a9d1a4189220117d81ed620cdf3/kotlin-test-common-1.9.22.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlin:kotlin-test-annotations-common:1.9.22",
+    "file": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-annotations-common/1.9.22/a6a633bcda0da2a3b02255bed67c8e240ed6b1a2/kotlin-test-annotations-common-1.9.22.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module com.arkivanov.essenty:parcelable:1.2.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.arkivanov.essenty-parcelable-1.2.0-commonMain-D-6ZiA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.squareup.okio:okio:3.9.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.squareup.okio-okio-3.9.0-systemFileSystemMain-DWVyIA.klib",
+    "sourceSetName": "systemFileSystemMain"
+  },
+  {
+    "moduleId": "module com.squareup.okio:okio:3.9.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.squareup.okio-okio-3.9.0-zlibMain-DWVyIA.klib",
+    "sourceSetName": "zlibMain"
+  },
+  {
+    "moduleId": "module com.squareup.okio:okio:3.9.0",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.squareup.okio-okio-3.9.0-commonMain-DWVyIA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.eygraber:uri-kmp:0.0.18",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/com.eygraber-uri-kmp-0.0.18-commonMain-n5V_0w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-io:2.3.11",
+    "file": "/tmp/output/phase1/before/shared/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-io-2.3.11-commonMain-VFYQnA.klib",
+    "sourceSetName": "commonMain"
+  }
+]

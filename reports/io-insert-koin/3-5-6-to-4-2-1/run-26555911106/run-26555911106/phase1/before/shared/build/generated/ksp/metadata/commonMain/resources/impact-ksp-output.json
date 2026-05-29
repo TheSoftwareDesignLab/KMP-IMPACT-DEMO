@@ -1,0 +1,732 @@
+{"files": [
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt",
+    "package": "com.mocoding.pokedex.ui.utils",
+    "declarations": ["com.mocoding.pokedex.ui.utils.PokemonAbilityUtils"],
+    "type_references": ["androidx.compose.ui.graphics.Color","com.mocoding.pokedex.ui.utils.PokemonAbilityUtils"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/KgHelper.kt",
+    "package": "com.mocoding.pokedex.ui.utils",
+    "declarations": ["com.mocoding.pokedex.ui.utils.kgToPounds"],
+    "type_references": [],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Type.kt",
+    "package": "com.mocoding.pokedex.ui.theme",
+    "declarations": ["com.mocoding.pokedex.ui.theme.Typography"],
+    "type_references": ["androidx.compose.material3.Typography"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Color.kt",
+    "package": "com.mocoding.pokedex.ui.theme",
+    "declarations": ["com.mocoding.pokedex.ui.theme.Black","com.mocoding.pokedex.ui.theme.Green300","com.mocoding.pokedex.ui.theme.Green400","com.mocoding.pokedex.ui.theme.Green500","com.mocoding.pokedex.ui.theme.Red300","com.mocoding.pokedex.ui.theme.Red400","com.mocoding.pokedex.ui.theme.Red500","com.mocoding.pokedex.ui.theme.Blue300","com.mocoding.pokedex.ui.theme.Blue500","com.mocoding.pokedex.ui.theme.Yellow300","com.mocoding.pokedex.ui.theme.Yellow400","com.mocoding.pokedex.ui.theme.Yellow500","com.mocoding.pokedex.ui.theme.Blue400","com.mocoding.pokedex.ui.theme.LightGray400","com.mocoding.pokedex.ui.theme.DarkGray400","com.mocoding.pokedex.ui.theme.Gray400","com.mocoding.pokedex.ui.theme.Bug","com.mocoding.pokedex.ui.theme.Dark","com.mocoding.pokedex.ui.theme.Dragon","com.mocoding.pokedex.ui.theme.Electric","com.mocoding.pokedex.ui.theme.Fairy","com.mocoding.pokedex.ui.theme.Fire","com.mocoding.pokedex.ui.theme.Flying","com.mocoding.pokedex.ui.theme.Ghost","com.mocoding.pokedex.ui.theme.Ice","com.mocoding.pokedex.ui.theme.Poison","com.mocoding.pokedex.ui.theme.Psychic","com.mocoding.pokedex.ui.theme.Rock","com.mocoding.pokedex.ui.theme.Steel","com.mocoding.pokedex.ui.theme.Water","com.mocoding.pokedex.ui.theme.Fighting","com.mocoding.pokedex.ui.theme.Grass","com.mocoding.pokedex.ui.theme.Ground"],
+    "type_references": ["androidx.compose.ui.graphics.Color"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Shape.kt",
+    "package": "com.mocoding.pokedex.ui.theme",
+    "declarations": ["com.mocoding.pokedex.ui.theme.Shapes"],
+    "type_references": ["androidx.compose.material3.Shapes"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Theme.kt",
+    "package": "com.mocoding.pokedex.ui.theme",
+    "declarations": ["com.mocoding.pokedex.ui.theme.DarkColorScheme","com.mocoding.pokedex.ui.theme.LightColorScheme","com.mocoding.pokedex.ui.theme.PokedexTheme"],
+    "type_references": ["androidx.compose.material3.ColorScheme"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.PokedexComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.pokedex.store.PokedexStore.Intent","com.mocoding.pokedex.ui.pokedex.PokedexComponent.Output","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.pokedex.PokedexComponent","com.mocoding.pokedex.ui.pokedex.store.PokedexStore","kotlinx.coroutines.flow.StateFlow","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStore.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.store",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.store.PokedexStore"],
+    "type_references": ["com.arkivanov.mvikotlin.core.store.Store","com.mocoding.pokedex.ui.pokedex.store.PokedexStore.Intent","com.mocoding.pokedex.ui.pokedex.store.PokedexStore.State"],
+    "supertypes": ["com.arkivanov.mvikotlin.core.store.Store"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.store",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.store.PokedexStoreFactory"],
+    "type_references": ["org.koin.core.component.KoinComponent","com.mocoding.pokedex.ui.pokedex.store.PokedexStore","org.koin.core.Koin","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.pokedex.store.PokedexStoreFactory","com.mocoding.pokedex.data.repository.PokemonRepository"],
+    "supertypes": ["org.koin.core.component.KoinComponent"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.PokedexScreen"],
+    "type_references": ["com.mocoding.pokedex.ui.pokedex.PokedexComponent"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.components",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.components.PokemonItem"],
+    "type_references": ["com.mocoding.pokedex.core.model.Pokemon","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonLoadingItem.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.components",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.components.PokemonLoadingItem"],
+    "type_references": ["androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonGrid.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.components",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.components.PokemonGrid"],
+    "type_references": ["androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt",
+    "package": "com.mocoding.pokedex.ui.pokedex.components",
+    "declarations": ["com.mocoding.pokedex.ui.pokedex.components.PokedexContent"],
+    "type_references": ["com.mocoding.pokedex.ui.pokedex.store.PokedexStore.State"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt",
+    "package": "com.mocoding.pokedex.ui.main.state",
+    "declarations": ["com.mocoding.pokedex.ui.main.state.CategoryState"],
+    "type_references": ["androidx.compose.ui.graphics.Color","com.mocoding.pokedex.ui.main.state.CategoryState"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStore.kt",
+    "package": "com.mocoding.pokedex.ui.main.store",
+    "declarations": ["com.mocoding.pokedex.ui.main.store.MainStore"],
+    "type_references": ["com.arkivanov.mvikotlin.core.store.Store","com.mocoding.pokedex.ui.main.store.MainStore.Intent","com.mocoding.pokedex.ui.main.store.MainStore.State"],
+    "supertypes": ["com.arkivanov.mvikotlin.core.store.Store"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt",
+    "package": "com.mocoding.pokedex.ui.main.store",
+    "declarations": ["com.mocoding.pokedex.ui.main.store.MainStoreFactory"],
+    "type_references": ["com.mocoding.pokedex.ui.main.store.MainStore","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.main.store.MainStoreFactory"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+    "package": "com.mocoding.pokedex.ui.main",
+    "declarations": ["com.mocoding.pokedex.ui.main.MainComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.main.store.MainStore.Intent","com.mocoding.pokedex.ui.main.MainComponent.Output","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.main.MainComponent","com.mocoding.pokedex.ui.main.store.MainStore","kotlinx.coroutines.flow.StateFlow","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt",
+    "package": "com.mocoding.pokedex.ui.main",
+    "declarations": ["com.mocoding.pokedex.ui.main.MainScreen","com.mocoding.pokedex.ui.main.MainContentDefault","com.mocoding.pokedex.ui.main.MainContentLarge"],
+    "type_references": ["com.mocoding.pokedex.ui.main.MainComponent","com.mocoding.pokedex.ui.main.store.MainStore.State"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.CategoryButton"],
+    "type_references": ["com.mocoding.pokedex.ui.main.state.CategoryState","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoItem.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.VideoItem"],
+    "type_references": ["com.mocoding.pokedex.core.model.Video","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.MainContent"],
+    "type_references": ["com.mocoding.pokedex.ui.main.store.MainStore.State","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/AsyncImage.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.AsyncImage"],
+    "type_references": ["androidx.compose.ui.layout.ContentScale","androidx.compose.ui.graphics.ColorFilter","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainModelDrawerSheet.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.MainModalDrawerSheet"],
+    "type_references": [],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoRow.kt",
+    "package": "com.mocoding.pokedex.ui.main.components",
+    "declarations": ["com.mocoding.pokedex.ui.main.components.VideoRow"],
+    "type_references": ["androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+    "package": "com.mocoding.pokedex.ui.details",
+    "declarations": ["com.mocoding.pokedex.ui.details.DetailsComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.details.store.DetailsStore.Intent","com.mocoding.pokedex.ui.details.DetailsComponent.Output","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.details.DetailsComponent","com.mocoding.pokedex.ui.details.store.DetailsStore","kotlinx.coroutines.flow.StateFlow","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStore.kt",
+    "package": "com.mocoding.pokedex.ui.details.store",
+    "declarations": ["com.mocoding.pokedex.ui.details.store.DetailsStore"],
+    "type_references": ["com.arkivanov.mvikotlin.core.store.Store","com.mocoding.pokedex.ui.details.store.DetailsStore.Intent","com.mocoding.pokedex.ui.details.store.DetailsStore.State"],
+    "supertypes": ["com.arkivanov.mvikotlin.core.store.Store"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt",
+    "package": "com.mocoding.pokedex.ui.details.store",
+    "declarations": ["com.mocoding.pokedex.ui.details.store.DetailsStoreFactory"],
+    "type_references": ["org.koin.core.component.KoinComponent","com.mocoding.pokedex.ui.details.store.DetailsStore","org.koin.core.Koin","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.details.store.DetailsStoreFactory","com.mocoding.pokedex.data.repository.PokemonRepository"],
+    "supertypes": ["org.koin.core.component.KoinComponent"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt",
+    "package": "com.mocoding.pokedex.ui.details",
+    "declarations": ["com.mocoding.pokedex.ui.details.DetailsScreen"],
+    "type_references": ["com.mocoding.pokedex.ui.details.DetailsComponent"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityItem.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.AbilityItem"],
+    "type_references": ["androidx.compose.ui.graphics.Color","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStats.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.PokemonStats"],
+    "type_references": ["com.mocoding.pokedex.core.model.PokemonInfo","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.DetailsContent"],
+    "type_references": ["com.mocoding.pokedex.ui.details.store.DetailsStore.State"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStatItem.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.PokemonStatItem"],
+    "type_references": ["com.mocoding.pokedex.core.model.PokemonInfo.StatsResponse","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.AbilityRow"],
+    "type_references": ["androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonInfos.kt",
+    "package": "com.mocoding.pokedex.ui.details.components",
+    "declarations": ["com.mocoding.pokedex.ui.details.components.PokemonInfos"],
+    "type_references": ["com.mocoding.pokedex.core.model.PokemonInfo","androidx.compose.ui.Modifier"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/helper/LocalSafeArea.kt",
+    "package": "com.mocoding.pokedex.ui.helper",
+    "declarations": ["com.mocoding.pokedex.ui.helper.LocalSafeArea"],
+    "type_references": ["androidx.compose.runtime.ProvidableCompositionLocal"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt",
+    "package": "com.mocoding.pokedex.ui.comingsoon",
+    "declarations": ["com.mocoding.pokedex.ui.comingsoon.ComingSoonScreen"],
+    "type_references": ["com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+    "package": "com.mocoding.pokedex.ui.comingsoon",
+    "declarations": ["com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent.Output","com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt",
+    "package": "com.mocoding.pokedex.ui.favorite",
+    "declarations": ["com.mocoding.pokedex.ui.favorite.FavoriteScreen"],
+    "type_references": ["com.mocoding.pokedex.ui.favorite.FavoriteComponent"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+    "package": "com.mocoding.pokedex.ui.favorite",
+    "declarations": ["com.mocoding.pokedex.ui.favorite.FavoriteComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.favorite.store.FavoriteStore.Intent","com.mocoding.pokedex.ui.favorite.FavoriteComponent.Output","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.favorite.FavoriteComponent","com.mocoding.pokedex.ui.favorite.store.FavoriteStore","kotlinx.coroutines.flow.StateFlow","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt",
+    "package": "com.mocoding.pokedex.ui.favorite.store",
+    "declarations": ["com.mocoding.pokedex.ui.favorite.store.FavoriteStoreFactory"],
+    "type_references": ["org.koin.core.component.KoinComponent","com.mocoding.pokedex.ui.favorite.store.FavoriteStore","org.koin.core.Koin","com.arkivanov.mvikotlin.core.store.StoreFactory","com.mocoding.pokedex.ui.favorite.store.FavoriteStoreFactory","com.mocoding.pokedex.data.repository.PokemonRepository"],
+    "supertypes": ["org.koin.core.component.KoinComponent"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStore.kt",
+    "package": "com.mocoding.pokedex.ui.favorite.store",
+    "declarations": ["com.mocoding.pokedex.ui.favorite.store.FavoriteStore"],
+    "type_references": ["com.arkivanov.mvikotlin.core.store.Store","com.mocoding.pokedex.ui.favorite.store.FavoriteStore.Intent","com.mocoding.pokedex.ui.favorite.store.FavoriteStore.State"],
+    "supertypes": ["com.arkivanov.mvikotlin.core.store.Store"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt",
+    "package": "com.mocoding.pokedex.ui.favorite.components",
+    "declarations": ["com.mocoding.pokedex.ui.favorite.components.FavoriteContent"],
+    "type_references": ["com.mocoding.pokedex.ui.favorite.store.FavoriteStore.State"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+    "package": "com.mocoding.pokedex.ui.root",
+    "declarations": ["com.mocoding.pokedex.ui.root.RootContent"],
+    "type_references": ["com.mocoding.pokedex.ui.root.RootComponent"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+    "package": "com.mocoding.pokedex.ui.root",
+    "declarations": ["com.mocoding.pokedex.ui.root.RootComponent"],
+    "type_references": ["com.arkivanov.decompose.ComponentContext","com.mocoding.pokedex.ui.root.RootComponent.Configuration","com.mocoding.pokedex.ui.root.RootComponent.Child","com.mocoding.pokedex.ui.main.MainComponent.Output","com.mocoding.pokedex.ui.pokedex.PokedexComponent.Output","com.mocoding.pokedex.ui.favorite.FavoriteComponent.Output","com.mocoding.pokedex.ui.details.DetailsComponent.Output","com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent.Output","com.mocoding.pokedex.ui.root.RootComponent","com.arkivanov.mvikotlin.core.store.StoreFactory","com.arkivanov.decompose.router.stack.StackNavigation","com.arkivanov.decompose.value.Value","com.arkivanov.essenty.lifecycle.Lifecycle","com.arkivanov.essenty.statekeeper.StateKeeper","com.arkivanov.essenty.instancekeeper.InstanceKeeper","com.arkivanov.essenty.backhandler.BackHandler"],
+    "supertypes": ["com.arkivanov.decompose.ComponentContext"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt",
+    "package": "com.mocoding.pokedex",
+    "declarations": ["com.mocoding.pokedex.pokedexDispatchers","com.mocoding.pokedex.PokedexDispatchers"],
+    "type_references": ["com.mocoding.pokedex.PokedexDispatchers","kotlinx.coroutines.CoroutineDispatcher"],
+    "supertypes": [],
+    "is_expect": true,
+    "is_actual": false,
+    "expect_actual_fqcns": ["com.mocoding.pokedex.pokedexDispatchers"]
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/PokemonInfo.kt",
+    "package": "com.mocoding.pokedex.core.model",
+    "declarations": ["com.mocoding.pokedex.core.model.PokemonInfo"],
+    "type_references": ["com.mocoding.pokedex.core.model.PokemonInfo"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/Pokemon.kt",
+    "package": "com.mocoding.pokedex.core.model",
+    "declarations": ["com.mocoding.pokedex.core.model.Pokemon"],
+    "type_references": ["com.mocoding.pokedex.core.model.Pokemon"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/Video.kt",
+    "package": "com.mocoding.pokedex.core.model",
+    "declarations": ["com.mocoding.pokedex.core.model.Video"],
+    "type_references": ["com.mocoding.pokedex.core.model.Video"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt",
+    "package": "com.mocoding.pokedex.core.network.client",
+    "declarations": ["com.mocoding.pokedex.core.network.client.PokemonClient"],
+    "type_references": ["com.mocoding.pokedex.core.network.model.PokemonResponse","com.mocoding.pokedex.core.model.PokemonInfo","io.ktor.client.HttpClient","com.mocoding.pokedex.core.network.client.PokemonClient"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/errors/PokedexException.kt",
+    "package": "com.mocoding.pokedex.core.network.errors",
+    "declarations": ["com.mocoding.pokedex.core.network.errors.PokedexError","com.mocoding.pokedex.core.network.errors.PokedexException"],
+    "type_references": ["com.mocoding.pokedex.core.network.errors.PokedexError","com.mocoding.pokedex.core.network.errors.PokedexException"],
+    "supertypes": ["kotlin.Enum","kotlin.Exception"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/model/PokemonResponse.kt",
+    "package": "com.mocoding.pokedex.core.network.model",
+    "declarations": ["com.mocoding.pokedex.core.network.model.PokemonResponse"],
+    "type_references": ["com.mocoding.pokedex.core.network.model.PokemonResponse"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+    "package": "com.mocoding.pokedex.core.network",
+    "declarations": ["com.mocoding.pokedex.core.network.createPlatformHttpClient"],
+    "type_references": ["io.ktor.client.HttpClient"],
+    "supertypes": [],
+    "is_expect": true,
+    "is_actual": false,
+    "expect_actual_fqcns": ["com.mocoding.pokedex.core.network.createPlatformHttpClient"]
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt",
+    "package": "com.mocoding.pokedex.core.network.helper",
+    "declarations": ["com.mocoding.pokedex.core.network.helper.handleErrors"],
+    "type_references": ["com.mocoding.pokedex.core.network.helper.handleErrors.T"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClient.kt",
+    "package": "com.mocoding.pokedex.core.network",
+    "declarations": ["com.mocoding.pokedex.core.network.createHttpClient"],
+    "type_references": ["io.ktor.client.HttpClient"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt",
+    "package": "com.mocoding.pokedex.core.network.di",
+    "declarations": ["com.mocoding.pokedex.core.network.di.networkModule"],
+    "type_references": [],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/NetworkConstants.kt",
+    "package": "com.mocoding.pokedex.core.network",
+    "declarations": ["com.mocoding.pokedex.core.network.NetworkConstants"],
+    "type_references": ["com.mocoding.pokedex.core.network.NetworkConstants"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+    "package": "com.mocoding.pokedex.core.database",
+    "declarations": ["com.mocoding.pokedex.core.database.sqlDriverFactory","com.mocoding.pokedex.core.database.createDatabase"],
+    "type_references": ["app.cash.sqldelight.db.SqlDriver","com.mocoding.pokedex.core.database.PokemonDatabase"],
+    "supertypes": [],
+    "is_expect": true,
+    "is_actual": false,
+    "expect_actual_fqcns": ["com.mocoding.pokedex.core.database.sqlDriverFactory"]
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt",
+    "package": "com.mocoding.pokedex.core.database.dao",
+    "declarations": ["com.mocoding.pokedex.core.database.dao.PokemonDao"],
+    "type_references": ["commocodingpokedex.PokemonEntity","com.mocoding.pokedex.core.database.PokemonDatabase","com.mocoding.pokedex.core.database.dao.PokemonDao","commocodingpokedex.PokemonEntityQueries"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt",
+    "package": "com.mocoding.pokedex.core.database.dao",
+    "declarations": ["com.mocoding.pokedex.core.database.dao.PokemonInfoDao"],
+    "type_references": ["commocodingpokedex.PokemonInfoEntity","kotlinx.coroutines.flow.Flow","com.mocoding.pokedex.core.database.PokemonDatabase","com.mocoding.pokedex.core.database.dao.PokemonInfoDao","commocodingpokedex.PokemonInfoEntityQueries"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt",
+    "package": "com.mocoding.pokedex.core.database.di",
+    "declarations": ["com.mocoding.pokedex.core.database.di.databaseModule"],
+    "type_references": ["org.koin.core.module.Module"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/DatabaseConstants.kt",
+    "package": "com.mocoding.pokedex.core.database",
+    "declarations": ["com.mocoding.pokedex.core.database.DatabaseConstants"],
+    "type_references": ["com.mocoding.pokedex.core.database.DatabaseConstants"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt",
+    "package": "com.mocoding.pokedex.core.di",
+    "declarations": ["com.mocoding.pokedex.core.di.initKoin"],
+    "type_references": ["org.koin.dsl.KoinAppDeclaration","org.koin.core.KoinApplication"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt",
+    "package": "com.mocoding.pokedex.data.repository",
+    "declarations": ["com.mocoding.pokedex.data.repository.PokemonRepositoryImpl"],
+    "type_references": ["com.mocoding.pokedex.data.repository.PokemonRepository","org.koin.core.component.KoinComponent","kotlinx.coroutines.flow.Flow","org.koin.core.Koin","com.mocoding.pokedex.data.repository.PokemonRepositoryImpl","com.mocoding.pokedex.core.network.client.PokemonClient","com.mocoding.pokedex.core.database.dao.PokemonDao","com.mocoding.pokedex.core.database.dao.PokemonInfoDao"],
+    "supertypes": ["com.mocoding.pokedex.data.repository.PokemonRepository","org.koin.core.component.KoinComponent"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepository.kt",
+    "package": "com.mocoding.pokedex.data.repository",
+    "declarations": ["com.mocoding.pokedex.data.repository.PokemonRepository"],
+    "type_references": ["kotlinx.coroutines.flow.Flow"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt",
+    "package": "com.mocoding.pokedex.data.di",
+    "declarations": ["com.mocoding.pokedex.data.di.dataModule"],
+    "type_references": ["org.koin.core.module.Module"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/Mappers.kt",
+    "package": "com.mocoding.pokedex.data",
+    "declarations": ["com.mocoding.pokedex.data.toPokemonEntity","com.mocoding.pokedex.data.toPokemon","com.mocoding.pokedex.data.toPokemonInfoEntity","com.mocoding.pokedex.data.toPokemonInfo","com.mocoding.pokedex.data.toPokemon"],
+    "type_references": ["commocodingpokedex.PokemonEntity","com.mocoding.pokedex.core.model.Pokemon","commocodingpokedex.PokemonInfoEntity","com.mocoding.pokedex.core.model.PokemonInfo"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/com/mocoding/pokedex/core/database/PokemonDatabase.kt",
+    "package": "com.mocoding.pokedex.core.database",
+    "declarations": ["com.mocoding.pokedex.core.database.PokemonDatabase"],
+    "type_references": ["app.cash.sqldelight.Transacter","app.cash.sqldelight.Transacter.transactionWithResult.R","commocodingpokedex.PokemonEntityQueries","commocodingpokedex.PokemonInfoEntityQueries"],
+    "supertypes": ["app.cash.sqldelight.Transacter"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/com/mocoding/pokedex/core/database/shared/PokemonDatabaseImpl.kt",
+    "package": "com.mocoding.pokedex.core.database.shared",
+    "declarations": ["com.mocoding.pokedex.core.database.shared.schema","com.mocoding.pokedex.core.database.shared.newInstance","com.mocoding.pokedex.core.database.shared.PokemonDatabaseImpl"],
+    "type_references": ["app.cash.sqldelight.db.SqlSchema","app.cash.sqldelight.db.SqlDriver","com.mocoding.pokedex.core.database.PokemonDatabase","app.cash.sqldelight.TransacterImpl","com.mocoding.pokedex.core.database.shared.PokemonDatabaseImpl.transactionWithResult.R","app.cash.sqldelight.Transacter.Transaction","app.cash.sqldelight.BaseTransacterImpl.postTransactionCleanup.R","com.mocoding.pokedex.core.database.shared.PokemonDatabaseImpl","commocodingpokedex.PokemonEntityQueries","commocodingpokedex.PokemonInfoEntityQueries"],
+    "supertypes": ["app.cash.sqldelight.TransacterImpl","com.mocoding.pokedex.core.database.PokemonDatabase"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonInfoEntity.kt",
+    "package": "commocodingpokedex",
+    "declarations": ["commocodingpokedex.PokemonInfoEntity"],
+    "type_references": ["commocodingpokedex.PokemonInfoEntity"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonInfoEntityQueries.kt",
+    "package": "commocodingpokedex",
+    "declarations": ["commocodingpokedex.PokemonInfoEntityQueries"],
+    "type_references": ["app.cash.sqldelight.TransacterImpl","app.cash.sqldelight.Query","commocodingpokedex.PokemonInfoEntity","app.cash.sqldelight.TransacterImpl.transactionWithResult.R","app.cash.sqldelight.Transacter.Transaction","app.cash.sqldelight.BaseTransacterImpl.postTransactionCleanup.R","app.cash.sqldelight.db.SqlDriver","commocodingpokedex.PokemonInfoEntityQueries"],
+    "supertypes": ["app.cash.sqldelight.TransacterImpl"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonEntityQueries.kt",
+    "package": "commocodingpokedex",
+    "declarations": ["commocodingpokedex.PokemonEntityQueries"],
+    "type_references": ["app.cash.sqldelight.TransacterImpl","app.cash.sqldelight.Query","commocodingpokedex.PokemonEntity","app.cash.sqldelight.TransacterImpl.transactionWithResult.R","app.cash.sqldelight.Transacter.Transaction","app.cash.sqldelight.BaseTransacterImpl.postTransactionCleanup.R","app.cash.sqldelight.db.SqlDriver","commocodingpokedex.PokemonEntityQueries"],
+    "supertypes": ["app.cash.sqldelight.TransacterImpl"],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  },
+  {
+    "file_path": "/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonEntity.kt",
+    "package": "commocodingpokedex",
+    "declarations": ["commocodingpokedex.PokemonEntity"],
+    "type_references": ["commocodingpokedex.PokemonEntity"],
+    "supertypes": [],
+    "is_expect": false,
+    "is_actual": false,
+    "expect_actual_fqcns": []
+  }
+]}

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="4.3">
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt">
+	<error line="8" column="10" severity="warning" message="The function getAbilityColor appears to be too complex based on Cyclomatic Complexity (complexity: 19). Defined complexity threshold for methods is set to &apos;15&apos;" source="detekt.CyclomaticComplexMethod" />
+	<error line="29" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="com.mocoding.pokedex.ui.theme.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt">
+	<error line="22" column="14" severity="warning" message="The function PokemonItem is too long (64). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="22" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="94" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="5" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="18" column="1" severity="warning" message="com.mocoding.pokedex.ui.theme.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="71" column="34" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="82" column="43" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="90" column="43" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt">
+	<error line="20" column="14" severity="warning" message="The function PokedexContent is too long (72). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="20" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="132" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="6" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="16" column="1" severity="warning" message="com.mocoding.pokedex.ui.theme.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt">
+	<error line="63" column="32" severity="warning" message="The function MainContentDefault(state: MainStore.State, onEvent: (MainStore.Intent) -&gt; Unit, onOutput: (MainComponent.Output) -&gt; Unit, items: List&lt;Pair&lt;String, ImageVector&gt;&gt;, selectedItem: Pair&lt;String, ImageVector&gt;, updateSelectedItem: (Pair&lt;String, ImageVector&gt;) -&gt; Unit) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
+	<error line="120" column="30" severity="warning" message="The function MainContentLarge(state: MainStore.State, onEvent: (MainStore.Intent) -&gt; Unit, onOutput: (MainComponent.Output) -&gt; Unit, items: List&lt;Pair&lt;String, ImageVector&gt;&gt;, selectedItem: Pair&lt;String, ImageVector&gt;, updateSelectedItem: (Pair&lt;String, ImageVector&gt;) -&gt; Unit) has too many parameters. The current threshold is set to 6." source="detekt.LongParameterList" />
+	<error line="25" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="63" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="120" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="158" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="10" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="11" column="1" severity="warning" message="androidx.compose.runtime.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt">
+	<error line="19" column="14" severity="warning" message="The function MainContent is too long (107). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="19" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="140" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="7" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="8" column="1" severity="warning" message="androidx.compose.runtime.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt">
+	<error line="31" column="14" severity="warning" message="The function DetailsContent is too long (155). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="31" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="197" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="9" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="89" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="42" column="93" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="45" column="35" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="47" column="32" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="49" column="28" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="140" column="50" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="180" column="51" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="189" column="51" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonInfos.kt">
+	<error line="21" column="14" severity="warning" message="The function PokemonInfos is too long (70). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="21" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="103" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonInfos.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="30" column="64" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="44" column="55" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="59" column="69" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="79" column="48" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="83" column="58" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="98" column="69" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt">
+	<error line="19" column="14" severity="warning" message="The function FavoriteContent is too long (73). The maximum length is 60." source="detekt.LongMethod" />
+	<error line="19" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="101" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="6" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="83" column="77" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="21" column="5" severity="warning" message="Function parameter `onEvent` is unused." source="detekt.UnusedParameter" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt">
+	<error line="30" column="13" severity="warning" message="The caught exception is too generic. Prefer catching specific exceptions to the case that is currently handled." source="detekt.TooGenericExceptionCaught" />
+	<error line="17" column="13" severity="warning" message="The caught exception is swallowed. The original exception could be lost." source="detekt.SwallowedException" />
+	<error line="30" column="13" severity="warning" message="The caught exception is swallowed. The original exception could be lost." source="detekt.SwallowedException" />
+	<error line="34" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="22" column="12" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="22" column="17" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="23" column="12" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="23" column="17" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="24" column="9" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt">
+	<error line="37" column="18" severity="warning" message="The caught exception is too generic. Prefer catching specific exceptions to the case that is currently handled." source="detekt.TooGenericExceptionCaught" />
+	<error line="55" column="18" severity="warning" message="The caught exception is too generic. Prefer catching specific exceptions to the case that is currently handled." source="detekt.TooGenericExceptionCaught" />
+	<error line="38" column="13" severity="warning" message="Do not print a stack trace. These debug statements should be removed or replaced with a logger." source="detekt.PrintStackTrace" />
+	<error line="73" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Theme.kt">
+	<error line="43" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="59" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Theme.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt">
+	<error line="9" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="19" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonLoadingItem.kt">
+	<error line="19" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="77" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonLoadingItem.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.animation.core.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="5" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="6" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="29" column="64" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="39" column="34" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="45" column="77" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="53" column="39" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="59" column="77" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="67" column="39" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="73" column="77" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonGrid.kt">
+	<error line="19" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="72" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonGrid.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.animation.core.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="31" column="31" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="40" column="34" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="41" column="35" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="42" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="61" column="23" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt">
+	<error line="21" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="75" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="5" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="53" column="32" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoItem.kt">
+	<error line="24" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="81" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoItem.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="45" column="59" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="48" column="34" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="76" column="65" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/AsyncImage.kt">
+	<error line="23" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="63" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/AsyncImage.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainModelDrawerSheet.kt">
+	<error line="18" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="60" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainModelDrawerSheet.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="7" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="49" column="85" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoRow.kt">
+	<error line="12" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="30" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoRow.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt">
+	<error line="9" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="19" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityItem.kt">
+	<error line="15" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="30" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityItem.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStats.kt">
+	<error line="11" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="29" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStats.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStatItem.kt">
+	<error line="24" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="91" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStatItem.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="androidx.compose.animation.core.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="50" column="65" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="52" column="40" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="61" column="40" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="67" column="45" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="68" column="73" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="72" column="25" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt">
+	<error line="13" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="28" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt">
+	<error line="19" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="79" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="4" column="1" severity="warning" message="androidx.compose.foundation.layout.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="8" column="1" severity="warning" message="androidx.compose.material3.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt">
+	<error line="9" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="17" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt">
+	<error line="14" column="14" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="27" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/KgHelper.kt">
+	<error line="3" column="47" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/KgHelper.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="41" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Type.kt">
+	<error line="41" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Type.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Color.kt">
+	<error line="46" column="31" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Color.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="5" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="7" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="8" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="9" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="11" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="12" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="13" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="15" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="16" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="18" column="23" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="19" column="23" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="20" column="23" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="22" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="24" column="26" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="26" column="25" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="28" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="30" column="17" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="31" column="18" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="32" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="33" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="34" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="35" column="18" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="36" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="37" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="38" column="17" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="39" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="40" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="41" column="18" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="42" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="43" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="44" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="45" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="46" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Shape.kt">
+	<error line="13" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/theme/Shape.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt">
+	<error line="44" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStore.kt">
+	<error line="20" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStore.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt">
+	<error line="89" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="48" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt">
+	<error line="4" column="1" severity="warning" message="com.mocoding.pokedex.ui.theme.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStore.kt">
+	<error line="18" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStore.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt">
+	<error line="46" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt">
+	<error line="44" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt">
+	<error line="42" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStore.kt">
+	<error line="18" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStore.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt">
+	<error line="92" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="46" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="88" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/helper/LocalSafeArea.kt">
+	<error line="8" column="72" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/helper/LocalSafeArea.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt">
+	<error line="18" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt">
+	<error line="41" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt">
+	<error line="68" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStore.kt">
+	<error line="16" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStore.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt">
+	<error line="144" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="86" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="88" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt">
+	<error line="11" column="50" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/Video.kt">
+	<error line="16" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="24" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="32" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="40" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+	<error line="48" column="1" severity="warning" message="Line detected, which is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt">
+	<error line="44" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/errors/PokedexException.kt">
+	<error line="12" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/errors/PokedexException.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt">
+	<error line="5" column="50" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClient.kt">
+	<error line="22" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClient.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="io.ktor.client.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="4" column="1" severity="warning" message="io.ktor.client.plugins.contentnegotiation.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="5" column="1" severity="warning" message="io.ktor.client.plugins.logging.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="6" column="1" severity="warning" message="io.ktor.serialization.kotlinx.json.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+	<error line="9" column="31" severity="warning" message="Function parameter `enableLogging` is unused." source="detekt.UnusedParameter" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt">
+	<error line="13" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/NetworkConstants.kt">
+	<error line="10" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/NetworkConstants.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt">
+	<error line="13" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt">
+	<error line="20" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt">
+	<error line="33" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt">
+	<error line="14" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/DatabaseConstants.kt">
+	<error line="5" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/DatabaseConstants.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt">
+	<error line="17" column="6" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepository.kt">
+	<error line="15" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepository.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt">
+	<error line="9" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/Mappers.kt">
+	<error line="48" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/Mappers.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonInfoEntityQueries.kt">
+	<error line="29" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="30" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="31" column="24" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="32" column="24" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="33" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="60" column="30" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="70" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="71" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="72" column="24" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="73" column="24" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="74" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="93" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="96" column="27" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="100" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="101" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="102" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="103" column="22" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="104" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="106" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="112" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="120" column="19" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="138" column="29" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+<file name="/tmp/output/phase1/before/shared/build/generated/sqldelight/code/PokemonDatabase/commonMain/commocodingpokedex/PokemonEntityQueries.kt">
+	<error line="37" column="21" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="40" column="27" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="45" column="20" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+	<error line="63" column="30" severity="warning" message="This expression contains a magic number. Consider defining it to a well named constant." source="detekt.MagicNumber" />
+</file>
+</checkstyle>

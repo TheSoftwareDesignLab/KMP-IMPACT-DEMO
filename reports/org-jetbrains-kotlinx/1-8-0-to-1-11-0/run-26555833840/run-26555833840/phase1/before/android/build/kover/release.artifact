@@ -1,0 +1,10 @@
+:android
+android/src/release/kotlin
+android/src/release/java
+android/src/main/kotlin
+android/src/main/java
+
+android/build/tmp/kotlin-classes/release
+android/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes
+
+android/build/kover/bin-reports/testReleaseUnitTest.ic

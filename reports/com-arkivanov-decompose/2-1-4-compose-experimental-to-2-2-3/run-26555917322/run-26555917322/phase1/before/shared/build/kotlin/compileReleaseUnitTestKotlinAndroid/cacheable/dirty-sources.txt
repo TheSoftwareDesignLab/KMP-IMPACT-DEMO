@@ -1,0 +1,2 @@
+/tmp/output/phase1/before/shared/src/commonTest/kotlin/com/mocoding/pokedex/commonTest.kt
+/tmp/output/phase1/before/shared/src/androidUnitTest/kotlin/com/mocoding/pokedex/androidTest.kt

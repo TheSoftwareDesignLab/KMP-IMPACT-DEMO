@@ -1,0 +1,65 @@
+{
+  "dependency_group": "androidx.activity",
+  "version_before": "1.9.0",
+  "version_after": "1.13.0",
+  "risk_level": "low",
+  "recommendation": "Low apparent impact; merge is reasonable after normal review and basic validation.",
+  "report_url": "",
+  "total_impacted_files": 1,
+  "total_impacted_screens": 1,
+  "direct_impacts": 1,
+  "transitive_impacts": 0,
+  "expect_actual_impacts": 0,
+  "expect_actual_pairs_total": 3,
+  "total_project_files": 90,
+  "dynamic_status": "completed",
+  "dynamic_summary": "completed (0 screen diffs)",
+  "dynamic_diffs": 0,
+  "before_screens": 6,
+  "after_screens": 6,
+  "dynamic_nodes_before": 9,
+  "dynamic_nodes_after": 9,
+  "dynamic_structures_before": 6,
+  "dynamic_structures_after": 6,
+  "screen_mappings": 1,
+  "trace_entries": 1,
+  "seed_files": [
+    "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt"
+  ],
+  "impacted_screens": [
+    "Main"
+  ],
+  "top_impacted_files": [
+    {
+      "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "main",
+      "rloc": 33,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.android.MainActivity"
+      ]
+    }
+  ],
+  "compat_warnings": [],
+  "stack_detected": {
+    "kotlin": "2.0.21",
+    "agp": "8.5.0",
+    "compose": "1.6.10",
+    "compose-compiler": "1.5.14"
+  },
+  "version_key": "activityCompose",
+  "compilation_after": "success",
+  "compile_errors": 0,
+  "has_detekt": false,
+  "has_kover": true,
+  "tools_used": {
+    "tree_sitter": true,
+    "ksp": true,
+    "detekt": false,
+    "kover": true,
+    "droidbot": true,
+    "codecharta": true
+  }
+}

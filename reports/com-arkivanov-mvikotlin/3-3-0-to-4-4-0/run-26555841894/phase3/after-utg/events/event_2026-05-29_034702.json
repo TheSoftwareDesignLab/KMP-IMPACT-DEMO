@@ -1,0 +1,53 @@
+{
+  "tag": "2026-05-29_034702",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.mocoding.pokedex.android",
+      "visible": true,
+      "checkable": false,
+      "child_count": 3,
+      "editable": true,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        10,
+        13,
+        14
+      ],
+      "focused": true,
+      "bounds": [
+        [
+          20,
+          280
+        ],
+        [
+          300,
+          336
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": "",
+      "class": "android.widget.EditText",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": true,
+      "parent": 7,
+      "temp_id": 9,
+      "size": "280*56",
+      "signature": "[class]android.widget.EditText[resource_id]None[text][enabled,,]",
+      "view_str": "95365a9c11abe705013d7bae8f16af3a",
+      "content_free_signature": "[class]android.widget.EditText[resource_id]None"
+    }
+  },
+  "start_state": "51eb578925d782d18f60ef7c309be380",
+  "stop_state": "51eb578925d782d18f60ef7c309be380",
+  "event_str": "TouchEvent(state=51eb578925d782d18f60ef7c309be380, view=95365a9c11abe705013d7bae8f16af3a(MainActivity/EditText-))"
+}

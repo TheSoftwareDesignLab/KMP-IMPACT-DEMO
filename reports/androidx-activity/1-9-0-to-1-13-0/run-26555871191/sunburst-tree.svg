@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1544 104" width="1544" height="104" font-family="system-ui,sans-serif"><rect width="100%" height="100%" fill="#F5F4F0"/><text x="74" y="22" font-size="14" font-weight="700" fill="#1F2937">Propagation tree</text><text x="74" y="38" font-size="11" fill="#6B7280">Same hierarchy as the sunburst, flattened for reading.</text>
+<path d="M 74.0 52.0 C 156.5 52.0, 156.5 52.0, 239.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 52.0 C 321.5 52.0, 321.5 52.0, 404.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 52.0 C 486.5 52.0, 486.5 52.0, 569.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 52.0 C 651.5 52.0, 651.5 52.0, 734.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 52.0 C 816.5 52.0, 816.5 52.0, 899.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 52.0 C 981.5 52.0, 981.5 52.0, 1064.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 52.0 C 1146.5 52.0, 1146.5 52.0, 1229.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<circle cx="74.0" cy="52.0" r="6" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="84.0" y="56.0" font-size="11" font-weight="600" text-anchor="start" fill="#1F2937">src</text>
+<circle cx="239.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">main</text>
+<circle cx="404.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">java</text>
+<circle cx="569.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="734.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="899.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="889.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="1064.0" cy="52.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="56.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">android</text>
+<circle cx="1229.0" cy="52.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="56.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainActivity</text>
+</svg>

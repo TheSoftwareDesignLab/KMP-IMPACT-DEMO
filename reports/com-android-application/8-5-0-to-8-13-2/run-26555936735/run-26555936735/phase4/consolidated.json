@@ -1,0 +1,89 @@
+{
+  "dependency_group": "com.android.application",
+  "version_before": "8.5.0",
+  "version_after": "8.13.2",
+  "static_impact": {
+    "dependency_group": "com.android.application",
+    "version_before": "8.5.0",
+    "version_after": "8.13.2",
+    "seed_files": [],
+    "impacted_files": [],
+    "expect_actual_pairs": [
+      {
+        "expect_fqcn": "com.mocoding.pokedex.core.database.sqlDriverFactory",
+        "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/database/DesktopSqlDriverFactory.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt"
+        ]
+      },
+      {
+        "expect_fqcn": "com.mocoding.pokedex.core.network.createPlatformHttpClient",
+        "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/network/HttpClientFactory.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt"
+        ]
+      },
+      {
+        "expect_fqcn": "com.example.common.DatabaseDriverFactory",
+        "expect_file": "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ExpectClass.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ActualAndroid.kt"
+        ]
+      }
+    ],
+    "total_project_files": 90,
+    "total_impacted": 0,
+    "ksp_edges_added": 27
+  },
+  "dynamic_regressions": {
+    "status": "completed",
+    "blocked_reason": "",
+    "before_screens": [
+      "QuickstepLauncher",
+      "Main",
+      "Main #2",
+      "Main #3",
+      "Main #4",
+      "Main #5"
+    ],
+    "after_screens": [
+      "QuickstepLauncher",
+      "Main",
+      "Main #2",
+      "Main #3",
+      "Main #4",
+      "Main #5"
+    ],
+    "diffs": [],
+    "activity_coverage_before": {
+      ".uioverrides.QuickstepLauncher": 1,
+      ".MainActivity": 8
+    },
+    "activity_coverage_after": {
+      ".uioverrides.QuickstepLauncher": 1,
+      ".MainActivity": 8
+    },
+    "nodes_before": 9,
+    "nodes_after": 9,
+    "structures_before": 6,
+    "structures_after": 6
+  },
+  "screen_mappings": [],
+  "trace": [],
+  "impacted_screens": [],
+  "total_impacted_files": 0,
+  "total_impacted_screens": 0,
+  "stack_compatibility": {
+    "warnings": [],
+    "detected": {
+      "kotlin": "2.0.21",
+      "agp": "8.13.2",
+      "compose": "1.6.10",
+      "compose-compiler": "1.5.14"
+    }
+  }
+}

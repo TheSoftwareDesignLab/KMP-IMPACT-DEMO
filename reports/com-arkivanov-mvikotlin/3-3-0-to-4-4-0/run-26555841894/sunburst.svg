@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" width="760" height="880" font-family="system-ui,sans-serif">
+<rect width="100%" height="100%" fill="#F5F4F0"/>
+<text x="380.0" y="30" text-anchor="middle" fill="#1E293B" font-size="18" font-weight="700">KMP Impact . com.arkivanov.mvikotlin</text>
+<text x="380.0" y="52" text-anchor="middle" fill="#64748b" font-size="12">3.3.0 -&gt; 4.4.0 . 90 archivos</text>
+<path d="M 380.00 350.00 A 100.00 100.00 0 1 1 294.17 398.68 L 319.92 414.08 A 70.00 70.00 0 1 0 380.00 380.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 318.00 A 132.00 132.00 0 1 1 266.71 382.26 L 292.46 397.66 A 102.00 102.00 0 1 0 380.00 348.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 286.00 A 164.00 164.00 0 1 1 239.24 365.84 L 264.99 381.23 A 134.00 134.00 0 1 0 380.00 316.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 254.00 A 196.00 196.00 0 1 1 211.78 349.42 L 237.53 364.81 A 166.00 166.00 0 1 0 380.00 284.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 380.00 222.00 A 228.00 228.00 0 1 1 161.30 514.46 L 190.08 505.98 A 198.00 198.00 0 1 0 380.00 252.00 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 161.30 514.46 A 228.00 228.00 0 0 1 168.13 365.78 L 196.00 376.86 A 198.00 198.00 0 0 0 190.08 505.98 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 168.13 365.78 A 228.00 228.00 0 0 1 184.31 332.99 L 210.06 348.39 A 198.00 198.00 0 0 0 196.00 376.86 Z" fill="#60A5FA" fill-opacity="1"/>
+<path d="M 294.17 398.68 A 100.00 100.00 0 0 1 316.51 372.74 L 335.55 395.92 A 70.00 70.00 0 0 0 319.92 414.08 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 266.71 382.26 A 132.00 132.00 0 0 1 296.19 348.02 L 315.24 371.20 A 102.00 102.00 0 0 0 292.46 397.66 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 239.24 365.84 A 164.00 164.00 0 0 1 275.87 323.30 L 294.92 346.48 A 134.00 134.00 0 0 0 264.99 381.23 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 211.78 349.42 A 196.00 196.00 0 0 1 255.55 298.58 L 274.60 321.76 A 166.00 166.00 0 0 0 237.53 364.81 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 184.31 332.99 A 228.00 228.00 0 0 1 216.03 291.58 L 237.61 312.42 A 198.00 198.00 0 0 0 210.06 348.39 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 216.03 291.58 A 228.00 228.00 0 0 1 235.23 273.86 L 254.28 297.03 A 198.00 198.00 0 0 0 237.61 312.42 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 316.51 372.74 A 100.00 100.00 0 0 1 335.73 360.33 L 349.01 387.23 A 70.00 70.00 0 0 0 335.55 395.92 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 296.19 348.02 A 132.00 132.00 0 0 1 321.56 331.64 L 334.84 358.54 A 102.00 102.00 0 0 0 315.24 371.20 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 335.73 360.33 A 100.00 100.00 0 0 1 357.27 352.62 L 364.09 381.83 A 70.00 70.00 0 0 0 349.01 387.23 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 321.56 331.64 A 132.00 132.00 0 0 1 350.00 321.46 L 356.81 350.67 A 102.00 102.00 0 0 0 334.84 358.54 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 307.39 302.95 A 164.00 164.00 0 0 1 342.72 290.29 L 349.54 319.51 A 134.00 134.00 0 0 0 320.68 329.85 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 293.23 274.25 A 196.00 196.00 0 0 1 335.45 259.13 L 342.27 288.35 A 166.00 166.00 0 0 0 306.51 301.15 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 279.06 245.56 A 228.00 228.00 0 0 1 328.17 227.97 L 334.99 257.18 A 198.00 198.00 0 0 0 292.34 272.46 Z" fill="#B91C1C" fill-opacity="1"/>
+<path d="M 357.27 352.62 A 100.00 100.00 0 0 1 368.56 350.66 L 371.99 380.46 A 70.00 70.00 0 0 0 364.09 381.83 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 350.00 321.46 A 132.00 132.00 0 0 1 364.90 318.87 L 368.33 348.67 A 102.00 102.00 0 0 0 356.81 350.67 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 342.72 290.29 A 164.00 164.00 0 0 1 361.24 287.08 L 364.67 316.88 A 134.00 134.00 0 0 0 349.54 319.51 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 335.45 259.13 A 196.00 196.00 0 0 1 357.58 255.29 L 361.01 285.09 A 166.00 166.00 0 0 0 342.27 288.35 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 328.17 227.97 A 228.00 228.00 0 0 1 353.92 223.50 L 357.35 253.30 A 198.00 198.00 0 0 0 334.99 257.18 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 368.56 350.66 A 100.00 100.00 0 0 1 380.00 350.00 L 380.00 380.00 A 70.00 70.00 0 0 0 371.99 380.46 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 364.90 318.87 A 132.00 132.00 0 0 1 380.00 318.00 L 380.00 348.00 A 102.00 102.00 0 0 0 368.33 348.67 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 361.24 287.08 A 164.00 164.00 0 0 1 380.00 286.00 L 380.00 316.00 A 134.00 134.00 0 0 0 364.67 316.88 Z" fill="#1D4ED8" fill-opacity="1"/>
+<path d="M 357.58 255.29 A 196.00 196.00 0 0 1 380.00 254.00 L 380.00 284.00 A 166.00 166.00 0 0 0 361.01 285.09 Z" fill="#1D4ED8" fill-opacity="1"/>
+<text x="421.9" y="523.9" text-anchor="middle" dominant-baseline="middle" transform="rotate(60.4 421.9 523.9)" font-size="11" font-weight="700" fill="#FFFFFF">commonMain</text>
+<text x="437.7" y="551.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(60.4 437.7 551.8)" font-size="11" font-weight="700" fill="#FFFFFF">com</text>
+<text x="453.5" y="579.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(60.4 453.5 579.6)" font-size="11" font-weight="700" fill="#FFFFFF">mocoding</text>
+<text x="469.3" y="607.4" text-anchor="middle" dominant-baseline="middle" transform="rotate(60.4 469.3 607.4)" font-size="11" font-weight="700" fill="#FFFFFF">pokedex</text>
+<text x="550.6" y="577.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(36.8 550.6 577.6)" font-size="11" font-weight="700" fill="#FFFFFF">ui</text>
+<text x="407.9" y="207.6" text-anchor="start" dominant-baseline="middle" transform="rotate(-83.4 407.9 207.6)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">MainStore</text>
+<text x="462.3" y="220.3" text-anchor="start" dominant-baseline="middle" transform="rotate(-70.3 462.3 220.3)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">MainStoreFactory</text>
+<text x="512.3" y="245.0" text-anchor="start" dominant-baseline="middle" transform="rotate(-57.2 512.3 245.0)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">MainComponent</text>
+<text x="545.5" y="270.7" text-anchor="start" dominant-baseline="middle" transform="rotate(-47.3 545.5 270.7)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">MainContent</text>
+<text x="561.2" y="286.6" text-anchor="start" dominant-baseline="middle" transform="rotate(-42.0 561.2 286.6)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">CategoryButton</text>
+<text x="575.4" y="303.9" text-anchor="start" dominant-baseline="middle" transform="rotate(-36.8 575.4 303.9)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">MainScreen</text>
+<text x="589.4" y="324.8" text-anchor="start" dominant-baseline="middle" transform="rotate(-30.9 589.4 324.8)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">CategoryState</text>
+<text x="606.7" y="359.9" text-anchor="start" dominant-baseline="middle" transform="rotate(-21.7 606.7 359.9)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">PokedexStore</text>
+<text x="621.3" y="413.8" text-anchor="start" dominant-baseline="middle" transform="rotate(-8.5 621.3 413.8)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">PokedexStoreFacto.</text>
+<text x="623.2" y="469.6" text-anchor="start" dominant-baseline="middle" transform="rotate(4.6 623.2 469.6)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">PokedexComponent</text>
+<text x="616.3" y="510.9" text-anchor="start" dominant-baseline="middle" transform="rotate(14.5 616.3 510.9)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">PokedexContent</text>
+<text x="608.7" y="534.9" text-anchor="start" dominant-baseline="middle" transform="rotate(20.4 608.7 534.9)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">PokemonItem</text>
+<text x="598.8" y="558.0" text-anchor="start" dominant-baseline="middle" transform="rotate(26.3 598.8 558.0)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">PokedexScreen</text>
+<text x="577.1" y="593.9" text-anchor="start" dominant-baseline="middle" transform="rotate(36.1 577.1 593.9)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">DetailsStore</text>
+<text x="539.2" y="634.9" text-anchor="start" dominant-baseline="middle" transform="rotate(49.3 539.2 634.9)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">DetailsStoreFacto.</text>
+<text x="493.0" y="666.3" text-anchor="start" dominant-baseline="middle" transform="rotate(62.4 493.0 666.3)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">DetailsComponent</text>
+<text x="454.3" y="682.4" text-anchor="start" dominant-baseline="middle" transform="rotate(72.3 454.3 682.4)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">DetailsContent</text>
+<text x="432.7" y="688.2" text-anchor="start" dominant-baseline="middle" transform="rotate(77.5 432.7 688.2)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">AbilityRow</text>
+<text x="410.7" y="692.1" text-anchor="start" dominant-baseline="middle" transform="rotate(82.8 410.7 692.1)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">DetailsScreen</text>
+<text x="368.8" y="693.7" text-anchor="end" dominant-baseline="middle" transform="rotate(272.6 368.8 693.7)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">FavoriteStore</text>
+<text x="313.7" y="684.8" text-anchor="end" dominant-baseline="middle" transform="rotate(285.8 313.7 684.8)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">FavoriteStoreFact.</text>
+<text x="262.1" y="663.6" text-anchor="end" dominant-baseline="middle" transform="rotate(298.9 262.1 663.6)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">FavoriteComponent</text>
+<text x="227.2" y="640.3" text-anchor="end" dominant-baseline="middle" transform="rotate(308.8 227.2 640.3)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">FavoriteScreen</text>
+<text x="206.5" y="621.5" text-anchor="end" dominant-baseline="middle" transform="rotate(315.3 206.5 621.5)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">FavoriteContent</text>
+<text x="179.7" y="589.3" text-anchor="end" dominant-baseline="middle" transform="rotate(325.2 179.7 589.3)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">RootComponent</text>
+<text x="158.8" y="553.0" text-anchor="end" dominant-baseline="middle" transform="rotate(335.0 158.8 553.0)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">RootContent</text>
+<text x="149.4" y="529.6" text-anchor="end" dominant-baseline="middle" transform="rotate(340.9 149.4 529.6)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">PokemonAbilityUti.</text>
+<text x="167.2" y="440.2" text-anchor="middle" dominant-baseline="middle" transform="rotate(362.6 167.2 440.2)" font-size="11" font-weight="700" fill="#FFFFFF">core</text>
+<text x="142.4" y="505.5" text-anchor="end" dominant-baseline="middle" transform="rotate(346.9 142.4 505.5)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">PokemonDao</text>
+<text x="137.6" y="477.9" text-anchor="end" dominant-baseline="middle" transform="rotate(353.4 137.6 477.9)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">PokemonInfoDao</text>
+<text x="136.0" y="452.8" text-anchor="end" dominant-baseline="middle" transform="rotate(359.3 136.0 452.8)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">DatabaseModule</text>
+<text x="137.0" y="427.7" text-anchor="end" dominant-baseline="middle" transform="rotate(365.3 137.0 427.7)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">ErrorHandler</text>
+<text x="140.6" y="402.7" text-anchor="end" dominant-baseline="middle" transform="rotate(371.2 140.6 402.7)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">PokemonClient</text>
+<text x="145.2" y="383.7" text-anchor="end" dominant-baseline="middle" transform="rotate(375.8 145.2 383.7)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">NetworkModule</text>
+<text x="150.3" y="367.7" text-anchor="end" dominant-baseline="middle" transform="rotate(379.7 150.3 367.7)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">AppModule</text>
+<text x="157.6" y="349.6" text-anchor="end" dominant-baseline="middle" transform="rotate(384.3 157.6 349.6)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">PokemonRepository.</text>
+<text x="166.4" y="332.1" text-anchor="end" dominant-baseline="middle" transform="rotate(388.9 166.4 332.1)" font-size="10" font-weight="600" fill="#60A5FA" opacity="0.85">DataModule</text>
+<text x="315.6" y="394.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(400.7 315.6 394.5)" font-size="11" font-weight="700" fill="#FFFFFF">ios.</text>
+<text x="291.3" y="373.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(400.7 291.3 373.7)" font-size="11" font-weight="700" fill="#FFFFFF">com</text>
+<text x="267.1" y="352.8" text-anchor="middle" dominant-baseline="middle" transform="rotate(400.7 267.1 352.8)" font-size="11" font-weight="700" fill="#FFFFFF">moc.</text>
+<text x="242.8" y="331.9" text-anchor="middle" dominant-baseline="middle" transform="rotate(400.7 242.8 331.9)" font-size="11" font-weight="700" fill="#FFFFFF">poke.</text>
+<text x="210.9" y="320.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(397.4 210.9 320.5)" font-size="11" font-weight="700" fill="#FFFFFF">mai.</text>
+<text x="214.5" y="270.7" text-anchor="end" dominant-baseline="middle" transform="rotate(407.3 214.5 270.7)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">ContentView</text>
+<text x="333.9" y="378.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(417.2 333.9 378.6)" font-size="11" font-weight="700" fill="#FFFFFF">jvm.</text>
+<text x="316.5" y="351.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(417.2 316.5 351.7)" font-size="11" font-weight="700" fill="#FFFFFF">Main</text>
+<text x="351.3" y="370.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(430.3 351.3 370.0)" font-size="11" font-weight="700" fill="#FFFFFF">main</text>
+<text x="340.5" y="339.9" text-anchor="middle" dominant-baseline="middle" transform="rotate(430.3 340.5 339.9)" font-size="11" font-weight="700" fill="#FFFFFF">java</text>
+<text x="329.8" y="309.7" text-anchor="middle" dominant-baseline="middle" transform="rotate(430.3 329.8 309.7)" font-size="11" font-weight="700" fill="#FFFFFF">com</text>
+<text x="319.0" y="279.6" text-anchor="middle" dominant-baseline="middle" transform="rotate(430.3 319.0 279.6)" font-size="11" font-weight="700" fill="#FFFFFF">moc.</text>
+<text x="308.2" y="249.5" text-anchor="middle" dominant-baseline="middle" transform="rotate(430.3 308.2 249.5)" font-size="11" font-weight="700" fill="#FFFFFF">pok.</text>
+<text x="297.7" y="220.3" text-anchor="end" dominant-baseline="middle" transform="rotate(430.3 297.7 220.3)" font-size="10" font-weight="600" fill="#B91C1C" opacity="0.85">MainActivity</text>
+<text x="338.2" y="209.6" text-anchor="end" dominant-baseline="middle" transform="rotate(440.1 338.2 209.6)" font-size="10" font-weight="600" fill="#1D4ED8" opacity="0.85">ContentView</text>
+<circle cx="380.0" cy="450.0" r="70" fill="#F5F4F0" stroke="#D8D6D0"/><text x="380.0" y="454.0" text-anchor="middle" font-size="13" font-weight="700" fill="#64748B">src</text>
+<rect x="20" y="850" width="14" height="14" rx="3" fill="#B91C1C"/><text x="40" y="861" fill="#475569" font-size="11">Directo</text>
+<rect x="164" y="850" width="14" height="14" rx="3" fill="#1D4ED8"/><text x="184" y="861" fill="#475569" font-size="11">Transitivo d1</text>
+<rect x="308" y="850" width="14" height="14" rx="3" fill="#60A5FA"/><text x="328" y="861" fill="#475569" font-size="11">Transitivo d2+</text>
+<rect x="452" y="850" width="14" height="14" rx="3" fill="#94A3B8"/><text x="472" y="861" fill="#475569" font-size="11">Sin impacto</text>
+<rect x="596" y="850" width="14" height="14" rx="3" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3,2"/><text x="616" y="861" fill="#475569" font-size="11">Expect/Actual</text>
+</svg>

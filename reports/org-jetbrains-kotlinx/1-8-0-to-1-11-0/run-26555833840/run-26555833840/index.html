@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impact Report — org.jetbrains.kotlinx</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',system-ui,sans-serif; background:#f8fafc; color:#1e293b; line-height:1.6; }
+
+  /* Header */
+  .header { background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#4338ca 100%); color:white; padding:48px 0 40px; }
+  .header-inner { max-width:1000px; margin:0 auto; padding:0 32px; }
+  .header h1 { font-size:28px; font-weight:700; margin-bottom:4px; }
+  .header .sub { font-size:14px; opacity:0.7; }
+  .version-pill { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25);
+    border-radius:20px; padding:6px 18px; margin-top:16px; font-size:15px; font-weight:600; }
+  .version-pill .arrow { color:#a5b4fc; margin:0 8px; }
+
+  /* Container */
+  .container { max-width:1000px; margin:0 auto; padding:0 32px 60px; }
+
+  /* KPI cards */
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:-32px 0 40px; position:relative; z-index:2; }
+  .kpi { background:white; border-radius:12px; padding:24px; text-align:center;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04); border:1px solid #e2e8f0; }
+  .kpi .num { font-size:32px; font-weight:700; }
+  .kpi .lbl { font-size:12px; color:#64748b; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
+  .kpi .kpi-sub { font-size:11px; color:#94a3b8; margin-top:6px; font-weight:500; }
+  .kpi .num.red { color:#dc2626; }
+  .kpi .num.amber { color:#d97706; }
+  .kpi .num.purple { color:#7c3aed; }
+  .kpi .num.blue { color:#2563eb; }
+
+  /* Section */
+  .section { margin-bottom:40px; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid #e2e8f0; }
+  .phase-num { background:#4338ca; color:white; width:32px; height:32px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  .section-header h2 { font-size:18px; font-weight:700; color:#1e293b; }
+  .section-header .desc { font-size:13px; color:#64748b; }
+
+  /* Pipeline */
+  .pipeline { display:flex; gap:0; margin:24px 0 40px; justify-content:center; }
+  .pipe-step { text-align:center; flex:1; position:relative; }
+  .pipe-step .dot { width:40px; height:40px; border-radius:50%; margin:0 auto 8px;
+    display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:white; }
+  .pipe-step .dot.green { background:#16a34a; }
+  .pipe-step .dot.gray { background:#9ca3af; }
+  .pipe-step .dot.amber { background:#d97706; }
+  .pipe-step .title { font-size:12px; font-weight:600; color:#374151; }
+  .pipe-step .status { font-size:11px; color:#16a34a; font-weight:500; }
+  .pipe-step .status.skip { color:#9ca3af; }
+  .pipe-step:not(:last-child)::after { content:''; position:absolute; top:20px; left:calc(50% + 24px);
+    width:calc(100% - 48px); height:3px; background:#d1d5db; }
+
+  /* Diff cards */
+  .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .diff-card { background:white; border-radius:10px; border:1px solid #e2e8f0; overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .diff-card .card-head { padding:12px 16px; font-size:12px; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.5px; }
+  .diff-card.before .card-head { background:#fef2f2; color:#991b1b; border-bottom:2px solid #fca5a5; }
+  .diff-card.after .card-head { background:#f0fdf4; color:#166534; border-bottom:2px solid #86efac; }
+  .diff-card pre { padding:16px; font-size:12px; line-height:1.7; overflow-x:auto; background:#fafafa; margin:0; }
+  .diff-card pre .hl { background:#fef08a; font-weight:600; display:inline; padding:1px 4px; border-radius:3px; }
+
+  /* Chart card */
+  .chart-card { background:white; border-radius:12px; border:1px solid #e2e8f0; padding:20px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05); margin-bottom:16px; }
+  .chart-card .caption { font-size:12px; color:#64748b; margin-top:8px; text-align:center; }
+  .prop-graph-wrap { border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; background:#fff; }
+  .prop-graph-help { padding:10px 14px; font-size:12px; color:#64748b; background:#f8fafc; border-bottom:1px solid #e2e8f0; }
+  .prop-graph-scroll { max-height:620px; overflow-y:auto; overflow-x:hidden; }
+  .prop-graph-svg { width:100%; min-height:360px; display:block; font-family:Inter,system-ui,sans-serif; }
+  .prop-node { cursor:pointer; transition:opacity .15s, filter .15s; outline:none; }
+  .prop-node rect { transition:stroke .15s, stroke-width .15s, filter .15s; }
+  .prop-node:hover rect, .prop-node:focus rect { stroke:#0f172a; stroke-width:2; filter:drop-shadow(0 3px 6px rgba(15,23,42,.18)); }
+  .prop-node.is-selected rect { stroke:#0f172a; stroke-width:3; filter:drop-shadow(0 4px 8px rgba(15,23,42,.22)); }
+  .prop-node.is-dimmed { opacity:.24; }
+  .prop-node.is-related rect { stroke:#111827; stroke-width:2.5; filter:drop-shadow(0 3px 8px rgba(15,23,42,.2)); }
+  .prop-edge-real { stroke:#64748b; stroke-width:1.2; opacity:.12; pointer-events:none; }
+  .prop-edge-hop { stroke-dasharray:4 4; }
+  .prop-edge-real.is-visible { opacity:.82; stroke-width:2.3; stroke:#4338ca; }
+  .prop-guide { stroke:#f59e0b; stroke-width:2; stroke-dasharray:6 5; opacity:.35; pointer-events:none; }
+  .prop-guide.orange { stroke:#f97316; }
+  .prop-guide-label { fill:#b45309; font-size:9px; font-weight:700; opacity:.72; pointer-events:none; }
+  .prop-guide-label.orange { fill:#9a3412; }
+
+  /* Table */
+  .data-table { width:100%; border-collapse:separate; border-spacing:0; background:white;
+    border-radius:12px; overflow:hidden; border:1px solid #e2e8f0;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+  .data-table th { background:#f8fafc; color:#475569; padding:12px 16px; text-align:left;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; border-bottom:2px solid #e2e8f0; }
+  .data-table td { padding:11px 16px; font-size:13px; border-bottom:1px solid #f1f5f9; }
+  .data-table .row-alt td { background:#fafbfc; }
+  .data-table .fname { font-family:'SF Mono',Consolas,monospace; font-size:12.5px; font-weight:600; color:#1e293b; }
+  .data-table .c { text-align:center; }
+  .badge { padding:3px 10px; border-radius:10px; font-size:11px; font-weight:600; }
+  .badge-red { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .badge-yellow { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+  .badge-purple { background:#f5f3ff; color:#7c3aed; border:1px solid #ddd6fe; }
+  .table-scroll { max-height:620px; overflow:auto; border-radius:12px; border:1px solid #e2e8f0;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05); background:white; }
+  .table-scroll .data-table { border:none; border-radius:0; box-shadow:none; }
+  .table-scroll thead th { position:sticky; top:0; z-index:2; }
+
+  /* Info box */
+  .info-box { background:#eef2ff; border:1px solid #c7d2fe; border-radius:10px; padding:20px 24px; }
+  .info-box h4 { color:#4338ca; font-size:14px; margin-bottom:8px; }
+  .info-box p { font-size:13px; color:#4338ca; opacity:0.8; }
+
+  /* Footer */
+  .footer { text-align:center; color:#94a3b8; font-size:12px; padding:32px 0; border-top:1px solid #e2e8f0; margin-top:20px; }
+
+  /* Tabs — minimalist text labels separated from the panel content by an
+     underline (the active tab takes the indigo accent). */
+  .tabs-nav { display:flex; gap:24px; margin:24px 0 28px;
+    border-bottom:1px solid #e2e8f0;
+    position:sticky; top:0; background:#f8fafc; z-index:10; padding:0; }
+  .tab-btn { background:none; border:none; padding:14px 4px;
+    font-size:13.5px; font-weight:600; color:#64748b; cursor:pointer;
+    border-bottom:2px solid transparent; margin-bottom:-1px;
+    font-family:inherit; transition:color .15s, border-color .15s;
+    letter-spacing:.01em; }
+  .tab-btn:hover { color:#4338ca; }
+  .tab-btn.active { color:#4338ca; border-bottom-color:#4338ca; }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+
+  @media print {
+    .header { background:#1e1b4b !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .kpi, .chart-card, .diff-card, .data-table { break-inside:avoid; }
+    body { font-size:11px; }
+  }
+  @media (max-width:700px) {
+    .kpi-row { grid-template-columns:repeat(2,1fr); }
+    .diff-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>Dependency Impact Report</h1>
+    <div class="sub">KMP Impact Analyzer — Static dependency propagation analysis</div>
+    <div class="version-pill">
+      org.jetbrains.kotlinx &nbsp;<code>1.8.0</code>
+      <span class="arrow">→</span>
+      <code>1.11.0</code>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- KPIs -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="num red">58</div>
+    <div class="lbl">Impacted files</div>
+    <div class="kpi-sub">58/90 (64%)</div>
+  </div>
+  <div class="kpi">
+    <div class="num amber">90</div>
+    <div class="lbl">Total files</div>
+    <div class="kpi-sub">23 direct · 35 transitive</div>
+  </div>
+  <div class="kpi">
+    <div class="num purple">3</div>
+    <div class="lbl">Expect/actual pairs</div>
+    <div class="kpi-sub">3 detected · 0 affected</div>
+  </div>
+  <div class="kpi">
+    <div class="num blue">5</div>
+    <div class="lbl">Impacted screens</div>
+    <div class="kpi-sub">6 surfaces explored</div>
+  </div>
+</div>
+
+<!-- Stack-compatibility warnings (compilation badge removed per feedback) -->
+
+
+<!-- Tabs navigation -->
+<div class="tabs-nav" role="tablist">
+  <button class="tab-btn active" data-tab="pipeline" role="tab">Pipeline</button>
+  <button class="tab-btn" data-tab="sunburst" role="tab">Source-set Sunburst</button>
+  <button class="tab-btn" data-tab="gitgraph" role="tab">Dependency Graph</button>
+</div>
+
+<div class="tab-panel active" id="tab-pipeline" role="tabpanel">
+
+<!-- Pipeline overview -->
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num">P</div>
+    <div><h2>Pipeline Execution</h2><div class="desc">Summary of the 5 analysis phases</div></div>
+  </div>
+  <div class="pipeline">
+    <div class="pipe-step"><div class="dot green">1</div><div class="title">Shadow Build</div><div class="status">✓ Completed</div></div>
+<div class="pipe-step"><div class="dot green">2</div><div class="title">Static Analysis</div><div class="status">✓ 58 files</div></div>
+<div class="pipe-step"><div class="dot green">3</div><div class="title">Dynamic Analysis</div><div class="status">✓ 0 differences</div></div>
+<div class="pipe-step"><div class="dot green">4</div><div class="title">Consolidation</div><div class="status">✓ 5 screen(s)</div></div>
+<div class="pipe-step"><div class="dot green">5</div><div class="title">Visualization</div><div class="status">✓ CodeCharta</div></div>
+
+  </div>
+</div>
+
+<!-- Phase 1: Shadow Build -->
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num">1</div>
+    <div><h2>Shadow Build</h2><div class="desc">BEFORE and AFTER copies of the project were created, modifying the dependency version</div></div>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card before">
+      <div class="card-head">Before — libs.versions.toml</div>
+      <pre>[versions]
+agp = &quot;8.5.0&quot;
+kotlin = &quot;2.0.21&quot;
+activityCompose = &quot;1.9.0&quot;
+compose = &quot;1.6.10&quot;
+composeCompiler = &quot;1.5.14&quot;
+<span class="hl">coroutines = &quot;1.8.0&quot;</span>
+serialization = &quot;1.7.0&quot;
+mviKotlin = &quot;3.3.0&quot;
+decompose = &quot;2.1.4-compose-experimental&quot;
+essenty = &quot;1.2.0&quot;
+ktor = &quot;2.3.10&quot;
+sqlDelight = &quot;2.0.0&quot;
+koin = &quot;3.5.6&quot;
+imageLoader = &quot;1.8.0&quot;
+logbackClassic = &quot;1.2.11&quot;
+kotlinWrappersBom = &quot;1.0.0-pre.641&quot;
+touchlab = &quot;2.0.5&quot;
+compileSdk = &quot;34&quot;
+targetSdk = &quot;34&quot;
+minSdk = &quot;24&quot;
+appMajorVersion = &quot;1&quot;
+appMinorVersion = &quot;0&quot;
+appPatchVersion = &quot;0&quot;
+appVersionCode = &quot;1&quot;
+
+[libraries]
+# Org.JetBrains.Kotlinx
+<span class="hl">kotlinx-coroutines-core = { module = &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core&quot;, version.ref = &quot;coroutines&quot; }</span>
+kotlinx-serialization-json = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;serialization&quot; }
+
+# Org.JetBrains.KotlinWrappers
+kotlin-wrappers-bom = { module = &quot;org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom&quot;, version.ref = &quot;kotlinWrappersBom&quot; }
+kotlin-styled = { module = &quot;org.jetbrains.kotlin-wrappers:kotlin-styled&quot; } # Uses BOM
+
+# Androidx.Activity
+androidx-activity-compose = { module = &quot;androidx.activity:activity-compose&quot;, version.ref = &quot;activityCompose&quot; }
+
+# Io.Ktor
+ktor-client-core = { module = &quot;io.ktor:ktor-client-core&quot;, version.ref = &quot;ktor&quot; }
+ktor-serialization-kotlinx-json = { module = &quot;io.ktor:ktor-serialization-kotlinx-json&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-contentNegotiation = { module = &quot;io.ktor:ktor-client-content-negotiation&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-logging = { module = &quot;io.ktor:ktor-client-logging&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-android = { module = &quot;io.ktor:ktor-client-android&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-darwin = { module = &quot;io.ktor:ktor-client-darwin&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-java = { module = &quot;io.ktor:ktor-client-java&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-js = { module = &quot;io.ktor:ktor-client-js&quot;, version.ref = &quot;ktor&quot; }
+
+# Logback
+logback-classic = { module = &quot;ch.qos.logback:logback-classic&quot;, version.ref = &quot;logbackClassic&quot; }
+
+# CashApp.SQLDelight
+sqldelight-gradle-plugin = { module = &quot;app.cash.sqldelight:gradle-plugin&quot;, version.ref = &quot;sqlDelight&quot; } # This is a plugin, will also add to [plugins]
+sqldelight-android-driver = { module = &quot;app.cash.sqldelight:android-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-sqlite-driver = { module = &quot;app.cash.sqldelight:sqlite-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-native-driver = { module = &quot;app.cash.sqldelight:native-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-sqljs-driver = { module = &quot;app.cash.sqldelight:sqljs-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+<span class="hl">sqldelight-coroutines-extensions = { module = &quot;app.cash.sqldelight:coroutines-extensions&quot;, version.ref = &quot;sqlDelight&quot; }</span>
+sqldelight-primitive-adapters = { module = &quot;app.cash.sqldelight:primitive-adapters&quot;, version.ref = &quot;sqlDelight&quot; }
+
+# Koin
+koin-core = { module = &quot;io.insert-koin:koin-core&quot;, version.ref = &quot;koin&quot; }
+koin-test = { module = &quot;io.insert-koin:koin-test&quot;, version.ref = &quot;koin&quot; }
+koin-android = { module = &quot;io.insert-koin:koin-android&quot;, version.ref = &quot;koin&quot; }
+
+# ArkIvanov.MVIKotlin
+mvikotlin = { module = &quot;com.arkivanov.mvikotlin:mvikotlin&quot;, version.ref = &quot;mviKotlin&quot; }
+mvikotlin-main = { module = &quot;com.arkivanov.mvikotlin:mvikotlin-main&quot;, version.ref = &quot;mviKotlin&quot; }
+<span class="hl">mvikotlin-extensions-coroutines = { module = &quot;com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines&quot;, version.ref = &quot;mviKotlin&quot; }</span>
+
+# ArkIvanov.Decompose
+decompose = { module = &quot;com.arkivanov.decompose:decompose&quot;, version.ref = &quot;decompose&quot; }
+decompose-extensions-compose = { module = &quot;com.arkivanov.decompose:extensions-compose-jetbrains&quot;, version.ref = &quot;decompose&quot; }
+
+# ArkIvanov.Essenty
+essenty-lifecycle = { module = &quot;com.arkivanov.essenty:lifecycle&quot;, version.ref = &quot;essenty&quot; }
+
+# Github
+imageLoader = { module = &quot;io.github.qdsfdhvh:image-loader&quot;, version.ref = &quot;imageLoader&quot; }
+
+# Touchlab
+touchlab-stately-common = { module = &quot;co.touchlab:stately-common&quot;, version.ref = &quot;touchlab&quot; }
+
+
+[plugins]
+sqldelight = { id = &quot;app.cash.sqldelight&quot;, version.ref = &quot;sqlDelight&quot; }
+kotlin-multiplatform = { id = &quot;org.jetbrains.kotlin.multiplatform&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-android = { id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-compose = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-serialization = { id = &quot;org.jetbrains.kotlin.plugin.serialization&quot;, version.ref = &quot;kotlin&quot; }
+android-application = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+android-library = { id = &quot;com.android.library&quot;, version.ref = &quot;agp&quot; }
+jetbrains-compose = { id = &quot;org.jetbrains.compose&quot;, version.ref = &quot;compose&quot; }
+kotlin-jvm = { id = &quot;org.jetbrains.kotlin.jvm&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-native-cocoapods = { id = &quot;org.jetbrains.kotlin.native.cocoapods&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-parcelize = { id = &quot;org.jetbrains.kotlin.plugin.parcelize&quot;, version.ref = &quot;kotlin&quot; }
+</pre>
+    </div>
+    <div class="diff-card after">
+      <div class="card-head">After — libs.versions.toml</div>
+      <pre>[versions]
+agp = &quot;8.5.0&quot;
+kotlin = &quot;2.0.21&quot;
+activityCompose = &quot;1.9.0&quot;
+compose = &quot;1.6.10&quot;
+composeCompiler = &quot;1.5.14&quot;
+<span class="hl">coroutines = &quot;1.11.0&quot;</span>
+serialization = &quot;1.7.0&quot;
+mviKotlin = &quot;3.3.0&quot;
+decompose = &quot;2.1.4-compose-experimental&quot;
+essenty = &quot;1.2.0&quot;
+ktor = &quot;2.3.10&quot;
+sqlDelight = &quot;2.0.0&quot;
+koin = &quot;3.5.6&quot;
+imageLoader = &quot;1.8.0&quot;
+logbackClassic = &quot;1.2.11&quot;
+kotlinWrappersBom = &quot;1.0.0-pre.641&quot;
+touchlab = &quot;2.0.5&quot;
+compileSdk = &quot;34&quot;
+targetSdk = &quot;34&quot;
+minSdk = &quot;24&quot;
+appMajorVersion = &quot;1&quot;
+appMinorVersion = &quot;0&quot;
+appPatchVersion = &quot;0&quot;
+appVersionCode = &quot;1&quot;
+
+[libraries]
+# Org.JetBrains.Kotlinx
+<span class="hl">kotlinx-coroutines-core = { module = &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core&quot;, version.ref = &quot;coroutines&quot; }</span>
+kotlinx-serialization-json = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;serialization&quot; }
+
+# Org.JetBrains.KotlinWrappers
+kotlin-wrappers-bom = { module = &quot;org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom&quot;, version.ref = &quot;kotlinWrappersBom&quot; }
+kotlin-styled = { module = &quot;org.jetbrains.kotlin-wrappers:kotlin-styled&quot; } # Uses BOM
+
+# Androidx.Activity
+androidx-activity-compose = { module = &quot;androidx.activity:activity-compose&quot;, version.ref = &quot;activityCompose&quot; }
+
+# Io.Ktor
+ktor-client-core = { module = &quot;io.ktor:ktor-client-core&quot;, version.ref = &quot;ktor&quot; }
+ktor-serialization-kotlinx-json = { module = &quot;io.ktor:ktor-serialization-kotlinx-json&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-contentNegotiation = { module = &quot;io.ktor:ktor-client-content-negotiation&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-logging = { module = &quot;io.ktor:ktor-client-logging&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-android = { module = &quot;io.ktor:ktor-client-android&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-darwin = { module = &quot;io.ktor:ktor-client-darwin&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-java = { module = &quot;io.ktor:ktor-client-java&quot;, version.ref = &quot;ktor&quot; }
+ktor-client-js = { module = &quot;io.ktor:ktor-client-js&quot;, version.ref = &quot;ktor&quot; }
+
+# Logback
+logback-classic = { module = &quot;ch.qos.logback:logback-classic&quot;, version.ref = &quot;logbackClassic&quot; }
+
+# CashApp.SQLDelight
+sqldelight-gradle-plugin = { module = &quot;app.cash.sqldelight:gradle-plugin&quot;, version.ref = &quot;sqlDelight&quot; } # This is a plugin, will also add to [plugins]
+sqldelight-android-driver = { module = &quot;app.cash.sqldelight:android-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-sqlite-driver = { module = &quot;app.cash.sqldelight:sqlite-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-native-driver = { module = &quot;app.cash.sqldelight:native-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+sqldelight-sqljs-driver = { module = &quot;app.cash.sqldelight:sqljs-driver&quot;, version.ref = &quot;sqlDelight&quot; }
+<span class="hl">sqldelight-coroutines-extensions = { module = &quot;app.cash.sqldelight:coroutines-extensions&quot;, version.ref = &quot;sqlDelight&quot; }</span>
+sqldelight-primitive-adapters = { module = &quot;app.cash.sqldelight:primitive-adapters&quot;, version.ref = &quot;sqlDelight&quot; }
+
+# Koin
+koin-core = { module = &quot;io.insert-koin:koin-core&quot;, version.ref = &quot;koin&quot; }
+koin-test = { module = &quot;io.insert-koin:koin-test&quot;, version.ref = &quot;koin&quot; }
+koin-android = { module = &quot;io.insert-koin:koin-android&quot;, version.ref = &quot;koin&quot; }
+
+# ArkIvanov.MVIKotlin
+mvikotlin = { module = &quot;com.arkivanov.mvikotlin:mvikotlin&quot;, version.ref = &quot;mviKotlin&quot; }
+mvikotlin-main = { module = &quot;com.arkivanov.mvikotlin:mvikotlin-main&quot;, version.ref = &quot;mviKotlin&quot; }
+<span class="hl">mvikotlin-extensions-coroutines = { module = &quot;com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines&quot;, version.ref = &quot;mviKotlin&quot; }</span>
+
+# ArkIvanov.Decompose
+decompose = { module = &quot;com.arkivanov.decompose:decompose&quot;, version.ref = &quot;decompose&quot; }
+decompose-extensions-compose = { module = &quot;com.arkivanov.decompose:extensions-compose-jetbrains&quot;, version.ref = &quot;decompose&quot; }
+
+# ArkIvanov.Essenty
+essenty-lifecycle = { module = &quot;com.arkivanov.essenty:lifecycle&quot;, version.ref = &quot;essenty&quot; }
+
+# Github
+imageLoader = { module = &quot;io.github.qdsfdhvh:image-loader&quot;, version.ref = &quot;imageLoader&quot; }
+
+# Touchlab
+touchlab-stately-common = { module = &quot;co.touchlab:stately-common&quot;, version.ref = &quot;touchlab&quot; }
+
+
+[plugins]
+sqldelight = { id = &quot;app.cash.sqldelight&quot;, version.ref = &quot;sqlDelight&quot; }
+kotlin-multiplatform = { id = &quot;org.jetbrains.kotlin.multiplatform&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-android = { id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-compose = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-serialization = { id = &quot;org.jetbrains.kotlin.plugin.serialization&quot;, version.ref = &quot;kotlin&quot; }
+android-application = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+android-library = { id = &quot;com.android.library&quot;, version.ref = &quot;agp&quot; }
+jetbrains-compose = { id = &quot;org.jetbrains.compose&quot;, version.ref = &quot;compose&quot; }
+kotlin-jvm = { id = &quot;org.jetbrains.kotlin.jvm&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-native-cocoapods = { id = &quot;org.jetbrains.kotlin.native.cocoapods&quot;, version.ref = &quot;kotlin&quot; }
+kotlin-parcelize = { id = &quot;org.jetbrains.kotlin.plugin.parcelize&quot;, version.ref = &quot;kotlin&quot; }
+</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Phase 2: Static Analysis -->
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num">2</div>
+    <div><h2>Static Analysis — Propagation Graph</h2><div class="desc">How the change in <strong>org.jetbrains.kotlinx</strong> propagates through the source code</div></div>
+  </div>
+  <div class="chart-card">
+    <div class='prop-graph-wrap'>
+<div class='prop-graph-help'>Click a box to highlight only the files reached in the next column. Scroll vertically when the columns are long.</div>
+<div class='prop-graph-scroll'>
+<svg viewBox='0 0 830 1369' xmlns='http://www.w3.org/2000/svg' class='prop-graph-svg' style='height:1369px;'>
+<text x='123' y='30' text-anchor='middle' fill='#4338ca' font-size='11' font-weight='700'>DEPENDENCY</text>
+<text x='315' y='30' text-anchor='middle' fill='#dc2626' font-size='11' font-weight='700'>DIRECT</text>
+<text x='509' y='30' text-anchor='middle' fill='#f59e0b' font-size='11' font-weight='700'>TRANSITIVE</text>
+<text x='509' y='46' text-anchor='middle' fill='#f59e0b' font-size='11' font-weight='700'>(dist 1: 25)</text>
+<text x='703' y='30' text-anchor='middle' fill='#f97316' font-size='11' font-weight='700'>TRANSITIVE</text>
+<text x='703' y='46' text-anchor='middle' fill='#f97316' font-size='11' font-weight='700'>(dist 2+: 10)</text>
+<g class='prop-node prop-dep' data-id='dependency-root' data-column='dependency' tabindex='0'><rect x='44' y='631' width='158' height='52' rx='8' fill='#4338ca'/><text x='123' y='653' text-anchor='middle' fill='white' font-size='13' font-weight='700'>KOTLINX</text><text x='123' y='669' text-anchor='middle' fill='white' font-size='10' opacity='0.72'>1.8.0 → 1.11.0</text></g>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-5873448848814546673' x1='202' y1='657' x2='236' y2='91'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-8106026257160524266' x1='202' y1='657' x2='236' y2='142'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-9161400679719936358' x1='202' y1='657' x2='236' y2='193'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-3754720775054307558' x1='202' y1='657' x2='236' y2='244'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-3835203713525092917' x1='202' y1='657' x2='236' y2='295'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-1078791853665747971' x1='202' y1='657' x2='236' y2='346'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-8954943894532669295' x1='202' y1='657' x2='236' y2='397'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-297539138967564988' x1='202' y1='657' x2='236' y2='448'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-8171345777739387874' x1='202' y1='657' x2='236' y2='499'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-9168822868733526450' x1='202' y1='657' x2='236' y2='550'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-1980400392897659577' x1='202' y1='657' x2='236' y2='601'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-3847364575155387115' x1='202' y1='657' x2='236' y2='652'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-7532191983552513828' x1='202' y1='657' x2='236' y2='703'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-4176516997890779417' x1='202' y1='657' x2='236' y2='754'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-7714593438684377341' x1='202' y1='657' x2='236' y2='805'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-1717808134328054875' x1='202' y1='657' x2='236' y2='856'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-1465521018164547988' x1='202' y1='657' x2='236' y2='907'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-3753514457621060069' x1='202' y1='657' x2='236' y2='958'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-152368832542282349' x1='202' y1='657' x2='236' y2='1009'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-2815217180133782279' x1='202' y1='657' x2='236' y2='1060'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-7298939835320337409' x1='202' y1='657' x2='236' y2='1111'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-806825319977185106' x1='202' y1='657' x2='236' y2='1162'/>
+<line class='prop-edge prop-edge-real' data-from='dependency-root' data-to='n-1763157083610384997' x1='202' y1='657' x2='236' y2='1213'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1980400392897659577' data-to='n-7770007901456556492' x1='394' y1='601' x2='430' y2='91'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-8106026257160524266' data-to='n-7770007901456556492' x1='394' y1='142' x2='430' y2='91'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-4963623262369141777' x1='394' y1='856' x2='430' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-4963623262369141777' x1='394' y1='244' x2='430' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-8171345777739387874' data-to='n-4963623262369141777' x1='394' y1='499' x2='430' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-5873448848814546673' data-to='n-4963623262369141777' x1='394' y1='91' x2='430' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-297539138967564988' data-to='n-4963623262369141777' x1='394' y1='448' x2='430' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1980400392897659577' data-to='n-4188306795259914478' x1='394' y1='601' x2='430' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3847364575155387115' data-to='n-4188306795259914478' x1='394' y1='652' x2='430' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-8171345777739387874' data-to='n-4188306795259914478' x1='394' y1='499' x2='430' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-5873448848814546673' data-to='n-4188306795259914478' x1='394' y1='91' x2='430' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-9168822868733526450' data-to='n-4188306795259914478' x1='394' y1='550' x2='430' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3847364575155387115' data-to='n-8952830733964295296' x1='394' y1='652' x2='430' y2='244'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1078791853665747971' data-to='n-8952830733964295296' x1='394' y1='346' x2='430' y2='244'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-9168822868733526450' data-to='n-2923270682323965474' x1='394' y1='550' x2='430' y2='295'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-9161400679719936358' data-to='n-2923270682323965474' x1='394' y1='193' x2='430' y2='295'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-2209915958511373096' x1='394' y1='856' x2='430' y2='346'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-2209915958511373096' x1='394' y1='244' x2='430' y2='346'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-7248530258011162049' x1='394' y1='856' x2='430' y2='397'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-7248530258011162049' x1='394' y1='244' x2='430' y2='397'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-2040457679291987452' x1='394' y1='856' x2='430' y2='448'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-2040457679291987452' x1='394' y1='244' x2='430' y2='448'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-6595123145402370071' x1='394' y1='856' x2='430' y2='499'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-6595123145402370071' x1='394' y1='244' x2='430' y2='499'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-322368711337179743' x1='394' y1='856' x2='430' y2='550'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-322368711337179743' x1='394' y1='244' x2='430' y2='550'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-3796723551297335366' x1='394' y1='856' x2='430' y2='601'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-3796723551297335366' x1='394' y1='244' x2='430' y2='601'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7714593438684377341' data-to='n-3796723551297335366' x1='394' y1='805' x2='430' y2='601'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7532191983552513828' data-to='n-3796723551297335366' x1='394' y1='703' x2='430' y2='601'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3753514457621060069' data-to='n-3796723551297335366' x1='394' y1='958' x2='430' y2='601'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-3798398421135205903' x1='394' y1='856' x2='430' y2='652'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-3798398421135205903' x1='394' y1='244' x2='430' y2='652'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-662880354287253735' x1='394' y1='856' x2='430' y2='703'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-662880354287253735' x1='394' y1='244' x2='430' y2='703'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-7018772790868427605' x1='394' y1='856' x2='430' y2='754'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-7018772790868427605' x1='394' y1='244' x2='430' y2='754'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1980400392897659577' data-to='n-3500914650460438794' x1='394' y1='601' x2='430' y2='805'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3847364575155387115' data-to='n-3500914650460438794' x1='394' y1='652' x2='430' y2='805'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-8171345777739387874' data-to='n-3500914650460438794' x1='394' y1='499' x2='430' y2='805'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-5873448848814546673' data-to='n-3500914650460438794' x1='394' y1='91' x2='430' y2='805'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-9168822868733526450' data-to='n-3500914650460438794' x1='394' y1='550' x2='430' y2='805'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-4793887910848932283' x1='394' y1='856' x2='430' y2='856'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-4793887910848932283' x1='394' y1='244' x2='430' y2='856'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1980400392897659577' data-to='n-6612006835168603517' x1='394' y1='601' x2='430' y2='907'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3847364575155387115' data-to='n-1565024455308276455' x1='394' y1='652' x2='430' y2='958'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-9168822868733526450' data-to='n-1822405982177925684' x1='394' y1='550' x2='430' y2='1009'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-3716557462080910914' x1='394' y1='856' x2='430' y2='1060'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-3716557462080910914' x1='394' y1='244' x2='430' y2='1060'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-8504127191617054395' x1='394' y1='856' x2='430' y2='1111'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-8504127191617054395' x1='394' y1='244' x2='430' y2='1111'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1465521018164547988' data-to='n-7217991697393109018' x1='394' y1='907' x2='430' y2='1162'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4176516997890779417' data-to='n-7217991697393109018' x1='394' y1='754' x2='430' y2='1162'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7714593438684377341' data-to='n-6969431637100073374' x1='394' y1='805' x2='430' y2='1213'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-1717808134328054875' data-to='n-7421337241538985979' x1='394' y1='856' x2='430' y2='1264'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3754720775054307558' data-to='n-7421337241538985979' x1='394' y1='244' x2='430' y2='1264'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-152368832542282349' data-to='n-8417975593560687829' x1='394' y1='1009' x2='430' y2='1315'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3835203713525092917' data-to='n-8417975593560687829' x1='394' y1='295' x2='430' y2='1315'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4927804433670445633' data-to='n-2578700130428859739' x1='782' y1='244' x2='624' y2='91'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-4094390456770950904' x1='588' y1='805' x2='624' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-4094390456770950904' x1='588' y1='193' x2='624' y2='142'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-8500369766699487319' x1='588' y1='805' x2='624' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-8500369766699487319' x1='588' y1='193' x2='624' y2='193'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4047700095430708010' data-to='n-4927804433670445633' x1='782' y1='397' x2='624' y2='244'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7470375903022908319' data-to='n-4927804433670445633' x1='782' y1='448' x2='624' y2='244'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4207093736603086147' data-to='n-4927804433670445633' x1='782' y1='550' x2='624' y2='244'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-4427363761388542318' x1='588' y1='805' x2='624' y2='295'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-4427363761388542318' x1='588' y1='193' x2='624' y2='295'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4047700095430708010' data-to='n-8311442066591527932' x1='782' y1='397' x2='624' y2='346'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7470375903022908319' data-to='n-8311442066591527932' x1='782' y1='448' x2='624' y2='346'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4207093736603086147' data-to='n-8311442066591527932' x1='782' y1='550' x2='624' y2='346'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-4047700095430708010' x1='588' y1='805' x2='624' y2='397'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-4047700095430708010' x1='588' y1='193' x2='624' y2='397'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-7470375903022908319' x1='588' y1='805' x2='624' y2='448'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-7470375903022908319' x1='588' y1='193' x2='624' y2='448'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-7217991697393109018' data-to='n-8210268579809597789' x1='588' y1='1162' x2='624' y2='499'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-6969431637100073374' data-to='n-8210268579809597789' x1='588' y1='1213' x2='624' y2='499'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-8417975593560687829' data-to='n-8210268579809597789' x1='588' y1='1315' x2='624' y2='499'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-3500914650460438794' data-to='n-4207093736603086147' x1='588' y1='805' x2='624' y2='550'/>
+<line class='prop-edge prop-edge-real prop-edge-hop' data-from='n-4188306795259914478' data-to='n-4207093736603086147' x1='588' y1='193' x2='624' y2='550'/>
+<line class='prop-guide' x1='394' y1='652' x2='430' y2='703'/><text class='prop-guide-label' x='412' y='670' text-anchor='middle'>imports of imports</text>
+<line class='prop-guide orange' x1='588' y1='703' x2='624' y2='320'/><text class='prop-guide-label orange' x='606' y='504' text-anchor='middle'>further hops</text>
+<g class='prop-node' data-id='n-5873448848814546673' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt</title><rect x='236' y='70' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='93' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainScreen</text><text x='315' y='106' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8106026257160524266' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt</title><rect x='236' y='121' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='144' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DetailsStoreFacto…</text><text x='315' y='157' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-9161400679719936358' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt</title><rect x='236' y='172' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='195' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexStoreFacto…</text><text x='315' y='208' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3754720775054307558' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/PokemonInfo.kt</title><rect x='236' y='223' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='246' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonInfo</text><text x='315' y='259' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3835203713525092917' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt</title><rect x='236' y='274' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='297' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonRepository…</text><text x='315' y='310' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1078791853665747971' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt</title><rect x='236' y='325' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='348' text-anchor='middle' fill='white' font-size='11' font-weight='700'>FavoriteStoreFact…</text><text x='315' y='361' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8954943894532669295' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/Mappers.kt</title><rect x='236' y='376' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='399' text-anchor='middle' fill='white' font-size='11' font-weight='700'>Mappers</text><text x='315' y='412' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-297539138967564988' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt</title><rect x='236' y='427' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='450' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainStoreFactory</text><text x='315' y='463' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8171345777739387874' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt</title><rect x='236' y='478' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='501' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainComponent</text><text x='315' y='514' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-9168822868733526450' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt</title><rect x='236' y='529' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='552' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexComponent</text><text x='315' y='565' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1980400392897659577' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt</title><rect x='236' y='580' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='603' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DetailsComponent</text><text x='315' y='616' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3847364575155387115' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt</title><rect x='236' y='631' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='654' text-anchor='middle' fill='white' font-size='11' font-weight='700'>FavoriteComponent</text><text x='315' y='667' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7532191983552513828' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt</title><rect x='236' y='682' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='705' text-anchor='middle' fill='white' font-size='11' font-weight='700'>ErrorHandler</text><text x='315' y='718' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4176516997890779417' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt</title><rect x='236' y='733' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='756' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonInfoDao</text><text x='315' y='769' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7714593438684377341' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClient.kt</title><rect x='236' y='784' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='807' text-anchor='middle' fill='white' font-size='11' font-weight='700'>HttpClient</text><text x='315' y='820' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1717808134328054875' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/Pokemon.kt</title><rect x='236' y='835' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='858' text-anchor='middle' fill='white' font-size='11' font-weight='700'>Pokemon</text><text x='315' y='871' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1465521018164547988' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt</title><rect x='236' y='886' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='909' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonDao</text><text x='315' y='922' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3753514457621060069' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/model/PokemonResponse.kt</title><rect x='236' y='937' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='960' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonResponse</text><text x='315' y='973' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-152368832542282349' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepository.kt</title><rect x='236' y='988' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='1011' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonRepository</text><text x='315' y='1024' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-2815217180133782279' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt</title><rect x='236' y='1039' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='1062' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexDispatchers</text><text x='315' y='1075' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7298939835320337409' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt</title><rect x='236' y='1090' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='1113' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexDispatchers</text><text x='315' y='1126' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-806825319977185106' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/PokedexDispatchers.kt</title><rect x='236' y='1141' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='1164' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexDispatchers</text><text x='315' y='1177' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1763157083610384997' data-column='direct' data-parents='[]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt</title><rect x='236' y='1192' width='158' height='42' rx='7' fill='#dc2626'/><text x='315' y='1215' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexDispatchers</text><text x='315' y='1228' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7770007901456556492' data-column='trans1' data-parents='[&quot;n-1980400392897659577&quot;, &quot;n-8106026257160524266&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt</title><rect x='430' y='70' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='93' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DetailsContent</text><text x='509' y='106' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4963623262369141777' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;, &quot;n-8171345777739387874&quot;, &quot;n-5873448848814546673&quot;, &quot;n-297539138967564988&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt</title><rect x='430' y='121' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='144' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainContent</text><text x='509' y='157' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4188306795259914478' data-column='trans1' data-parents='[&quot;n-1980400392897659577&quot;, &quot;n-3847364575155387115&quot;, &quot;n-8171345777739387874&quot;, &quot;n-5873448848814546673&quot;, &quot;n-9168822868733526450&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt</title><rect x='430' y='172' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='195' text-anchor='middle' fill='white' font-size='11' font-weight='700'>RootComponent</text><text x='509' y='208' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8952830733964295296' data-column='trans1' data-parents='[&quot;n-3847364575155387115&quot;, &quot;n-1078791853665747971&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt</title><rect x='430' y='223' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='246' text-anchor='middle' fill='white' font-size='11' font-weight='700'>FavoriteContent</text><text x='509' y='259' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-2923270682323965474' data-column='trans1' data-parents='[&quot;n-9168822868733526450&quot;, &quot;n-9161400679719936358&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt</title><rect x='430' y='274' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='297' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexContent</text><text x='509' y='310' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-2209915958511373096' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonInfos.kt</title><rect x='430' y='325' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='348' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonInfos</text><text x='509' y='361' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7248530258011162049' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt</title><rect x='430' y='376' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='399' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonItem</text><text x='509' y='412' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-2040457679291987452' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStatItem.kt</title><rect x='430' y='427' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='450' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonStatItem</text><text x='509' y='463' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-6595123145402370071' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoItem.kt</title><rect x='430' y='478' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='501' text-anchor='middle' fill='white' font-size='11' font-weight='700'>VideoItem</text><text x='509' y='514' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-322368711337179743' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonGrid.kt</title><rect x='430' y='529' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='552' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonGrid</text><text x='509' y='565' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3796723551297335366' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;, &quot;n-7714593438684377341&quot;, &quot;n-7532191983552513828&quot;, &quot;n-3753514457621060069&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt</title><rect x='430' y='580' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='603' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonClient</text><text x='509' y='616' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3798398421135205903' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStats.kt</title><rect x='430' y='631' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='654' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonStats</text><text x='509' y='667' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-662880354287253735' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt</title><rect x='430' y='682' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='705' text-anchor='middle' fill='white' font-size='11' font-weight='700'>AbilityRow</text><text x='509' y='718' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7018772790868427605' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoRow.kt</title><rect x='430' y='733' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='756' text-anchor='middle' fill='white' font-size='11' font-weight='700'>VideoRow</text><text x='509' y='769' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3500914650460438794' data-column='trans1' data-parents='[&quot;n-1980400392897659577&quot;, &quot;n-3847364575155387115&quot;, &quot;n-8171345777739387874&quot;, &quot;n-5873448848814546673&quot;, &quot;n-9168822868733526450&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt</title><rect x='430' y='784' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='807' text-anchor='middle' fill='white' font-size='11' font-weight='700'>RootContent</text><text x='509' y='820' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4793887910848932283' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStore.kt</title><rect x='430' y='835' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='858' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexStore</text><text x='509' y='871' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-6612006835168603517' data-column='trans1' data-parents='[&quot;n-1980400392897659577&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt</title><rect x='430' y='886' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='909' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DetailsScreen</text><text x='509' y='922' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1565024455308276455' data-column='trans1' data-parents='[&quot;n-3847364575155387115&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt</title><rect x='430' y='937' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='960' text-anchor='middle' fill='white' font-size='11' font-weight='700'>FavoriteScreen</text><text x='509' y='973' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-1822405982177925684' data-column='trans1' data-parents='[&quot;n-9168822868733526450&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt</title><rect x='430' y='988' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1011' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokedexScreen</text><text x='509' y='1024' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-3716557462080910914' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStore.kt</title><rect x='430' y='1039' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1062' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DetailsStore</text><text x='509' y='1075' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8504127191617054395' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStore.kt</title><rect x='430' y='1090' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1113' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainStore</text><text x='509' y='1126' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7217991697393109018' data-column='trans1' data-parents='[&quot;n-1465521018164547988&quot;, &quot;n-4176516997890779417&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt</title><rect x='430' y='1141' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1164' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DatabaseModule</text><text x='509' y='1177' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-6969431637100073374' data-column='trans1' data-parents='[&quot;n-7714593438684377341&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt</title><rect x='430' y='1192' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1215' text-anchor='middle' fill='white' font-size='11' font-weight='700'>NetworkModule</text><text x='509' y='1228' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7421337241538985979' data-column='trans1' data-parents='[&quot;n-1717808134328054875&quot;, &quot;n-3754720775054307558&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStore.kt</title><rect x='430' y='1243' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1266' text-anchor='middle' fill='white' font-size='11' font-weight='700'>FavoriteStore</text><text x='509' y='1279' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8417975593560687829' data-column='trans1' data-parents='[&quot;n-152368832542282349&quot;, &quot;n-3835203713525092917&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt</title><rect x='430' y='1294' width='158' height='42' rx='7' fill='#f59e0b'/><text x='509' y='1317' text-anchor='middle' fill='white' font-size='11' font-weight='700'>DataModule</text><text x='509' y='1330' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-2578700130428859739' data-column='trans2' data-parents='[&quot;n-4927804433670445633&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt</title><rect x='624' y='70' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='93' text-anchor='middle' fill='white' font-size='11' font-weight='700'>CategoryButton</text><text x='703' y='106' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4094390456770950904' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt</title><rect x='624' y='121' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='144' text-anchor='middle' fill='white' font-size='11' font-weight='700'>main.ios</text><text x='703' y='157' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8500369766699487319' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt</title><rect x='624' y='172' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='195' text-anchor='middle' fill='white' font-size='11' font-weight='700'>Main</text><text x='703' y='208' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4927804433670445633' data-column='trans2' data-parents='[&quot;n-4047700095430708010&quot;, &quot;n-7470375903022908319&quot;, &quot;n-4207093736603086147&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt</title><rect x='624' y='223' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='246' text-anchor='middle' fill='white' font-size='11' font-weight='700'>CategoryState</text><text x='703' y='259' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4427363761388542318' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt</title><rect x='624' y='274' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='297' text-anchor='middle' fill='white' font-size='11' font-weight='700'>MainActivity</text><text x='703' y='310' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8311442066591527932' data-column='trans2' data-parents='[&quot;n-4047700095430708010&quot;, &quot;n-7470375903022908319&quot;, &quot;n-4207093736603086147&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt</title><rect x='624' y='325' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='348' text-anchor='middle' fill='white' font-size='11' font-weight='700'>PokemonAbilityUti…</text><text x='703' y='361' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4047700095430708010' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt</title><rect x='624' y='376' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='399' text-anchor='middle' fill='white' font-size='11' font-weight='700'>ContentView</text><text x='703' y='412' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-7470375903022908319' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt</title><rect x='624' y='427' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='450' text-anchor='middle' fill='white' font-size='11' font-weight='700'>ContentView</text><text x='703' y='463' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-8210268579809597789' data-column='trans2' data-parents='[&quot;n-7217991697393109018&quot;, &quot;n-6969431637100073374&quot;, &quot;n-8417975593560687829&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt</title><rect x='624' y='478' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='501' text-anchor='middle' fill='white' font-size='11' font-weight='700'>AppModule</text><text x='703' y='514' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+<g class='prop-node' data-id='n-4207093736603086147' data-column='trans2' data-parents='[&quot;n-3500914650460438794&quot;, &quot;n-4188306795259914478&quot;]' tabindex='0'><title>/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt</title><rect x='624' y='529' width='158' height='42' rx='7' fill='#f97316'/><text x='703' y='552' text-anchor='middle' fill='white' font-size='11' font-weight='700'>ContentView</text><text x='703' y='565' text-anchor='middle' fill='white' font-size='9' opacity='0.72'>.kt</text></g>
+</svg></div></div>
+
+<script>
+(function () {
+  const root = document.currentScript.previousElementSibling;
+  if (!root || !root.classList.contains('prop-graph-wrap')) return;
+  const nodes = Array.from(root.querySelectorAll('.prop-node'));
+  const edges = Array.from(root.querySelectorAll('.prop-edge-real'));
+  function reset() {
+    nodes.forEach(n => n.classList.remove('is-dimmed', 'is-selected', 'is-related'));
+    edges.forEach(e => e.classList.remove('is-visible'));
+  }
+  function select(node) {
+    const id = node.dataset.id;
+    const column = node.dataset.column;
+    reset();
+    node.classList.add('is-selected');
+    let childIds = new Set();
+    if (column === 'dependency') {
+      childIds = new Set(nodes.filter(n => n.dataset.column === 'direct').map(n => n.dataset.id));
+    } else if (column === 'direct' || column === 'trans1') {
+      childIds = new Set(edges.filter(e => e.dataset.from === id).map(e => e.dataset.to));
+    }
+    if (!childIds.size) return;
+    nodes.forEach(n => {
+      if (n === node || childIds.has(n.dataset.id)) n.classList.add('is-related');
+      else n.classList.add('is-dimmed');
+    });
+    edges.forEach(e => {
+      if (e.dataset.from === id && childIds.has(e.dataset.to)) e.classList.add('is-visible');
+    });
+  }
+  nodes.forEach(node => {
+    node.addEventListener('click', ev => {
+      ev.stopPropagation();
+      if (node.classList.contains('is-selected')) reset();
+      else select(node);
+    });
+    node.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        select(node);
+      }
+    });
+  });
+  root.addEventListener('dblclick', reset);
+})();
+</script>
+
+    <details style="margin:14px 0 0 0;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px;">
+      <summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#0f172a;">How to read this graph</summary>
+      <div style="margin-top:10px;font-size:12.5px;line-height:1.7;color:#334155;">
+        <ul style="margin:0 0 0 1.2em;padding:0;">
+          <li>The <span style="color:#4338ca;font-weight:600">violet box</span> is the bumped dependency.</li>
+          <li><span style="color:#dc2626;font-weight:600">Red boxes</span> are files that directly <code>import</code> a symbol from the bumped library.</li>
+          <li><span style="color:#f59e0b;font-weight:600">Amber boxes</span> are files that depend transitively at distance 1 (they import a red file).</li>
+          <li><span style="color:#f97316;font-weight:600">Orange boxes</span> are files at distance 2+ (further transitive hops).</li>
+          <li><strong>Click any box</strong> to dim the rest of the graph and highlight only the files reached in the next column.</li>
+          <li><strong>Faint lines</strong> are real propagation edges captured during BFS; selected edges become darker when a box is active.</li>
+          <li><strong>Dashed amber/orange guide lines</strong> show the general direction of propagation across columns.</li>
+        </ul>
+      </div>
+    </details>
+    <div class="caption">
+      Each box is a <code>.kt</code> file. Colour = relation to the bumped dependency.
+      Scroll vertically when a column has many files; click a box to inspect its next-hop impact.
+    </div>
+  </div>
+</div>
+
+<!-- Phase 3: Dynamic Analysis -->
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num">3</div>
+    <div><h2>Dynamic Analysis — UI Exploration with DroidBot</h2><div class="desc">Screen interaction flow with change-affected screens highlighted in red</div></div>
+  </div>
+  
+<div style="background:white;border-radius:12px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05);margin-bottom:14px;">
+  <iframe src="phase3/impact-utg/index.html" style="width:100%;height:640px;border:none;border-radius:12px;"></iframe>
+</div>
+<div style="text-align:center;margin-bottom:14px;">
+  <a href="phase3/impact-utg/index.html" target="_blank" style="display:inline-block;padding:10px 22px;background:#1e293b;color:white;border-radius:8px;font-weight:600;font-size:12px;text-decoration:none;">
+    Open DroidBot UTG full-screen
+  </a>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;padding:14px;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#1e293b;">18</div>
+    <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">UTG nodes</div>
+  </div>
+  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;padding:14px;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#1e293b;">12</div>
+    <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Distinct UI surfaces</div>
+  </div>
+  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;padding:14px;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#dc2626;">0</div>
+    <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Behaviour diffs</div>
+  </div>
+  <div style="background:white;border-radius:10px;border:1px solid #e2e8f0;padding:14px;text-align:center;">
+    <div style="font-size:22px;font-weight:700;color:#4338ca;">5</div>
+    <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Impacted screens (static)</div>
+  </div>
+</div>
+
+  <!-- Traceability table sits below the DroidBot iframe so the same screens
+       are listed with the file/relation/distance/metrics that drive the
+       colouring of the UTG nodes. -->
+  <div style="margin-top:24px;">
+    <div style="font-size:14px;font-weight:700;color:#1e293b;margin-bottom:6px;">
+      Traceability — File → Screen
+    </div>
+    <div style="font-size:12.5px;color:#64748b;margin-bottom:14px;">
+      Each impacted file with its relation, distance to the change, metrics, and associated UI screen.
+    </div>
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr><th>File</th><th>Relation</th><th>Dist.</th><th>RLOC</th><th>MCC</th><th>Coverage</th><th>Screen</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+  <td class="fname">PokedexDispatchers.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">8</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokedexDispatchers.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">8</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonDao.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">16</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokemonInfoDao.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">27</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">Pokemon.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">18</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokemonInfo.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">67</td>
+  <td class="c">7 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">HttpClient.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">19</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">ErrorHandler.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">28</td>
+  <td class="c">5 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonResponse.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">10</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">Mappers.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">42</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonRepository.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">10</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokemonRepositoryImpl.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">61</td>
+  <td class="c">7 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">DetailsComponent.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">34</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">DetailsStoreFactory.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">78</td>
+  <td class="c">5 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">FavoriteComponent.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">33</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">FavoriteStoreFactory.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">57</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">MainComponent.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">36</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">MainScreen.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">148</td>
+  <td class="c">4 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>Main</td>
+</tr>
+<tr>
+  <td class="fname">MainStoreFactory.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">39</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokedexComponent.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">36</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokedexStoreFactory.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">78</td>
+  <td class="c">7 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokedexDispatchers.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">8</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokedexDispatchers.kt</td>
+  <td><span class="badge badge-red">Direct</span></td>
+  <td class="c">0</td>
+  <td class="c">8</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">DatabaseModule.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">12</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonClient.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">38</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">NetworkModule.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">11</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">DataModule.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">7</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">DetailsScreen.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">14</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>Details</td>
+</tr>
+<tr>
+  <td class="fname">AbilityRow.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">26</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">DetailsContent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">187</td>
+  <td class="c">6 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonInfos.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">91</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokemonStatItem.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">82</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonStats.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">27</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">DetailsStore.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">13</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">FavoriteScreen.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">14</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>Favorite</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">FavoriteContent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">93</td>
+  <td class="c">5 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">FavoriteStore.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">11</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">MainContent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">128</td>
+  <td class="c">2 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">VideoItem.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">72</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">VideoRow.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">26</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">MainStore.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">13</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokedexScreen.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">14</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>Pokedex</td>
+</tr>
+<tr>
+  <td class="fname">PokedexContent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">93</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokemonGrid.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">65</td>
+  <td class="c">5 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonItem.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">87</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">PokedexStore.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">16</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">RootComponent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">128</td>
+  <td class="c">7 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">RootContent.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">1</td>
+  <td class="c">25</td>
+  <td class="c">2 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">MainActivity.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">33</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">0%</td>
+  <td>Main</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">Main.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">40</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">0%</td>
+  <td>Main</td>
+</tr>
+<tr>
+  <td class="fname">ContentView.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">20</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>ContentView</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">AppModule.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">15</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">ContentView.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">20</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>ContentView</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">main.ios.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">50</td>
+  <td class="c">2 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">ContentView.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">2</td>
+  <td class="c">10</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>ContentView</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">CategoryState.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">3</td>
+  <td class="c">36</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="fname">PokemonAbilityUtils.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">3</td>
+  <td class="c">25</td>
+  <td class="c">3 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+<tr class="row-alt">
+  <td class="fname">CategoryButton.kt</td>
+  <td><span class="badge badge-yellow">Transitive</span></td>
+  <td class="c">4</td>
+  <td class="c">69</td>
+  <td class="c">1 <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#94a3b815;color:#94a3b8;">Heur.</span></td>
+  <td class="c">—</td>
+  <td>—</td>
+</tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Phase 5: CodeCharta -->
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num">5</div>
+    <div><h2>CodeCharta Visualization — 3D Impact Map</h2><div class="desc">Each file is a building: area represents lines of code, height represents complexity, and red color indicates impact</div></div>
+  </div>
+  
+<div style="background:white;border-radius:12px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:16px;">
+  <iframe id="codecharta-frame" src="phase5/codecharta-viewer/index.html?file=../after.cc.json&mode=Single&area=rloc&height=mcc&color=impact_level&ts=1780021046" style="width:100%;height:650px;border:none;border-radius:12px;"></iframe>
+</div>
+<div style="text-align:center;margin-bottom:16px;">
+  <a href="phase5/codecharta-viewer/index.html?file=../after.cc.json&mode=Single&area=rloc&height=mcc&color=impact_level&ts=1780021046" target="_blank" style="display:inline-block;padding:12px 28px;background:#4338ca;color:white;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;">
+    Open CodeCharta fullscreen
+  </a>
+</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+    <div style="background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;padding:14px 16px;">
+      <div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Area (size)</div>
+      <div style="font-size:14px;font-weight:600;color:#1e293b;">rloc — Real lines of code</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;padding:14px 16px;">
+      <div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Height</div>
+      <div style="font-size:14px;font-weight:600;color:#1e293b;">mcc — Cyclomatic complexity</div>
+    </div>
+    <div style="background:#f8fafc;border-radius:10px;border:1px solid #e2e8f0;padding:14px 16px;">
+      <div style="font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Color</div>
+      <div style="font-size:14px;font-weight:600;color:#1e293b;">impact_level: <span style="color:#94a3b8;">grey</span> none · <span style="color:#f59e0b;">amber</span> transitive · <span style="color:#dc2626;">red</span> direct</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /#tab-pipeline -->
+
+<div class="tab-panel" id="tab-sunburst" role="tabpanel">
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num" style="background:#B91C1C;">&#9737;</div>
+    <div><h2>Source-set Impact Sunburst</h2><div class="desc">Interactive ring: source-set &rarr; package &rarr; file. Click any ring to zoom; click center to zoom out.</div></div>
+  </div>
+  
+<style>
+  .sb-wrap { background:#F5F4F0; color:#2C2C2C; padding:32px;
+    border-radius:12px; border:1px solid #e2e8f0; }
+  /* Layout mirrors the GitGraph arc-diagram card on this page so a
+     reviewer reading both visualisations gets the same model: a fixed
+     left rail with the static lists (KPIs/files), a fixed top toolbar
+     with the chart controls, and a single interactive surface (the
+     circle) that responds to wheel-zoom + drag-pan. Nothing else moves. */
+  .sb-card { display:grid; grid-template-columns:280px minmax(0,1fr);
+    gap:32px; align-items:start; }
+  @media (max-width: 900px) {
+    .sb-card { grid-template-columns: 1fr; }
+    .sb-info { position:static !important; max-height:none !important; }
+    .sb-chart { position:static !important; max-height:none !important; }
+  }
+  /* Chart shell stays pinned while the page scrolls through the trace
+     tables below; only the inner viewport ever transforms. */
+  .sb-chart { position:sticky; top:88px; align-self:start;
+    display:flex; flex-direction:column;
+    max-height:calc(100vh - 110px);
+    background:#FBFAF6; border:1px solid #E2E0DA; border-radius:10px;
+    padding:14px; overflow:hidden; }
+  /* Toolbar above the circle — same role as the "Min. degree / Sort by /
+     Showing N nodes" header in the GitGraph card. It stays put when the
+     user zooms or pans inside the viewport. */
+  .sb-chart-toolbar { display:flex; align-items:center;
+    justify-content:space-between; gap:12px; padding:0 4px 10px;
+    border-bottom:1px solid #E2E0DA; margin-bottom:10px;
+    font-size:12px; color:#475569; user-select:none; flex:0 0 auto; }
+  .sb-chart-toolbar .sb-tool-group { display:flex; align-items:center;
+    gap:8px; }
+  .sb-chart-toolbar button { font:inherit; font-size:11px;
+    background:#fff; border:1px solid #D8D6D0; color:#475569;
+    border-radius:5px; padding:3px 10px; cursor:pointer;
+    line-height:1.4; }
+  .sb-chart-toolbar button:hover { background:#F1F5F9; }
+  .sb-chart-toolbar button:disabled { opacity:.4; cursor:default; }
+  .sb-chart-toolbar .sb-zoom-badge { font-variant-numeric:tabular-nums;
+    background:#EEF2F6; border-radius:4px; padding:2px 8px;
+    color:#1e293b; font-weight:600; min-width:54px; text-align:center; }
+  .sb-chart-toolbar .sb-tool-hint { color:#94a3b8; font-size:10.5px;
+    letter-spacing:.04em; }
+  .sb-chart-toolbar kbd { background:#E2E0DA; border-radius:3px;
+    padding:1px 5px; font-family:inherit; font-size:10px; color:#555; }
+  /* Pan-arrow d-pad: four square buttons arranged as a compact group
+     (←/↓/↑/→) so the user can nudge the viewBox without touching the
+     mouse wheel. Disabled state mirrors the zoom buttons. */
+  .sb-chart-toolbar .sb-pad { display:inline-flex; align-items:center;
+    gap:2px; margin-left:8px; padding-left:8px;
+    border-left:1px solid #E2E0DA; }
+  .sb-chart-toolbar .sb-pad button { width:24px; height:22px; padding:0;
+    font-size:13px; line-height:1; font-weight:700; }
+  /* Viewport is the ONLY interactive surface — wheel/drag are scoped
+     here, so the sidebar and toolbar above never move. */
+  .sb-chart-viewport { flex:1 1 auto; width:100%; min-height:440px;
+    overflow:hidden; touch-action:none; cursor:grab;
+    position:relative; border-radius:6px; background:#FBFAF6; }
+  .sb-chart-viewport:active { cursor:grabbing; }
+  .sb-chart-viewport svg { width:100%; height:100%; display:block;
+    overflow:visible; }
+  .sb-info { display:flex; flex-direction:column; gap:14px;
+    position:sticky; top:88px; align-self:start;
+    max-height:calc(100vh - 110px); overflow-y:auto;
+    padding-right:6px; }
+  .sb-info::-webkit-scrollbar { width:6px; }
+  .sb-info::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:3px; }
+  .sb-title { font-size:15px; font-weight:700; letter-spacing:-.01em; }
+  .sb-sub { font-size:12px; color:#888; margin-top:2px; }
+  .sb-sub .sb-ver { color:#B91C1C; font-weight:600; }
+  .sb-sec-label { font-size:11px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.07em; color:#777; margin-bottom:6px; padding-bottom:4px;
+    border-bottom:1px solid #D8D6D0; }
+  .sb-block { border-radius:6px; padding:9px 11px; margin-bottom:4px; }
+  .sb-block-aff { background:#FEF2F2; border:1px solid #FECACA; }
+  .sb-block-safe { background:#F8F8F7; border:1px solid #E2E0DA; }
+  .sb-block-label { font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.07em; margin-bottom:5px; }
+  .sb-block-label.sb-aff { color:#B91C1C; }
+  .sb-block-label.sb-saf { color:#555; }
+  .sb-stat-row { display:flex; justify-content:space-between;
+    align-items:baseline; padding:3px 0;
+    border-bottom:1px solid rgba(0,0,0,.05); font-size:12px; }
+  .sb-stat-row:last-child { border-bottom:none; }
+  .sb-stat-n { font-size:15px; font-weight:800; }
+  .sb-subtotal { display:flex; justify-content:space-between;
+    align-items:baseline; padding-top:5px; margin-top:3px;
+    border-top:1px solid rgba(0,0,0,.1); font-size:11px; font-weight:700; }
+  .sb-leg-row { display:flex; align-items:center; gap:7px; font-size:11px;
+    padding:2px 0; }
+  .sb-sw { width:12px; height:12px; border-radius:2px; flex-shrink:0; }
+  .sb-tree-ss { font-size:11px; font-weight:700; color:#333;
+    padding:4px 0 2px; }
+  .sb-tree-leaf { display:flex; align-items:flex-start; gap:6px;
+    padding:1px 0 1px 10px; font-size:11px; line-height:1.5; color:#333; }
+  .sb-tree-bul { width:6px; height:6px; border-radius:50%; flex-shrink:0;
+    margin-top:5px; }
+  .sb-tree-leaf.sb-direct .sb-tree-bul { background:#B91C1C; }
+  .sb-tree-leaf.sb-ea .sb-tree-bul { border:1.5px dashed #64748B; }
+  .sb-tree-dim { color:#888; }
+  .sb-ea-tag { font-size:9px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.05em; color:#64748B; background:#F1F5F9; border-radius:3px;
+    padding:0 3px; vertical-align:middle; }
+  .sb-empty { font-size:11px; color:#9ca3af; font-style:italic; }
+  #sb-tt { position:fixed; background:#fff; border:1px solid #D8D6D0;
+    border-radius:5px; padding:7px 11px; font-size:11px; pointer-events:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.08); max-width:240px; line-height:1.45;
+    display:none; z-index:100; color:#2C2C2C; }
+  #sb-tt strong { display:block; font-size:12px; margin-bottom:1px; }
+  #sb-tt .sb-sub2 { color:#64748B; font-size:10px; }
+  /* Tree below the sunburst: shares the same palette so a reader sweeps
+     from circle to tree and recognises the colours immediately. The tree
+     card mirrors the circle card — fixed toolbar on top, scoped viewport
+     that owns wheel-zoom + drag-pan + the d-pad — so the user gets the
+     same interaction model on both visualisations. */
+  .sb-tree-section { margin-top:28px; padding-top:24px;
+    border-top:1px solid #D8D6D0;
+    background:#FBFAF6; border-radius:10px;
+    border:1px solid #E2E0DA; padding:18px 16px 16px; }
+  .sb-tree-head { display:flex; align-items:flex-start;
+    justify-content:space-between; gap:16px; flex-wrap:wrap;
+    margin-bottom:12px; }
+  .sb-tree-toolbar { padding:0 4px 0; border-bottom:none;
+    margin-bottom:0; align-self:center; }
+  .sb-tree-title { font-size:13px; font-weight:700; color:#2C2C2C;
+    letter-spacing:-.01em; }
+  .sb-tree-sub { font-size:11.5px; color:#888; margin:2px 0 0; }
+  .sb-tree-viewport { width:100%; height:560px;
+    overflow:hidden; touch-action:none; cursor:grab;
+    position:relative; border-radius:6px; background:#FBFAF6;
+    border:1px dashed #E2E0DA; }
+  .sb-tree-viewport:active { cursor:grabbing; }
+  #sb-tree { width:100%; height:100%; display:block; }
+  #sb-tree .tree-link { fill:none; stroke:#CBD5E1; stroke-width:1.4;
+    stroke-opacity:0.85; }
+  #sb-tree .tree-node circle { fill:#fff; stroke-width:2.5;
+    transition: r .15s; }
+  #sb-tree .tree-node:hover circle { r: 8; }
+  #sb-tree .tree-node text { font-size:11px; font-weight:600;
+    fill:#1E293B; }
+  #sb-tree .tree-node.leaf text { font-weight:500; fill:#374151; }
+</style>
+<div class="sb-wrap">
+  <div class="sb-card">
+    <div class="sb-info">
+      <div>
+        <div class="sb-title">KMP Impact · org.jetbrains.kotlinx</div>
+        <div class="sb-sub">
+          <span class="sb-ver">1.8.0 &rarr; 1.11.0</span>
+          &nbsp;&middot;&nbsp; 90 archivos
+        </div>
+      </div>
+      <div>
+        <div class="sb-sec-label">Impacto</div>
+        <div class="sb-block sb-block-aff">
+          <div class="sb-block-label sb-aff">Afectados</div>
+          <div class="sb-stat-row"><span>Directo</span>
+            <span class="sb-stat-n" style="color:#B91C1C">
+              23</span></div>
+          <div class="sb-stat-row"><span>Transitivo</span>
+            <span class="sb-stat-n" style="color:#1D4ED8">
+              35</span></div>
+          <div class="sb-subtotal" style="color:#B91C1C">
+            <span>Total</span><span>58</span></div>
+        </div>
+        <div class="sb-block sb-block-safe">
+          <div class="sb-block-label sb-saf">No afectados</div>
+          <div class="sb-stat-row"><span>Expect/Actual pairs</span>
+            <span class="sb-stat-n" style="color:#94A3B8">3</span></div>
+          <div class="sb-subtotal" style="color:#AAA">
+            <span>Total</span><span>32</span></div>
+        </div>
+      </div>
+      <div id="sb-legend-block">
+        <div class="sb-sec-label">Escala</div>
+        <div class="sb-leg-row">
+          <span class="sb-sw" style="background:#B91C1C"></span>Directo</div>
+        <div class="sb-leg-row">
+          <span class="sb-sw" style="background:#1D4ED8"></span>
+          Transitivo dist. 1</div>
+        <div class="sb-leg-row">
+          <span class="sb-sw" style="background:#60A5FA"></span>
+          Transitivo dist. 2+</div>
+        <div class="sb-leg-row">
+          <span class="sb-sw"
+            style="background:#94A3B8;opacity:.5"></span>Sin impacto</div>
+        <div class="sb-leg-row">
+          <span class="sb-sw"
+            style="background:none;border:1.5px dashed #94A3B8"></span>
+          Expect/Actual (KMP)</div>
+      </div>
+      <div>
+        <div class="sb-sec-label">Archivos directos</div>
+        <div class="sb-tree-ss">androidMain/</div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/</span>PokedexDispatchers.kt</span></div><div class="sb-tree-ss">commonMain/</div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/</span>PokedexDispatchers.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/database/dao/</span>PokemonDao.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/database/dao/</span>PokemonInfoDao.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/model/</span>Pokemon.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/model/</span>PokemonInfo.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/network/</span>HttpClient.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/network/helper/</span>ErrorHandler.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/core/network/model/</span>PokemonResponse.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/data/</span>Mappers.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/data/repository/</span>PokemonRepository.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/data/repository/</span>PokemonRepositoryImpl.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/details/</span>DetailsComponent.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/details/store/</span>DetailsStoreFactory.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/favorite/</span>FavoriteComponent.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/favorite/store/</span>FavoriteStoreFactory.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/main/</span>MainComponent.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/main/</span>MainScreen.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/main/store/</span>MainStoreFactory.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/pokedex/</span>PokedexComponent.kt</span></div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/ui/pokedex/store/</span>PokedexStoreFactory.kt</span></div><div class="sb-tree-ss">desktopMain/</div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com.mocoding.pokedex/</span>PokedexDispatchers.kt</span></div><div class="sb-tree-ss">iosMain/</div><div class="sb-tree-leaf sb-direct"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">com/mocoding/pokedex/</span>PokedexDispatchers.kt</span></div>
+      </div>
+      <div><div class="sb-sec-label">Expect / Actual</div><div class="sb-tree-ss">SqlDriverFactory</div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">commonMain/com/mocoding/pokedex/core/database/</span>SqlDriverFactory.kt <span class="sb-ea-tag">expect</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">androidMain/com/mocoding/pokedex/core/database/</span>AndroidSqlDriverFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">desktopMain/com.mocoding.pokedex/core/database/</span>DesktopSqlDriverFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">iosMain/com/mocoding/pokedex/core/database/</span>SqlDriverFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-ss">HttpClientFactory</div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">commonMain/com/mocoding/pokedex/core/network/</span>HttpClientFactory.kt <span class="sb-ea-tag">expect</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">androidMain/com/mocoding/pokedex/core/network/</span>HttpClientFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">desktopMain/com.mocoding.pokedex/core/network/</span>HttpClientFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">iosMain/com/mocoding/pokedex/core/network/</span>HttpClientFactory.kt <span class="sb-ea-tag">actual</span></span></div><div class="sb-tree-ss">ExpectClass</div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">commonMain/</span>ExpectClass.kt <span class="sb-ea-tag">expect</span></span></div><div class="sb-tree-leaf sb-ea"><span class="sb-tree-bul"></span><span><span class="sb-tree-dim">commonMain/</span>ActualAndroid.kt <span class="sb-ea-tag">actual</span></span></div></div>
+    </div>
+    <div class="sb-chart" id="sb-circle-card">
+      <div class="sb-chart-toolbar">
+        <div class="sb-tool-group">
+          <button id="sb-zoom-out" title="Zoom out">−</button>
+          <span class="sb-zoom-badge" id="sb-zoom-pct">100%</span>
+          <button id="sb-zoom-in"  title="Zoom in">+</button>
+          <button id="sb-zoom-reset" title="Reset view">Reset</button>
+          <span class="sb-pad" role="group" aria-label="Pan">
+            <button id="sb-pan-left"  title="Pan left">&larr;</button>
+            <button id="sb-pan-down"  title="Pan down">&darr;</button>
+            <button id="sb-pan-up"    title="Pan up">&uarr;</button>
+            <button id="sb-pan-right" title="Pan right">&rarr;</button>
+          </span>
+        </div>
+        <div class="sb-tool-hint">
+          <kbd>scroll</kbd> zoom &middot;
+          <kbd>drag</kbd> pan &middot;
+          <kbd>click</kbd> ring focus
+        </div>
+      </div>
+      <div class="sb-chart-viewport" id="sb-viewport">
+        <svg id="sb-sun"></svg>
+      </div>
+    </div>
+  </div>
+  <!-- Visual D3 tree below the circle. Mirrors the sunburst card layout
+       (toolbar with zoom + d-pad on the right, scoped viewport with the
+       SVG inside) so the user gets the same interaction model on both
+       visualisations and can pan/zoom only the tree without disturbing
+       the page or the circle above. -->
+  <div class="sb-tree-section" id="sb-tree-section">
+    <div class="sb-tree-head">
+      <div>
+        <div class="sb-tree-title">Propagation tree</div>
+        <div class="sb-tree-sub">Same hierarchy as the sunburst, flattened for reading.</div>
+      </div>
+      <div class="sb-chart-toolbar sb-tree-toolbar">
+        <div class="sb-tool-group">
+          <button id="sb-tz-out" title="Zoom out">−</button>
+          <span class="sb-zoom-badge" id="sb-tz-pct">100%</span>
+          <button id="sb-tz-in"  title="Zoom in">+</button>
+          <button id="sb-tz-reset" title="Reset view">Reset</button>
+          <span class="sb-pad" role="group" aria-label="Pan">
+            <button id="sb-tp-left"  title="Pan left">&larr;</button>
+            <button id="sb-tp-down"  title="Pan down">&darr;</button>
+            <button id="sb-tp-up"    title="Pan up">&uarr;</button>
+            <button id="sb-tp-right" title="Pan right">&rarr;</button>
+          </span>
+        </div>
+        <div class="sb-tool-hint">
+          <kbd>scroll</kbd> zoom &middot;
+          <kbd>drag</kbd> pan
+        </div>
+      </div>
+    </div>
+    <div class="sb-tree-viewport" id="sb-tree-viewport">
+      <svg id="sb-tree"></svg>
+    </div>
+  </div>
+  <div id="sb-tt"></div>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function() {
+  const DATA = {"name": "src", "children": [{"name": "commonMain", "children": [{"name": "com", "children": [{"name": "mocoding", "children": [{"name": "pokedex", "children": [{"name": "PokedexDispatchers.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "core", "children": [{"name": "database", "children": [{"name": "dao", "children": [{"name": "PokemonDao.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "PokemonInfoDao.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}, {"name": "di", "children": [{"name": "DatabaseModule.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}]}, {"name": "di", "children": [{"name": "AppModule.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt", "source_set": "commonMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}]}, {"name": "model", "children": [{"name": "Pokemon.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/Pokemon.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "PokemonInfo.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/model/PokemonInfo.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}, {"name": "network", "children": [{"name": "HttpClient.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClient.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "client", "children": [{"name": "PokemonClient.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "di", "children": [{"name": "NetworkModule.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "helper", "children": [{"name": "ErrorHandler.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}, {"name": "model", "children": [{"name": "PokemonResponse.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/model/PokemonResponse.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}]}, {"name": "data", "children": [{"name": "Mappers.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/Mappers.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "di", "children": [{"name": "DataModule.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "repository", "children": [{"name": "PokemonRepository.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepository.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "PokemonRepositoryImpl.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}, {"name": "ui", "children": [{"name": "details", "children": [{"name": "DetailsComponent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "DetailsScreen.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "components", "children": [{"name": "AbilityRow.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "DetailsContent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokemonInfos.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonInfos.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokemonStatItem.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStatItem.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokemonStats.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/PokemonStats.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "store", "children": [{"name": "DetailsStore.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStore.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "DetailsStoreFactory.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}, {"name": "favorite", "children": [{"name": "FavoriteComponent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "FavoriteScreen.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "components", "children": [{"name": "FavoriteContent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "store", "children": [{"name": "FavoriteStore.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStore.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "FavoriteStoreFactory.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}, {"name": "main", "children": [{"name": "MainComponent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "MainScreen.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "components", "children": [{"name": "CategoryButton.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt", "source_set": "commonMain", "impact": "transitive", "distance": 4, "is_expect": false, "is_actual": false, "value": 2}, {"name": "MainContent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "VideoItem.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoItem.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "VideoRow.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/VideoRow.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "state", "children": [{"name": "CategoryState.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt", "source_set": "commonMain", "impact": "transitive", "distance": 3, "is_expect": false, "is_actual": false, "value": 3}]}, {"name": "store", "children": [{"name": "MainStore.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStore.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "MainStoreFactory.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}, {"name": "pokedex", "children": [{"name": "PokedexComponent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "PokedexScreen.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "components", "children": [{"name": "PokedexContent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokemonGrid.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonGrid.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokemonItem.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "store", "children": [{"name": "PokedexStore.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStore.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "PokedexStoreFactory.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt", "source_set": "commonMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}]}]}, {"name": "root", "children": [{"name": "RootComponent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}, {"name": "RootContent.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt", "source_set": "commonMain", "impact": "transitive", "distance": 1, "is_expect": false, "is_actual": false, "value": 5}]}, {"name": "utils", "children": [{"name": "PokemonAbilityUtils.kt", "path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt", "source_set": "commonMain", "impact": "transitive", "distance": 3, "is_expect": false, "is_actual": false, "value": 3}]}]}]}]}]}], "source_set": "commonMain"}, {"name": "androidMain", "children": [{"name": "com", "children": [{"name": "mocoding", "children": [{"name": "pokedex", "children": [{"name": "PokedexDispatchers.kt", "path": "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt", "source_set": "androidMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "ui", "children": [{"name": "ContentView.kt", "path": "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt", "source_set": "androidMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}]}]}]}]}], "source_set": "androidMain"}, {"name": "iosMain", "children": [{"name": "com", "children": [{"name": "mocoding", "children": [{"name": "pokedex", "children": [{"name": "PokedexDispatchers.kt", "path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt", "source_set": "iosMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "main.ios.kt", "path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt", "source_set": "iosMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}, {"name": "ui", "children": [{"name": "ContentView.kt", "path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt", "source_set": "iosMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}]}]}]}]}], "source_set": "iosMain"}, {"name": "desktopMain", "children": [{"name": "com.mocoding.pokedex", "children": [{"name": "PokedexDispatchers.kt", "path": "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/PokedexDispatchers.kt", "source_set": "desktopMain", "impact": "direct", "distance": 0, "is_expect": false, "is_actual": false, "value": 10}, {"name": "ui", "children": [{"name": "ContentView.kt", "path": "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt", "source_set": "desktopMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}]}]}], "source_set": "desktopMain"}, {"name": "jvmMain", "children": [{"name": "Main.kt", "path": "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt", "source_set": "jvmMain", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}], "source_set": "jvmMain"}, {"name": "main", "children": [{"name": "java", "children": [{"name": "com", "children": [{"name": "mocoding", "children": [{"name": "pokedex", "children": [{"name": "android", "children": [{"name": "MainActivity.kt", "path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt", "source_set": "main", "impact": "transitive", "distance": 2, "is_expect": false, "is_actual": false, "value": 4}]}]}]}]}]}], "source_set": "main"}]};
+  const W = 640, R = W / 6;
+  // Wider font range so labels feel readable inside slices instead of
+  // collapsing to tiny lowercase. Adjusted CH_RATIO so wide arcs accept the
+  // bigger size without overflowing.
+  const MAX_FS = 14.5, MIN_FS = 9.5, CH_RATIO = 0.5;
+  // Truncate long file names aggressively so outer-ring labels stay readable
+  // inside narrow slices. 14 chars + ellipsis prevents the long rotated
+  // strings (e.g. "ExpensesDetailScreen") that the user flagged as visually
+  // noisy on the right side of the circle.
+  function dispName(d) {
+    const name = d.data.name.replace(/\.kt$/, "");
+    return name.length > 14 ? name.slice(0, 13) + "…" : name;
+  }
+  function arcSpan(x0,x1,y0,y1) { return (x1-x0)*((y0+y1)/2)*R; }
+  function calcFS(x0,x1,y0,y1,n) {
+    if (!n) return MAX_FS;
+    return Math.min(MAX_FS, Math.max(MIN_FS, arcSpan(x0,x1,y0,y1)/(n*CH_RATIO)));
+  }
+  function leafColour(d) {
+    const imp = d.data.impact, dist = d.data.distance;
+    if (imp === "direct") return "#B91C1C";
+    if (imp === "transitive") return dist <= 1 ? "#1D4ED8" : "#60A5FA";
+    return "#94A3B8";
+  }
+  function folderColour(d) {
+    const leaves = d.descendants().filter(c => !c.children);
+    if (leaves.some(c => c.data.impact === "direct")) return "#B91C1C";
+    if (leaves.some(c => c.data.impact === "transitive")) {
+      const mn = d3.min(leaves.filter(c => c.data.impact === "transitive"),
+                        c => c.data.distance);
+      return mn <= 1 ? "#1D4ED8" : "#60A5FA";
+    }
+    return "#94A3B8";
+  }
+  const colour = d => d.children ? folderColour(d) : leafColour(d);
+  function isImp(d) {
+    if (!d.children) {
+      const i = d.data.impact;
+      return i === "direct" || i === "transitive";
+    }
+    return d.descendants().some(
+      c => c.data.impact === "direct" || c.data.impact === "transitive"
+    );
+  }
+  const opacity = d => isImp(d) ? 1 : 0.28;
+  const root = d3.hierarchy(DATA)
+    .sum(d => d.value || 0)
+    .sort((a, b) => b.value - a.value);
+  d3.partition().size([2*Math.PI, root.height + 1])(root);
+  const arc = d3.arc()
+    .startAngle(d => d.x0).endAngle(d => d.x1)
+    .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.004))
+    .padRadius(R * 1.5)
+    .innerRadius(d => d.y0 * R)
+    .outerRadius(d => Math.max(d.y0 * R, d.y1 * R - 1));
+  // Responsive sizing — viewBox padding is large enough to fit even the
+  // longest outer-ring labels rotated tangentially (the previous 110 px
+  // budget still clipped names like "ExpenseScreenUiTest"). 200 px on each
+  // side covers ~26 chars at our max font size.
+  const PAD = 200;
+  const svg = d3.select("#sb-sun")
+    .attr("viewBox", [-W/2 - PAD, -W/2 - PAD, W + 2*PAD, W + 2*PAD])
+    .attr("preserveAspectRatio", "xMidYMid meet");
+  root.each(d => d.current = d);
+  // VISIBLE_RINGS is computed in Python from the actual tree depth, so a
+  // shallow project (e.g. depth 2) keeps a clean two-ring view, while a
+  // deeper project (e.g. depth 5) gets all five rings. Beyond _RING_CEILING
+  // (5) the picture collapses to outer-label-only territory.
+  const VISIBLE_RINGS = 5;
+  function arcVis(d) { return d.y1 <= VISIBLE_RINGS + 1 && d.y0 >= 1 && d.x1 > d.x0; }
+  function lblVis(d) {
+    return d.y1 <= VISIBLE_RINGS + 1 && d.y0 >= 1 && (d.y1-d.y0)*(d.x1-d.x0) > 0.02;
+  }
+  function lblTransform(d) {
+    const x = ((d.x0+d.x1)/2)*180/Math.PI, y=(d.y0+d.y1)/2*R;
+    return `rotate(${x-90}) translate(${y},0) rotate(${x<180?0:180})`;
+  }
+  const path = svg.append("g")
+    .selectAll("path")
+    .data(root.descendants().slice(1))
+    .join("path")
+    .attr("fill", d => colour(d))
+    .attr("fill-opacity", d => arcVis(d.current) ? opacity(d) : 0)
+    .attr("pointer-events", d => arcVis(d.current) ? "auto" : "none")
+    .attr("stroke", d => (d.data.is_expect || d.data.is_actual)
+      ? "#64748B" : "none")
+    .attr("stroke-width", d => (d.data.is_expect || d.data.is_actual)
+      ? 1.5 : 0)
+    .attr("stroke-dasharray", d => (d.data.is_expect || d.data.is_actual)
+      ? "3,2" : "none")
+    // Tie the dashed border opacity to arc visibility so the floating dashes
+    // don't linger after a zoom hides the underlying arc.
+    .attr("stroke-opacity", d => arcVis(d.current) ? 1 : 0)
+    .attr("d", d => arc(d.current))
+    .style("cursor", d => d.children ? "pointer" : "default")
+    .on("click", (ev, p) => { if (p.children) zoomTo(p); });
+  const label = svg.append("g")
+    .attr("pointer-events", "none")
+    .attr("text-anchor", "middle")
+    .style("user-select", "none")
+    .selectAll("text")
+    .data(root.descendants().slice(1))
+    .join("text")
+    .attr("dy", "0.35em")
+    .attr("fill-opacity", d => +lblVis(d.current))
+    .attr("transform", d => lblTransform(d.current))
+    .style("font-size", d =>
+      `${calcFS(d.x0,d.x1,d.y0,d.y1,dispName(d).length).toFixed(1)}px`)
+    .style("font-weight", "700")
+    .style("paint-order", "stroke")
+    .style("stroke-width", "3px")
+    .style("stroke-linejoin", "round")
+    .style("stroke", d => {
+      const c = colour(d);
+      return (c === "#B91C1C" || c === "#1D4ED8") ? "rgba(0,0,0,0.65)"
+                                                  : "rgba(255,255,255,0.95)";
+    })
+    .style("fill", d => {
+      const c = colour(d);
+      return (c === "#B91C1C" || c === "#1D4ED8") ? "#FFF" : "#0F172A";
+    })
+    .text(d => dispName(d));
+  const cg = svg.append("g").style("cursor", "pointer");
+  cg.append("circle").attr("r", R).attr("fill", "#F5F4F0")
+    .attr("stroke", "#D8D6D0");
+  const clbl = cg.append("text")
+    .attr("text-anchor", "middle").attr("dy", "0.35em")
+    .style("font-size", "11px").style("font-weight", "600")
+    .style("fill", "#64748B").text("src");
+  cg.on("click", () => zoomTo(currentFocus.parent || root));
+  const tt = document.getElementById("sb-tt");
+  path.on("mousemove", (ev, d) => {
+    const imp = d.data.impact, dist = d.data.distance;
+    let badge, detail = "";
+    if (d.children) {
+      const leaves = d.descendants().filter(c => !c.children);
+      const nD = leaves.filter(c => c.data.impact === "direct").length;
+      const nT = leaves.filter(c => c.data.impact === "transitive").length;
+      const parts = [];
+      if (nD) parts.push(`${nD} directo${nD>1?"s":""}`);
+      if (nT) parts.push(`${nT} transitivo${nT>1?"s":""}`);
+      badge = d.data.source_set
+        ? `Source set: ${d.data.name}` : "Carpeta";
+      detail = parts.join(" · ") || "sin impacto";
+    } else {
+      badge =
+        imp === "direct" ? "Directo" :
+        imp === "transitive" ? `Transitivo — dist. ${dist}` :
+        imp === "expect_actual" ? "Expect/Actual (KMP)" : "Sin impacto";
+      if (d.data.is_expect) badge += " · expect";
+      if (d.data.is_actual) badge += " · actual";
+      // Always include the source-set so duplicate filenames (CommonModule.kt
+      // in commonMain vs androidMain) are disambiguated.
+      const ssName = d.parent && d.parent.parent
+        ? d.parent.parent.data.name : "";
+      detail = (ssName ? `[${ssName}] ` : "") + (d.data.path || "");
+    }
+    tt.innerHTML =
+      `<strong>${d.data.name}</strong>` +
+      `<span class="sb-sub2">${badge}</span>` +
+      (detail ? `<br><span class="sb-sub2">${detail}</span>` : "");
+    tt.style.display = "block";
+    tt.style.left = ev.clientX + 14 + "px";
+    tt.style.top = ev.clientY - 10 + "px";
+  }).on("mouseleave", () => tt.style.display = "none");
+  let currentFocus = root;
+  function zoomTo(focus) {
+    currentFocus = focus;
+    root.each(d => d.target = {
+      x0: Math.max(0, Math.min(1,
+        (d.x0-focus.x0)/(focus.x1-focus.x0))) * 2 * Math.PI,
+      x1: Math.max(0, Math.min(1,
+        (d.x1-focus.x0)/(focus.x1-focus.x0))) * 2 * Math.PI,
+      y0: Math.max(0, d.y0 - focus.depth),
+      y1: Math.max(0, d.y1 - focus.depth),
+    });
+    const tr = svg.transition().duration(480);
+    path.transition(tr)
+      .tween("data", d => {
+        const i = d3.interpolate(d.current, d.target);
+        return t => d.current = i(t);
+      })
+      .filter(function(d) {
+        return +this.getAttribute("fill-opacity") || arcVis(d.target);
+      })
+      .attr("fill-opacity", d => arcVis(d.target) ? opacity(d) : 0)
+      .attr("stroke-opacity", d => arcVis(d.target) ? 1 : 0)
+      .attr("pointer-events", d => arcVis(d.target) ? "auto" : "none")
+      .attrTween("d", d => () => arc(d.current));
+    label
+      .filter(function(d) {
+        return +this.getAttribute("fill-opacity") || lblVis(d.target);
+      })
+      .transition(tr)
+      .attr("fill-opacity", d => +lblVis(d.target))
+      .attrTween("transform", d => () => lblTransform(d.current))
+      .on("end", function(d) {
+        const pos = d.target || d.current;
+        const n = dispName(d);
+        d3.select(this).text(n).style("font-size",
+          `${calcFS(pos.x0,pos.x1,pos.y0,pos.y1,n.length).toFixed(1)}px`);
+      });
+    clbl.text(focus.data.name);
+  }
+
+  // ── Visual wheel-zoom + drag-pan inside the sticky chart viewport ───
+  // Direct viewBox manipulation gives reliable pan/zoom for arbitrary
+  // SVG content without fighting d3.zoom's event filter (the arcs cover
+  // the whole canvas, which broke the previous d3.zoom-based attempt
+  // because every mousedown landed on a <path> and was rejected). The
+  // semantic click-to-zoom (animating the partition layout) still
+  // works because we never call preventDefault on plain clicks; only
+  // when a drag actually moved more than a few pixels we suppress the
+  // synthetic click so a pan doesn't trigger an unintended zoomTo().
+  const svgEl = document.getElementById("sb-sun");
+  const viewportEl = document.getElementById("sb-viewport");
+  const VB0 = { x: -W/2 - PAD, y: -W/2 - PAD, w: W + 2*PAD, h: W + 2*PAD };
+  let vb = Object.assign({}, VB0);
+  const zoomPctEl  = document.getElementById("sb-zoom-pct");
+  const zoomInBtn  = document.getElementById("sb-zoom-in");
+  const zoomOutBtn = document.getElementById("sb-zoom-out");
+  const zoomRstBtn = document.getElementById("sb-zoom-reset");
+  const MIN_W = (W + 2*PAD) / 8;  // max zoom ~8x
+  const MAX_W = (W + 2*PAD) * 3;  // max zoom out 3x
+  function applyVB() {
+    svgEl.setAttribute(
+      "viewBox",
+      `${vb.x.toFixed(2)} ${vb.y.toFixed(2)} ${vb.w.toFixed(2)} ${vb.h.toFixed(2)}`
+    );
+    if (zoomPctEl) {
+      const pct = Math.round((VB0.w / vb.w) * 100);
+      zoomPctEl.textContent = pct + "%";
+      if (zoomOutBtn) zoomOutBtn.disabled = vb.w >= MAX_W - 1;
+      if (zoomInBtn)  zoomInBtn.disabled  = vb.w <= MIN_W + 1;
+    }
+  }
+  function zoomByFactor(factor, cx, cy) {
+    const newW = Math.max(MIN_W, Math.min(MAX_W, vb.w * factor));
+    const ratio = newW / vb.w;
+    vb.x = vb.x + cx * vb.w * (1 - ratio);
+    vb.y = vb.y + cy * vb.h * (1 - ratio);
+    vb.w = newW;
+    vb.h = vb.h * ratio;
+    applyVB();
+  }
+  if (zoomInBtn)  zoomInBtn.addEventListener("click", () => zoomByFactor(1/1.3, 0.5, 0.5));
+  if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => zoomByFactor(1.3, 0.5, 0.5));
+  if (zoomRstBtn) zoomRstBtn.addEventListener("click", () => {
+    vb = Object.assign({}, VB0); applyVB();
+  });
+  // ── D-pad pan buttons. Each click nudges the viewBox by ~12% of its
+  //    current size, so the relative step stays sensible at every zoom
+  //    level (large at 100%, smaller after zooming in).
+  function panBy(dx, dy) {
+    vb.x += dx * vb.w; vb.y += dy * vb.h; applyVB();
+  }
+  const PAN_STEP = 0.12;
+  const panLeftBtn  = document.getElementById("sb-pan-left");
+  const panRightBtn = document.getElementById("sb-pan-right");
+  const panUpBtn    = document.getElementById("sb-pan-up");
+  const panDownBtn  = document.getElementById("sb-pan-down");
+  if (panLeftBtn)  panLeftBtn.addEventListener("click",  () => panBy(-PAN_STEP, 0));
+  if (panRightBtn) panRightBtn.addEventListener("click", () => panBy( PAN_STEP, 0));
+  if (panUpBtn)    panUpBtn.addEventListener("click",    () => panBy(0, -PAN_STEP));
+  if (panDownBtn)  panDownBtn.addEventListener("click",  () => panBy(0,  PAN_STEP));
+  viewportEl.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    const r = viewportEl.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    zoomByFactor(e.deltaY < 0 ? 1/1.15 : 1.15, px, py);
+  }, { passive: false });
+  // Initial render so the badge shows 100% even before any interaction.
+  applyVB();
+
+  let dragging = false, last = null, downXY = null, didDrag = false;
+  viewportEl.addEventListener("pointerdown", function (e) {
+    if (e.button !== 0) return;
+    dragging = true;
+    didDrag = false;
+    last = { x: e.clientX, y: e.clientY };
+    downXY = { x: e.clientX, y: e.clientY };
+    try { viewportEl.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  viewportEl.addEventListener("pointermove", function (e) {
+    if (!dragging) return;
+    const dx = e.clientX - downXY.x, dy = e.clientY - downXY.y;
+    if (!didDrag && Math.hypot(dx, dy) > 4) didDrag = true;
+    if (!didDrag) return;
+    const r = viewportEl.getBoundingClientRect();
+    vb.x -= (e.clientX - last.x) / r.width  * vb.w;
+    vb.y -= (e.clientY - last.y) / r.height * vb.h;
+    last = { x: e.clientX, y: e.clientY };
+    applyVB();
+  });
+  function endDrag(e) {
+    dragging = false;
+    try { viewportEl.releasePointerCapture(e.pointerId); } catch (_) {}
+  }
+  viewportEl.addEventListener("pointerup", endDrag);
+  viewportEl.addEventListener("pointercancel", endDrag);
+  viewportEl.addEventListener("pointerleave", endDrag);
+
+  // Block the synthetic click that follows a pan so it doesn't trigger
+  // the arc's semantic zoom. Capture phase so it runs before D3's
+  // bubble-phase click handler on the arcs.
+  viewportEl.addEventListener("click", function (e) {
+    if (didDrag) {
+      e.stopPropagation();
+      e.preventDefault();
+      didDrag = false;
+    }
+  }, true);
+
+  viewportEl.addEventListener("dblclick", function (e) {
+    // Double-click on empty space (or modifier-double-click anywhere)
+    // resets the viewBox; clicks on arcs/labels keep their meaning.
+    const onArc = e.target && (e.target.tagName === "path" || e.target.tagName === "text");
+    if (onArc && !e.shiftKey) return;
+    vb = Object.assign({}, VB0);
+    applyVB();
+  });
+
+  // ── Visual D3 tree under the sunburst circle ─────────────────────────
+  // Same hierarchy data, rendered as a horizontal indented tree. We prune
+  // the data tree to keep only nodes that touch impacted files, otherwise
+  // the tree fills with grey leaves that distract from the main story.
+  function pruneToImpacted(node) {
+    if (!node.children) {
+      const i = node.impact;
+      return (i === "direct" || i === "transitive" ||
+              node.is_expect || node.is_actual) ? node : null;
+    }
+    const kids = (node.children || [])
+      .map(pruneToImpacted)
+      .filter(Boolean);
+    if (kids.length === 0) return null;
+    return Object.assign({}, node, { children: kids });
+  }
+  const treeData = pruneToImpacted(JSON.parse(JSON.stringify(DATA)))
+    || { name: "src", children: [] };
+  const treeRoot = d3.hierarchy(treeData);
+
+  const NODE_DX = 22;        // vertical step between nodes
+  const NODE_DY = 200;       // horizontal step between depth levels
+  const tree = d3.tree().nodeSize([NODE_DX, NODE_DY]);
+  tree(treeRoot);
+
+  let xMin = Infinity, xMax = -Infinity;
+  treeRoot.each(d => {
+    if (d.x < xMin) xMin = d.x;
+    if (d.x > xMax) xMax = d.x;
+  });
+  const treeWidth = (treeRoot.height + 1) * NODE_DY + 240;
+  const treeHeight = (xMax - xMin) + NODE_DX * 2;
+
+  // Initial viewBox covers the whole tree. We keep this constant so the
+  // Reset button has a stable target, regardless of how much the user
+  // panned/zoomed during the session.
+  const TREE_VB0 = {
+    x: -100, y: xMin - NODE_DX,
+    w: treeWidth, h: treeHeight,
+  };
+  let tvb = Object.assign({}, TREE_VB0);
+
+  const treeSvg = d3.select("#sb-tree")
+    .attr("preserveAspectRatio", "xMidYMid meet");
+
+  treeSvg.selectAll("*").remove();
+  const treeG = treeSvg.append("g");
+
+  treeG.append("g")
+    .selectAll("path.tree-link")
+    .data(treeRoot.links())
+    .join("path")
+      .attr("class", "tree-link")
+      .attr("d", d3.linkHorizontal()
+        .x(d => d.y)
+        .y(d => d.x));
+
+  function nodeColour(d) {
+    return colour(d);
+  }
+
+  const treeNodes = treeG.append("g")
+    .selectAll("g.tree-node")
+    .data(treeRoot.descendants())
+    .join("g")
+      .attr("class", d => "tree-node" + (d.children ? "" : " leaf"))
+      .attr("transform", d => `translate(${d.y}, ${d.x})`);
+
+  treeNodes.append("circle")
+    .attr("r", d => d.depth === 0 ? 6 : (d.children ? 5 : 4))
+    .attr("fill", d => d.children ? "#fff" : nodeColour(d))
+    .attr("stroke", d => nodeColour(d));
+
+  treeNodes.append("text")
+    .attr("dy", "0.32em")
+    .attr("x", d => d.children ? -10 : 10)
+    .attr("text-anchor", d => d.children ? "end" : "start")
+    .text(d => {
+      const n = (d.data.name || "").replace(/\.kt$/, "");
+      return n.length > 26 ? n.slice(0, 24) + "…" : n;
+    })
+    .clone(true).lower()
+    .attr("stroke", "#F5F4F0").attr("stroke-width", 4);
+
+  // ── Tree viewport: same wheel-zoom / drag-pan / d-pad model as the
+  //    circle above, so the user moves through the tree without
+  //    scrolling the page. We bind directly on the viewport so the
+  //    interaction is fully scoped — the rest of the report stays put.
+  const treeSvgEl = document.getElementById("sb-tree");
+  const treeViewportEl = document.getElementById("sb-tree-viewport");
+  const treeZoomPctEl = document.getElementById("sb-tz-pct");
+  const treeZoomInBtn  = document.getElementById("sb-tz-in");
+  const treeZoomOutBtn = document.getElementById("sb-tz-out");
+  const treeZoomRstBtn = document.getElementById("sb-tz-reset");
+  const treePadL = document.getElementById("sb-tp-left");
+  const treePadR = document.getElementById("sb-tp-right");
+  const treePadU = document.getElementById("sb-tp-up");
+  const treePadD = document.getElementById("sb-tp-down");
+  const TMIN_W = TREE_VB0.w / 8;
+  const TMAX_W = TREE_VB0.w * 3;
+
+  function applyTreeVB() {
+    treeSvgEl.setAttribute(
+      "viewBox",
+      `${tvb.x.toFixed(2)} ${tvb.y.toFixed(2)} ${tvb.w.toFixed(2)} ${tvb.h.toFixed(2)}`
+    );
+    if (treeZoomPctEl) {
+      const pct = Math.round((TREE_VB0.w / tvb.w) * 100);
+      treeZoomPctEl.textContent = pct + "%";
+      if (treeZoomOutBtn) treeZoomOutBtn.disabled = tvb.w >= TMAX_W - 1;
+      if (treeZoomInBtn)  treeZoomInBtn.disabled  = tvb.w <= TMIN_W + 1;
+    }
+  }
+  function treeZoomBy(factor, cx, cy) {
+    const newW = Math.max(TMIN_W, Math.min(TMAX_W, tvb.w * factor));
+    const ratio = newW / tvb.w;
+    tvb.x = tvb.x + cx * tvb.w * (1 - ratio);
+    tvb.y = tvb.y + cy * tvb.h * (1 - ratio);
+    tvb.w = newW;
+    tvb.h = tvb.h * ratio;
+    applyTreeVB();
+  }
+  function treePanBy(dx, dy) {
+    tvb.x += dx * tvb.w; tvb.y += dy * tvb.h; applyTreeVB();
+  }
+  applyTreeVB();
+
+  if (treeZoomInBtn)  treeZoomInBtn.addEventListener("click",  () => treeZoomBy(1/1.3, 0.5, 0.5));
+  if (treeZoomOutBtn) treeZoomOutBtn.addEventListener("click", () => treeZoomBy(1.3,  0.5, 0.5));
+  if (treeZoomRstBtn) treeZoomRstBtn.addEventListener("click", () => {
+    tvb = Object.assign({}, TREE_VB0); applyTreeVB();
+  });
+  if (treePadL) treePadL.addEventListener("click", () => treePanBy(-PAN_STEP, 0));
+  if (treePadR) treePadR.addEventListener("click", () => treePanBy( PAN_STEP, 0));
+  if (treePadU) treePadU.addEventListener("click", () => treePanBy(0, -PAN_STEP));
+  if (treePadD) treePadD.addEventListener("click", () => treePanBy(0,  PAN_STEP));
+
+  treeViewportEl.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    const r = treeViewportEl.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    treeZoomBy(e.deltaY < 0 ? 1/1.15 : 1.15, px, py);
+  }, { passive: false });
+
+  let tDrag = false, tLast = null, tDown = null, tMoved = false;
+  treeViewportEl.addEventListener("pointerdown", function (e) {
+    if (e.button !== 0) return;
+    tDrag = true; tMoved = false;
+    tLast = { x: e.clientX, y: e.clientY };
+    tDown = { x: e.clientX, y: e.clientY };
+    try { treeViewportEl.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  treeViewportEl.addEventListener("pointermove", function (e) {
+    if (!tDrag) return;
+    const dx = e.clientX - tDown.x, dy = e.clientY - tDown.y;
+    if (!tMoved && Math.hypot(dx, dy) > 4) tMoved = true;
+    if (!tMoved) return;
+    const r = treeViewportEl.getBoundingClientRect();
+    tvb.x -= (e.clientX - tLast.x) / r.width  * tvb.w;
+    tvb.y -= (e.clientY - tLast.y) / r.height * tvb.h;
+    tLast = { x: e.clientX, y: e.clientY };
+    applyTreeVB();
+  });
+  function endTreeDrag(e) {
+    tDrag = false;
+    try { treeViewportEl.releasePointerCapture(e.pointerId); } catch (_) {}
+  }
+  treeViewportEl.addEventListener("pointerup", endTreeDrag);
+  treeViewportEl.addEventListener("pointercancel", endTreeDrag);
+  treeViewportEl.addEventListener("pointerleave", endTreeDrag);
+  treeViewportEl.addEventListener("dblclick", function () {
+    tvb = Object.assign({}, TREE_VB0); applyTreeVB();
+  });
+})();
+</script>
+
+</div>
+</div><!-- /#tab-sunburst -->
+
+<div class="tab-panel" id="tab-gitgraph" role="tabpanel">
+<div class="section">
+  <div class="section-header">
+    <div class="phase-num" style="background:#059669;">G</div>
+    <div><h2>Transitive Dependency Graph (GitGraph)</h2><div class="desc">SBOM-derived arc diagram showing every library and its dependents. Use the sidebar to filter or focus a library.</div></div>
+  </div>
+  
+<div style="background:white;border-radius:12px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:16px;">
+  <iframe src="gitgraph/arc_diagram.html?focal=org.jetbrains.kotlinx" style="width:100%;height:720px;border:none;border-radius:12px;"></iframe>
+</div>
+<div style="text-align:center;margin-bottom:16px;">
+  <a href="gitgraph/arc_diagram.html?focal=org.jetbrains.kotlinx" target="_blank" style="display:inline-block;padding:12px 28px;background:#4338ca;color:white;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;">
+    Open dependency graph fullscreen
+  </a>
+  <div style="font-size:11px;color:#94a3b8;margin-top:6px;">Pan with click-drag · zoom with mouse wheel · the bumped library is ringed in yellow.</div>
+</div>
+</div>
+</div><!-- /#tab-gitgraph -->
+
+<div class="footer">
+  Generated by <strong>kmp-impact-analyzer</strong><br>
+  Thesis: KMP Code Contextualization and Visualization Pipeline — Universidad de los Andes
+</div>
+
+</div>
+<script>
+(function() {
+  var btns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  function activate(name) {
+    btns.forEach(function(b) { b.classList.toggle('active', b.dataset.tab === name); });
+    panels.forEach(function(p) { p.classList.toggle('active', p.id === 'tab-' + name); });
+    try { history.replaceState(null, '', '#' + name); } catch (e) {}
+  }
+  btns.forEach(function(b) { b.addEventListener('click', function() { activate(b.dataset.tab); }); });
+  var hash = (location.hash || '').replace('#', '');
+  if (hash && document.getElementById('tab-' + hash)) activate(hash);
+})();
+</script>
+</body>
+</html>

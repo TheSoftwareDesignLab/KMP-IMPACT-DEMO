@@ -1,0 +1,1679 @@
+{
+  "dependency_group": "com.arkivanov.decompose",
+  "version_before": "2.1.4-compose-experimental",
+  "version_after": "2.2.3",
+  "static_impact": {
+    "dependency_group": "com.arkivanov.decompose",
+    "version_before": "2.1.4-compose-experimental",
+    "version_after": "2.2.3",
+    "seed_files": [
+      "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+      "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+      "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+    ],
+    "impacted_files": [
+      {
+        "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "android.os.Bundle",
+          "androidx.activity.ComponentActivity",
+          "androidx.activity.compose.setContent",
+          "com.arkivanov.decompose.defaultComponentContext",
+          "com.arkivanov.mvikotlin.main.store.DefaultStoreFactory",
+          "com.mocoding.pokedex.ui.ContentView",
+          "com.mocoding.pokedex.core.di.initKoin",
+          "com.mocoding.pokedex.ui.root.RootComponent",
+          "org.koin.android.ext.koin.androidContext",
+          "org.koin.core.context.stopKoin"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 33,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": 0.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.android.MainActivity"
+        ],
+        "source_set": "main"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "androidx.compose.ui.window.Window",
+          "androidx.compose.ui.window.application",
+          "com.arkivanov.decompose.DefaultComponentContext",
+          "com.arkivanov.essenty.lifecycle.LifecycleRegistry",
+          "com.arkivanov.essenty.lifecycle.resume",
+          "com.arkivanov.mvikotlin.core.utils.setMainThreadId",
+          "com.arkivanov.mvikotlin.main.store.DefaultStoreFactory",
+          "com.mocoding.pokedex.core.di.initKoin",
+          "com.mocoding.pokedex.ui.ContentView",
+          "com.mocoding.pokedex.ui.root.RootComponent",
+          "javax.swing.SwingUtilities"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 40,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": 0.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "main",
+          "invokeOnAwtSync"
+        ],
+        "source_set": "jvmMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 13,
+          "functions": 1,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext",
+          "com.arkivanov.mvikotlin.core.instancekeeper.getStore",
+          "com.arkivanov.mvikotlin.core.store.StoreFactory",
+          "com.arkivanov.mvikotlin.extensions.coroutines.stateFlow",
+          "com.mocoding.pokedex.ui.details.store.DetailsStore",
+          "com.mocoding.pokedex.ui.details.store.DetailsStoreFactory",
+          "kotlinx.coroutines.ExperimentalCoroutinesApi",
+          "kotlinx.coroutines.flow.StateFlow"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 34,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.details.DetailsComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext",
+          "com.arkivanov.mvikotlin.core.instancekeeper.getStore",
+          "com.arkivanov.mvikotlin.core.store.StoreFactory",
+          "com.arkivanov.mvikotlin.extensions.coroutines.stateFlow",
+          "com.mocoding.pokedex.ui.favorite.store.FavoriteStore",
+          "com.mocoding.pokedex.ui.favorite.store.FavoriteStoreFactory",
+          "kotlinx.coroutines.ExperimentalCoroutinesApi",
+          "kotlinx.coroutines.flow.StateFlow"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 33,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.favorite.FavoriteComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext",
+          "com.arkivanov.mvikotlin.core.instancekeeper.getStore",
+          "com.arkivanov.mvikotlin.core.store.StoreFactory",
+          "com.arkivanov.mvikotlin.extensions.coroutines.stateFlow",
+          "com.mocoding.pokedex.data.repository.PokemonRepository",
+          "com.mocoding.pokedex.ui.main.store.MainStore",
+          "com.mocoding.pokedex.ui.main.store.MainStoreFactory",
+          "kotlinx.coroutines.ExperimentalCoroutinesApi",
+          "kotlinx.coroutines.flow.StateFlow"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 36,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.MainComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext",
+          "com.arkivanov.mvikotlin.core.instancekeeper.getStore",
+          "com.arkivanov.mvikotlin.core.store.StoreFactory",
+          "com.arkivanov.mvikotlin.extensions.coroutines.stateFlow",
+          "com.mocoding.pokedex.data.repository.PokemonRepository",
+          "com.mocoding.pokedex.ui.pokedex.store.PokedexStore",
+          "com.mocoding.pokedex.ui.pokedex.store.PokedexStoreFactory",
+          "kotlinx.coroutines.ExperimentalCoroutinesApi",
+          "kotlinx.coroutines.flow.StateFlow"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 36,
+          "functions": 2,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.pokedex.PokedexComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "com.arkivanov.decompose.ComponentContext",
+          "com.arkivanov.decompose.router.stack.ChildStack",
+          "com.arkivanov.decompose.router.stack.StackNavigation",
+          "com.arkivanov.decompose.router.stack.childStack",
+          "com.arkivanov.decompose.router.stack.pop",
+          "com.arkivanov.decompose.router.stack.push",
+          "com.arkivanov.decompose.value.Value",
+          "com.arkivanov.essenty.parcelable.Parcelable",
+          "com.arkivanov.essenty.parcelable.Parcelize",
+          "com.arkivanov.mvikotlin.core.store.StoreFactory",
+          "com.mocoding.pokedex.ui.comingsoon.ComingSoonComponent",
+          "com.mocoding.pokedex.ui.details.DetailsComponent",
+          "com.mocoding.pokedex.ui.favorite.FavoriteComponent",
+          "com.mocoding.pokedex.ui.main.MainComponent",
+          "com.mocoding.pokedex.ui.pokedex.PokedexComponent"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 128,
+          "functions": 0,
+          "mcc": 7,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.root.RootComponent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "androidx.compose.runtime.Composable",
+          "com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children",
+          "com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade",
+          "com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation",
+          "com.mocoding.pokedex.ui.comingsoon.ComingSoonScreen",
+          "com.mocoding.pokedex.ui.details.DetailsScreen",
+          "com.mocoding.pokedex.ui.favorite.FavoriteScreen",
+          "com.mocoding.pokedex.ui.main.MainScreen",
+          "com.mocoding.pokedex.ui.pokedex.PokedexScreen"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 25,
+          "functions": 0,
+          "mcc": 2,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.root.RootContent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt",
+        "relation": "direct",
+        "distance": 0,
+        "imports_from_dependency": [
+          "androidx.compose.foundation.layout.PaddingValues",
+          "androidx.compose.foundation.layout.fillMaxSize",
+          "androidx.compose.material3.MaterialTheme",
+          "androidx.compose.material3.Surface",
+          "androidx.compose.runtime.CompositionLocalProvider",
+          "androidx.compose.ui.Modifier",
+          "androidx.compose.ui.platform.LocalDensity",
+          "androidx.compose.ui.unit.dp",
+          "androidx.compose.ui.window.ComposeUIViewController",
+          "com.arkivanov.decompose.DefaultComponentContext",
+          "com.arkivanov.essenty.lifecycle.LifecycleRegistry",
+          "com.arkivanov.mvikotlin.main.store.DefaultStoreFactory",
+          "com.mocoding.pokedex.core.di.initKoin",
+          "com.mocoding.pokedex.ui.ContentView",
+          "com.mocoding.pokedex.ui.helper.LocalSafeArea",
+          "com.mocoding.pokedex.ui.root.RootComponent",
+          "com.mocoding.pokedex.ui.theme.PokedexTheme",
+          "platform.UIKit"
+        ],
+        "propagated_from": [],
+        "metrics": {
+          "rloc": 50,
+          "functions": 1,
+          "mcc": 2,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.MainViewController"
+        ],
+        "source_set": "ios"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 71,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.comingsoon.ComingSoonScreen"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 187,
+          "functions": 0,
+          "mcc": 6,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.details.components.DetailsContent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 14,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.details.DetailsScreen"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 14,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.favorite.FavoriteScreen"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 93,
+          "functions": 0,
+          "mcc": 5,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.favorite.components.FavoriteContent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 128,
+          "functions": 0,
+          "mcc": 2,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.components.MainContent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 148,
+          "functions": 0,
+          "mcc": 4,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.MainScreen",
+          "com.mocoding.pokedex.ui.main.MainContentDefault",
+          "com.mocoding.pokedex.ui.main.MainContentLarge"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 14,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.pokedex.PokedexScreen"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt"
+        ],
+        "metrics": {
+          "rloc": 93,
+          "functions": 0,
+          "mcc": 3,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.pokedex.components.PokedexContent"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt"
+        ],
+        "metrics": {
+          "rloc": 20,
+          "functions": 1,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.ContentView"
+        ],
+        "source_set": "androidMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt"
+        ],
+        "metrics": {
+          "rloc": 20,
+          "functions": 1,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.ContentView"
+        ],
+        "source_set": "desktopMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt"
+        ],
+        "metrics": {
+          "rloc": 10,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.ContentView"
+        ],
+        "source_set": "ios"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 28,
+          "functions": 0,
+          "mcc": 5,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.core.network.helper.handleErrors"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 27,
+          "functions": 0,
+          "mcc": 3,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.core.database.dao.PokemonInfoDao"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 57,
+          "functions": 4,
+          "mcc": 3,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.favorite.store.FavoriteStoreFactory"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 78,
+          "functions": 4,
+          "mcc": 5,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.details.store.DetailsStoreFactory"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 16,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.core.database.dao.PokemonDao"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 78,
+          "functions": 4,
+          "mcc": 7,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.pokedex.store.PokedexStoreFactory"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt",
+        "relation": "transitive",
+        "distance": 1,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt"
+        ],
+        "metrics": {
+          "rloc": 39,
+          "functions": 3,
+          "mcc": 3,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.store.MainStoreFactory"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt",
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt"
+        ],
+        "metrics": {
+          "rloc": 87,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.pokedex.components.PokemonItem"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt"
+        ],
+        "metrics": {
+          "rloc": 36,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.state.CategoryState"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt"
+        ],
+        "metrics": {
+          "rloc": 25,
+          "functions": 1,
+          "mcc": 3,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.utils.PokemonAbilityUtils"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt"
+        ],
+        "metrics": {
+          "rloc": 38,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.core.network.client.PokemonClient"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt",
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt"
+        ],
+        "metrics": {
+          "rloc": 12,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt",
+        "relation": "transitive",
+        "distance": 2,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt",
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt"
+        ],
+        "metrics": {
+          "rloc": 61,
+          "functions": 0,
+          "mcc": 7,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.data.repository.PokemonRepositoryImpl"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt",
+        "relation": "transitive",
+        "distance": 3,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt"
+        ],
+        "metrics": {
+          "rloc": 69,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.main.components.CategoryButton"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt",
+        "relation": "transitive",
+        "distance": 3,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt"
+        ],
+        "metrics": {
+          "rloc": 26,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.ui.details.components.AbilityRow"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt",
+        "relation": "transitive",
+        "distance": 3,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt"
+        ],
+        "metrics": {
+          "rloc": 11,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt",
+        "relation": "transitive",
+        "distance": 3,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt"
+        ],
+        "metrics": {
+          "rloc": 15,
+          "functions": 1,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [
+          "com.mocoding.pokedex.core.di.initKoin"
+        ],
+        "source_set": "commonMain"
+      },
+      {
+        "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt",
+        "relation": "transitive",
+        "distance": 3,
+        "imports_from_dependency": [],
+        "propagated_from": [
+          "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt"
+        ],
+        "metrics": {
+          "rloc": 7,
+          "functions": 0,
+          "mcc": 1,
+          "detekt_findings": 0,
+          "test_coverage": -1.0,
+          "metrics_source": "heuristic"
+        },
+        "declarations": [],
+        "source_set": "commonMain"
+      }
+    ],
+    "expect_actual_pairs": [
+      {
+        "expect_fqcn": "com.mocoding.pokedex.core.database.sqlDriverFactory",
+        "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/database/DesktopSqlDriverFactory.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt"
+        ]
+      },
+      {
+        "expect_fqcn": "com.mocoding.pokedex.core.network.createPlatformHttpClient",
+        "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+          "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/network/HttpClientFactory.kt",
+          "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt"
+        ]
+      },
+      {
+        "expect_fqcn": "com.example.common.DatabaseDriverFactory",
+        "expect_file": "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ExpectClass.kt",
+        "actual_files": [
+          "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ActualAndroid.kt"
+        ]
+      }
+    ],
+    "total_project_files": 90,
+    "total_impacted": 40,
+    "ksp_edges_added": 27
+  },
+  "dynamic_regressions": {
+    "status": "completed",
+    "blocked_reason": "",
+    "before_screens": [
+      "QuickstepLauncher",
+      "Main",
+      "Main #2",
+      "Main #3",
+      "Main #4",
+      "Main #5"
+    ],
+    "after_screens": [
+      "QuickstepLauncher",
+      "Main",
+      "Main #2",
+      "Main #3",
+      "Main #4",
+      "Main #5"
+    ],
+    "diffs": [],
+    "activity_coverage_before": {
+      ".uioverrides.QuickstepLauncher": 1,
+      ".MainActivity": 8
+    },
+    "activity_coverage_after": {
+      ".uioverrides.QuickstepLauncher": 1,
+      ".MainActivity": 8
+    },
+    "nodes_before": 9,
+    "nodes_after": 9,
+    "structures_before": 6,
+    "structures_after": 6
+  },
+  "screen_mappings": [
+    {
+      "screen_name": "Main",
+      "mapped_files": [
+        "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+        "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+        "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt"
+      ],
+      "confidence": 0.7,
+      "method": "activity_manifest"
+    },
+    {
+      "screen_name": "ComingSoon",
+      "mapped_files": [
+        "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt"
+      ],
+      "confidence": 0.5,
+      "method": "filename_heuristic"
+    },
+    {
+      "screen_name": "Details",
+      "mapped_files": [
+        "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt"
+      ],
+      "confidence": 0.5,
+      "method": "filename_heuristic"
+    },
+    {
+      "screen_name": "Favorite",
+      "mapped_files": [
+        "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt"
+      ],
+      "confidence": 0.5,
+      "method": "filename_heuristic"
+    },
+    {
+      "screen_name": "Pokedex",
+      "mapped_files": [
+        "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt"
+      ],
+      "confidence": 0.5,
+      "method": "filename_heuristic"
+    },
+    {
+      "screen_name": "ContentView",
+      "mapped_files": [
+        "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+        "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+        "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt"
+      ],
+      "confidence": 0.9,
+      "method": "composable_declaration"
+    }
+  ],
+  "trace": [
+    {
+      "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [
+        "Main"
+      ],
+      "metrics": {
+        "rloc": 33,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": 0.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [
+        "Main"
+      ],
+      "metrics": {
+        "rloc": 40,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": 0.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 13,
+        "functions": 1,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 34,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 33,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 36,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 36,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootComponent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 128,
+        "functions": 0,
+        "mcc": 7,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/root/RootContent.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 25,
+        "functions": 0,
+        "mcc": 2,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt",
+      "relation": "direct",
+      "distance": 0,
+      "screens": [],
+      "metrics": {
+        "rloc": 50,
+        "functions": 1,
+        "mcc": 2,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/comingsoon/ComingSoonScreen.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "ComingSoon"
+      ],
+      "metrics": {
+        "rloc": 71,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/DetailsContent.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 187,
+        "functions": 0,
+        "mcc": 6,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/DetailsScreen.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "Details"
+      ],
+      "metrics": {
+        "rloc": 14,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/FavoriteScreen.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "Favorite"
+      ],
+      "metrics": {
+        "rloc": 14,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/components/FavoriteContent.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 93,
+        "functions": 0,
+        "mcc": 5,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/MainContent.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 128,
+        "functions": 0,
+        "mcc": 2,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/MainScreen.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "Main"
+      ],
+      "metrics": {
+        "rloc": 148,
+        "functions": 0,
+        "mcc": 4,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/PokedexScreen.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "Pokedex"
+      ],
+      "metrics": {
+        "rloc": 14,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokedexContent.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 93,
+        "functions": 0,
+        "mcc": 3,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "ContentView"
+      ],
+      "metrics": {
+        "rloc": 20,
+        "functions": 1,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/ui/ContentView.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "ContentView"
+      ],
+      "metrics": {
+        "rloc": 20,
+        "functions": 1,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [
+        "ContentView"
+      ],
+      "metrics": {
+        "rloc": 10,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/helper/ErrorHandler.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 28,
+        "functions": 0,
+        "mcc": 5,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonInfoDao.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 27,
+        "functions": 0,
+        "mcc": 3,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 57,
+        "functions": 4,
+        "mcc": 3,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 78,
+        "functions": 4,
+        "mcc": 5,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/dao/PokemonDao.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 16,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 78,
+        "functions": 4,
+        "mcc": 7,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/store/MainStoreFactory.kt",
+      "relation": "transitive",
+      "distance": 1,
+      "screens": [],
+      "metrics": {
+        "rloc": 39,
+        "functions": 3,
+        "mcc": 3,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/components/PokemonItem.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 87,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/state/CategoryState.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 36,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/utils/PokemonAbilityUtils.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 25,
+        "functions": 1,
+        "mcc": 3,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/client/PokemonClient.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 38,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 12,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt",
+      "relation": "transitive",
+      "distance": 2,
+      "screens": [],
+      "metrics": {
+        "rloc": 61,
+        "functions": 0,
+        "mcc": 7,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/main/components/CategoryButton.kt",
+      "relation": "transitive",
+      "distance": 3,
+      "screens": [],
+      "metrics": {
+        "rloc": 69,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/components/AbilityRow.kt",
+      "relation": "transitive",
+      "distance": 3,
+      "screens": [],
+      "metrics": {
+        "rloc": 26,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt",
+      "relation": "transitive",
+      "distance": 3,
+      "screens": [],
+      "metrics": {
+        "rloc": 11,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt",
+      "relation": "transitive",
+      "distance": 3,
+      "screens": [],
+      "metrics": {
+        "rloc": 15,
+        "functions": 1,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt",
+      "relation": "transitive",
+      "distance": 3,
+      "screens": [],
+      "metrics": {
+        "rloc": 7,
+        "functions": 0,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": -1.0,
+        "metrics_source": "heuristic"
+      }
+    }
+  ],
+  "impacted_screens": [
+    "ComingSoon",
+    "ContentView",
+    "Details",
+    "Favorite",
+    "Main",
+    "Pokedex"
+  ],
+  "total_impacted_files": 40,
+  "total_impacted_screens": 6,
+  "stack_compatibility": {
+    "warnings": [],
+    "detected": {
+      "kotlin": "2.0.21",
+      "agp": "8.5.0",
+      "compose": "1.6.10",
+      "compose-compiler": "1.5.14"
+    }
+  }
+}

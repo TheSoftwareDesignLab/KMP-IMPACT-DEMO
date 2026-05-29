@@ -1,0 +1,51 @@
+{
+  "tag": "2026-05-28_051352",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.mocoding.pokedex.android",
+      "visible": true,
+      "checkable": false,
+      "child_count": 1,
+      "editable": false,
+      "clickable": true,
+      "is_password": false,
+      "focusable": true,
+      "enabled": true,
+      "content_description": null,
+      "children": [
+        29
+      ],
+      "focused": false,
+      "bounds": [
+        [
+          10,
+          605
+        ],
+        [
+          230,
+          640
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": null,
+      "class": "android.view.View",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 27,
+      "temp_id": 28,
+      "size": "220*35",
+      "signature": "[class]android.view.View[resource_id]None[text]None[enabled,,]",
+      "view_str": "5a808228e8b77cdaad6a932c801b537c",
+      "content_free_signature": "[class]android.view.View[resource_id]None"
+    }
+  },
+  "start_state": "51eb578925d782d18f60ef7c309be380",
+  "stop_state": "0ccdee7820f53ec0f8bf3b544bd0b8bc",
+  "event_str": "TouchEvent(state=51eb578925d782d18f60ef7c309be380, view=5a808228e8b77cdaad6a932c801b537c(MainActivity/View-))"
+}

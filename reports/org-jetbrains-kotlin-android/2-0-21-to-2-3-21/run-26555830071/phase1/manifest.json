@@ -1,0 +1,29 @@
+{
+  "before_dir": "/tmp/output/phase1/before",
+  "after_dir": "/tmp/output/phase1/after",
+  "version_change": {
+    "dependency_group": "org.jetbrains.kotlin.android",
+    "version_key": "kotlin",
+    "before": "2.0.21",
+    "after": "2.3.21"
+  },
+  "init_script_injected": false,
+  "detekt_reports": {
+    "android": "/tmp/output/phase1/before/android/build/reports/detekt/detekt.xml"
+  },
+  "kover_reports": {
+    "desktop": "/tmp/output/phase1/before/desktop/build/reports/kover/report.xml",
+    "android": "/tmp/output/phase1/before/android/build/reports/kover/report.xml"
+  },
+  "compilation_after": {
+    "status": "failure",
+    "errors": [
+      "e: file:///tmp/output/phase1/after/android/build.gradle.kts:53:9: Using 'jvmTarget: String' is an error. Please migrate to the compilerOptions DSL. More details are here: https://kotl.in/u1r8ln",
+      "Script compilation error:"
+    ],
+    "tasks": [
+      ":shared:compileKotlinMetadata"
+    ]
+  },
+  "compile_targets": {}
+}

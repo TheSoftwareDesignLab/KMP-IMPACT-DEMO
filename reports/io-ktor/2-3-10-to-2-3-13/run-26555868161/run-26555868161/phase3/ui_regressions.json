@@ -1,0 +1,39 @@
+{
+  "status": "completed",
+  "blocked_reason": "",
+  "before_screens": [
+    "QuickstepLauncher",
+    "Main",
+    "Main #2",
+    "Main #3",
+    "Main #4",
+    "Main #5"
+  ],
+  "after_screens": [
+    "QuickstepLauncher",
+    "Main",
+    "Main #2",
+    "Main #3",
+    "Main #4",
+    "Main #5"
+  ],
+  "diffs": [
+    {
+      "screen_name": "Main #4",
+      "status": "changed",
+      "details": "Screen 'Main #4' has different transitions: before=4, after=4"
+    }
+  ],
+  "activity_coverage_before": {
+    ".uioverrides.QuickstepLauncher": 1,
+    ".MainActivity": 8
+  },
+  "activity_coverage_after": {
+    ".uioverrides.QuickstepLauncher": 1,
+    ".MainActivity": 8
+  },
+  "nodes_before": 9,
+  "nodes_after": 9,
+  "structures_before": 6,
+  "structures_after": 6
+}

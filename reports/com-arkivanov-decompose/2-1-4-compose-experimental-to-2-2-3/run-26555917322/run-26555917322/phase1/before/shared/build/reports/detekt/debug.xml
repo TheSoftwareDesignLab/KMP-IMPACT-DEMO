@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="4.3">
+<file name="/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt">
+	<error line="8" column="56" severity="warning" message="Dispatcher IO is used without dependency injection." source="detekt.InjectDispatcher" />
+	<error line="9" column="64" severity="warning" message="Dispatcher Unconfined is used without dependency injection." source="detekt.InjectDispatcher" />
+	<error line="10" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt">
+	<error line="13" column="5" severity="warning" message="Function names should match the pattern: [a-z][a-zA-Z0-9]*" source="detekt.FunctionNaming" />
+	<error line="22" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt">
+	<error line="8" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+	<error line="3" column="1" severity="warning" message="io.ktor.client.* is a wildcard import. Replace it with fully qualified imports." source="detekt.WildcardImport" />
+</file>
+<file name="/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt">
+	<error line="10" column="2" severity="warning" message="The file /tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt is not ending with a new line." source="detekt.NewLineAtEndOfFile" />
+</file>
+</checkstyle>

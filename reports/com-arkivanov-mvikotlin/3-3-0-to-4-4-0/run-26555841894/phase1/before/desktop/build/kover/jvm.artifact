@@ -1,0 +1,12 @@
+:desktop
+desktop/src/jvmMain/kotlin
+desktop/build/generated/compose/resourceGenerator/kotlin/jvmMainResourceAccessors
+desktop/src/jvmMain/java
+desktop/src/commonMain/kotlin
+desktop/build/generated/compose/resourceGenerator/kotlin/commonResClass
+desktop/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors
+
+desktop/build/classes/kotlin/jvm/main
+desktop/build/classes/java/main
+
+desktop/build/kover/bin-reports/jvmTest.ic

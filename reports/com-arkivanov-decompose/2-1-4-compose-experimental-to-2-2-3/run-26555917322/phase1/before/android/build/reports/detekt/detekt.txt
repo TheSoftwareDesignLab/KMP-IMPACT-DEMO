@@ -1,0 +1,1 @@
+NewLineAtEndOfFile - [MainActivity.kt] at /tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt:40:2 - Signature=MainActivity.kt$com.mocoding.pokedex.android.MainActivity.kt

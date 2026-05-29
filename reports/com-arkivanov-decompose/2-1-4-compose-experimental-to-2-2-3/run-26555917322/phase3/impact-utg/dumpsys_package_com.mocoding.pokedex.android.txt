@@ -1,0 +1,128 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        18097b4 com.mocoding.pokedex.android/.MainActivity filter b319fdd
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        4c49752 com.mocoding.pokedex.android/androidx.profileinstaller.ProfileInstallReceiver filter 82d5cd9
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        4c49752 com.mocoding.pokedex.android/androidx.profileinstaller.ProfileInstallReceiver filter 93b9a23
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      androidx.profileinstaller.action.SKIP_FILE:
+        4c49752 com.mocoding.pokedex.android/androidx.profileinstaller.ProfileInstallReceiver filter 1697b20
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        4c49752 com.mocoding.pokedex.android/androidx.profileinstaller.ProfileInstallReceiver filter 670d69e
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+
+Permissions:
+  Permission [com.mocoding.pokedex.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (ba3b57f):
+    sourcePackage=com.mocoding.pokedex.android
+    uid=10132 gids=null type=0 prot=signature
+    perm=Permission{b2232f8 com.mocoding.pokedex.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+
+Registered ContentProviders:
+  com.mocoding.pokedex.android/androidx.startup.InitializationProvider:
+    Provider{ce773d1 com.mocoding.pokedex.android/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [com.mocoding.pokedex.android.androidx-startup]:
+    Provider{ce773d1 com.mocoding.pokedex.android/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{87c2e36 com.mocoding.pokedex.android}
+
+Key Set Manager:
+  [com.mocoding.pokedex.android]
+      Signing KeySets: 10
+
+Packages:
+  Package [com.mocoding.pokedex.android] (6482a9b):
+    userId=10132
+    pkg=Package{6b85137 com.mocoding.pokedex.android}
+    codePath=/data/app/~~d9FIL-qtqDa_EehYnKlh7A==/com.mocoding.pokedex.android-NUShAqBvmP0-yL6hSfyKrQ==
+    resourcePath=/data/app/~~d9FIL-qtqDa_EehYnKlh7A==/com.mocoding.pokedex.android-NUShAqBvmP0-yL6hSfyKrQ==
+    legacyNativeLibraryDir=/data/app/~~d9FIL-qtqDa_EehYnKlh7A==/com.mocoding.pokedex.android-NUShAqBvmP0-yL6hSfyKrQ==/lib
+    primaryCpuAbi=null
+    secondaryCpuAbi=null
+    versionCode=1 minSdk=24 targetSdk=34
+    versionName=1.0.0
+    splits=[base]
+    apkSigningVersion=2
+    applicationInfo=ApplicationInfo{6b85137 com.mocoding.pokedex.android}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    queriesPackages=[]
+    dataDir=/data/user/0/com.mocoding.pokedex.android
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-05-28 05:15:40
+    firstInstallTime=2026-05-28 05:15:40
+    lastUpdateTime=2026-05-28 05:15:40
+    signatures=PackageSignatures{cc386a4 version:2, signatures:[a6e4d210], past signatures:[]}
+    installPermissionsFixed=true
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    declared permissions:
+      com.mocoding.pokedex.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature, INSTALLED
+    requested permissions:
+      android.permission.INTERNET
+      com.mocoding.pokedex.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+    install permissions:
+      android.permission.INTERNET: granted=true
+      com.mocoding.pokedex.android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+    User 0: ceDataInode=123483 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false
+      gids=[3003]
+      runtime permissions:
+
+Queries:
+  system apps queryable: false
+  queries via package name:
+  queries via intent:
+  queryable via interaction:
+    User 0:
+
+Package Changes:
+  Sequence number=24
+  User 0:
+    seq=0, package=com.android.permissioncontroller
+    seq=1, package=com.android.systemui
+    seq=3, package=com.android.cellbroadcastreceiver.module
+    seq=4, package=com.android.sdksetup
+    seq=5, package=com.android.provision
+    seq=6, package=com.android.settings
+    seq=7, package=com.android.calendar
+    seq=8, package=com.android.camera2
+    seq=9, package=com.android.gallery3d
+    seq=10, package=com.android.inputmethod.latin
+    seq=15, package=com.android.messaging
+    seq=16, package=com.android.nfc
+    seq=17, package=io.github.ylimit.droidbotapp
+    seq=18, package=com.android.stk
+    seq=20, package=com.android.traceur
+    seq=23, package=com.mocoding.pokedex.android
+
+
+Dexopt state:
+  [com.mocoding.pokedex.android]
+    path: /data/app/~~d9FIL-qtqDa_EehYnKlh7A==/com.mocoding.pokedex.android-NUShAqBvmP0-yL6hSfyKrQ==/base.apk
+      x86_64: [status=run-from-apk] [reason=unknown]
+
+
+Compiler stats:
+  [com.mocoding.pokedex.android]
+     base.apk - 2059
+
+APEX session state:
+
+Active APEX packages:
+
+
+Inactive APEX packages:
+
+
+Factory APEX packages:
+
+

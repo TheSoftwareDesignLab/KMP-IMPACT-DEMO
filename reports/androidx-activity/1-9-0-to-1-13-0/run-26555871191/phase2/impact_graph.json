@@ -1,0 +1,70 @@
+{
+  "dependency_group": "androidx.activity",
+  "version_before": "1.9.0",
+  "version_after": "1.13.0",
+  "seed_files": [
+    "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt"
+  ],
+  "impacted_files": [
+    {
+      "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "relation": "direct",
+      "distance": 0,
+      "imports_from_dependency": [
+        "android.os.Bundle",
+        "androidx.activity.ComponentActivity",
+        "androidx.activity.compose.setContent",
+        "com.arkivanov.decompose.defaultComponentContext",
+        "com.arkivanov.mvikotlin.main.store.DefaultStoreFactory",
+        "com.mocoding.pokedex.ui.ContentView",
+        "com.mocoding.pokedex.core.di.initKoin",
+        "com.mocoding.pokedex.ui.root.RootComponent",
+        "org.koin.android.ext.koin.androidContext",
+        "org.koin.core.context.stopKoin"
+      ],
+      "propagated_from": [],
+      "metrics": {
+        "rloc": 33,
+        "functions": 2,
+        "mcc": 1,
+        "detekt_findings": 0,
+        "test_coverage": 0.0,
+        "metrics_source": "heuristic"
+      },
+      "declarations": [
+        "com.mocoding.pokedex.android.MainActivity"
+      ],
+      "source_set": "main"
+    }
+  ],
+  "expect_actual_pairs": [
+    {
+      "expect_fqcn": "com.mocoding.pokedex.core.database.sqlDriverFactory",
+      "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+      "actual_files": [
+        "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt",
+        "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/database/DesktopSqlDriverFactory.kt",
+        "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt"
+      ]
+    },
+    {
+      "expect_fqcn": "com.mocoding.pokedex.core.network.createPlatformHttpClient",
+      "expect_file": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+      "actual_files": [
+        "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt",
+        "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/network/HttpClientFactory.kt",
+        "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt"
+      ]
+    },
+    {
+      "expect_fqcn": "com.example.common.DatabaseDriverFactory",
+      "expect_file": "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ExpectClass.kt",
+      "actual_files": [
+        "/tmp/output/phase1/before/tools/kmp-impact-analyzer/tests/fixtures/sample_kotlin/ActualAndroid.kt"
+      ]
+    }
+  ],
+  "total_project_files": 90,
+  "total_impacted": 1,
+  "ksp_edges_added": 27
+}

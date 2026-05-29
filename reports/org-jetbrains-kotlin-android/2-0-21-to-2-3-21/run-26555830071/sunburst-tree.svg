@@ -1,0 +1,373 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1709 1544" width="1709" height="1544" font-family="system-ui,sans-serif"><rect width="100%" height="100%" fill="#F5F4F0"/><text x="74" y="22" font-size="14" font-weight="700" fill="#1F2937">Propagation tree</text><text x="74" y="38" font-size="11" fill="#6B7280">Same hierarchy as the sunburst, flattened for reading.</text>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 464.5, 239.0 464.5" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 464.5 C 321.5 464.5, 321.5 464.5, 404.0 464.5" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 464.5 C 486.5 464.5, 486.5 464.5, 569.0 464.5" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 464.5 C 651.5 464.5, 651.5 464.5, 734.0 464.5" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 464.5 C 816.5 464.5, 816.5 52.0, 899.0 52.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 464.5 C 816.5 464.5, 816.5 187.0, 899.0 187.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 187.0 C 981.5 187.0, 981.5 106.0, 1064.0 106.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 106.0 C 1146.5 106.0, 1146.5 88.0, 1229.0 88.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 88.0 C 1311.5 88.0, 1311.5 76.0, 1394.0 76.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 88.0 C 1311.5 88.0, 1311.5 100.0, 1394.0 100.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 106.0 C 1146.5 106.0, 1146.5 124.0, 1229.0 124.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 124.0 C 1311.5 124.0, 1311.5 124.0, 1394.0 124.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 187.0 C 981.5 187.0, 981.5 148.0, 1064.0 148.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 148.0 C 1146.5 148.0, 1146.5 148.0, 1229.0 148.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 187.0 C 981.5 187.0, 981.5 184.0, 1064.0 184.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 184.0 C 1146.5 184.0, 1146.5 172.0, 1229.0 172.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 184.0 C 1146.5 184.0, 1146.5 196.0, 1229.0 196.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 187.0 C 981.5 187.0, 981.5 268.0, 1064.0 268.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 268.0 C 1146.5 268.0, 1146.5 220.0, 1229.0 220.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 268.0 C 1146.5 268.0, 1146.5 244.0, 1229.0 244.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 244.0 C 1311.5 244.0, 1311.5 244.0, 1394.0 244.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 268.0 C 1146.5 268.0, 1146.5 268.0, 1229.0 268.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 268.0 C 1311.5 268.0, 1311.5 268.0, 1394.0 268.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 268.0 C 1146.5 268.0, 1146.5 292.0, 1229.0 292.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 292.0 C 1311.5 292.0, 1311.5 292.0, 1394.0 292.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 268.0 C 1146.5 268.0, 1146.5 316.0, 1229.0 316.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 316.0 C 1311.5 316.0, 1311.5 316.0, 1394.0 316.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 464.5 C 816.5 464.5, 816.5 370.0, 899.0 370.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 370.0 C 981.5 370.0, 981.5 340.0, 1064.0 340.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 370.0 C 981.5 370.0, 981.5 364.0, 1064.0 364.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 364.0 C 1146.5 364.0, 1146.5 364.0, 1229.0 364.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 370.0 C 981.5 370.0, 981.5 400.0, 1064.0 400.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 400.0 C 1146.5 400.0, 1146.5 388.0, 1229.0 388.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 400.0 C 1146.5 400.0, 1146.5 412.0, 1229.0 412.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 464.5 C 816.5 464.5, 816.5 877.0, 899.0 877.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 526.0, 1064.0 526.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 526.0 C 1146.5 526.0, 1146.5 436.0, 1229.0 436.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 526.0 C 1146.5 526.0, 1146.5 460.0, 1229.0 460.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 526.0 C 1146.5 526.0, 1146.5 532.0, 1229.0 532.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 532.0 C 1311.5 532.0, 1311.5 484.0, 1394.0 484.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 532.0 C 1311.5 532.0, 1311.5 508.0, 1394.0 508.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 532.0 C 1311.5 532.0, 1311.5 532.0, 1394.0 532.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 532.0 C 1311.5 532.0, 1311.5 556.0, 1394.0 556.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 532.0 C 1311.5 532.0, 1311.5 580.0, 1394.0 580.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 526.0 C 1146.5 526.0, 1146.5 616.0, 1229.0 616.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 616.0 C 1311.5 616.0, 1311.5 604.0, 1394.0 604.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 616.0 C 1311.5 616.0, 1311.5 628.0, 1394.0 628.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 694.0, 1064.0 694.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 694.0 C 1146.5 694.0, 1146.5 652.0, 1229.0 652.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 694.0 C 1146.5 694.0, 1146.5 676.0, 1229.0 676.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 694.0 C 1146.5 694.0, 1146.5 700.0, 1229.0 700.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 700.0 C 1311.5 700.0, 1311.5 700.0, 1394.0 700.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 694.0 C 1146.5 694.0, 1146.5 736.0, 1229.0 736.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 736.0 C 1311.5 736.0, 1311.5 724.0, 1394.0 724.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 736.0 C 1311.5 736.0, 1311.5 748.0, 1394.0 748.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 862.0, 1064.0 862.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 862.0 C 1146.5 862.0, 1146.5 772.0, 1229.0 772.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 862.0 C 1146.5 862.0, 1146.5 796.0, 1229.0 796.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 862.0 C 1146.5 862.0, 1146.5 856.0, 1229.0 856.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 856.0 C 1311.5 856.0, 1311.5 820.0, 1394.0 820.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 856.0 C 1311.5 856.0, 1311.5 844.0, 1394.0 844.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 856.0 C 1311.5 856.0, 1311.5 868.0, 1394.0 868.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 856.0 C 1311.5 856.0, 1311.5 892.0, 1394.0 892.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 862.0 C 1146.5 862.0, 1146.5 916.0, 1229.0 916.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 916.0 C 1311.5 916.0, 1311.5 916.0, 1394.0 916.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 862.0 C 1146.5 862.0, 1146.5 952.0, 1229.0 952.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 952.0 C 1311.5 952.0, 1311.5 940.0, 1394.0 940.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 952.0 C 1311.5 952.0, 1311.5 964.0, 1394.0 964.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 1066.0, 1064.0 1066.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1066.0 C 1146.5 1066.0, 1146.5 988.0, 1229.0 988.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1066.0 C 1146.5 1066.0, 1146.5 1012.0, 1229.0 1012.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1066.0 C 1146.5 1066.0, 1146.5 1072.0, 1229.0 1072.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1072.0 C 1311.5 1072.0, 1311.5 1036.0, 1394.0 1036.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1072.0 C 1311.5 1072.0, 1311.5 1060.0, 1394.0 1060.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1072.0 C 1311.5 1072.0, 1311.5 1084.0, 1394.0 1084.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1072.0 C 1311.5 1072.0, 1311.5 1108.0, 1394.0 1108.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1066.0 C 1146.5 1066.0, 1146.5 1144.0, 1229.0 1144.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1144.0 C 1311.5 1144.0, 1311.5 1132.0, 1394.0 1132.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1229.0 1144.0 C 1311.5 1144.0, 1311.5 1156.0, 1394.0 1156.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 1192.0, 1064.0 1192.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1192.0 C 1146.5 1192.0, 1146.5 1180.0, 1229.0 1180.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1192.0 C 1146.5 1192.0, 1146.5 1204.0, 1229.0 1204.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 877.0 C 981.5 877.0, 981.5 1228.0, 1064.0 1228.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1228.0 C 1146.5 1228.0, 1146.5 1228.0, 1229.0 1228.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1264.0, 239.0 1264.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1264.0 C 321.5 1264.0, 321.5 1264.0, 404.0 1264.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1264.0 C 486.5 1264.0, 486.5 1264.0, 569.0 1264.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1264.0 C 651.5 1264.0, 651.5 1264.0, 734.0 1264.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1264.0 C 816.5 1264.0, 816.5 1252.0, 899.0 1252.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1264.0 C 816.5 1264.0, 816.5 1276.0, 899.0 1276.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 1276.0 C 981.5 1276.0, 981.5 1276.0, 1064.0 1276.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1324.0, 239.0 1324.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1324.0 C 321.5 1324.0, 321.5 1324.0, 404.0 1324.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1324.0 C 486.5 1324.0, 486.5 1324.0, 569.0 1324.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1324.0 C 651.5 1324.0, 651.5 1324.0, 734.0 1324.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1324.0 C 816.5 1324.0, 816.5 1300.0, 899.0 1300.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1324.0 C 816.5 1324.0, 816.5 1324.0, 899.0 1324.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1324.0 C 816.5 1324.0, 816.5 1348.0, 899.0 1348.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 1348.0 C 981.5 1348.0, 981.5 1348.0, 1064.0 1348.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1372.0, 239.0 1372.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1372.0 C 321.5 1372.0, 321.5 1372.0, 404.0 1372.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1372.0 C 486.5 1372.0, 486.5 1372.0, 569.0 1372.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1372.0 C 651.5 1372.0, 651.5 1372.0, 734.0 1372.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1372.0 C 816.5 1372.0, 816.5 1372.0, 899.0 1372.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1408.0, 239.0 1408.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1408.0 C 321.5 1408.0, 321.5 1408.0, 404.0 1408.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1408.0 C 486.5 1408.0, 486.5 1396.0, 569.0 1396.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1408.0 C 486.5 1408.0, 486.5 1420.0, 569.0 1420.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1420.0 C 651.5 1420.0, 651.5 1420.0, 734.0 1420.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1444.0, 239.0 1444.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1444.0 C 321.5 1444.0, 321.5 1444.0, 404.0 1444.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1444.0 C 486.5 1444.0, 486.5 1444.0, 569.0 1444.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1444.0 C 651.5 1444.0, 651.5 1444.0, 734.0 1444.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1444.0 C 816.5 1444.0, 816.5 1444.0, 899.0 1444.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1468.0, 239.0 1468.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1468.0 C 321.5 1468.0, 321.5 1468.0, 404.0 1468.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 74.0 978.2 C 156.5 978.2, 156.5 1492.0, 239.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 239.0 1492.0 C 321.5 1492.0, 321.5 1492.0, 404.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 404.0 1492.0 C 486.5 1492.0, 486.5 1492.0, 569.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 569.0 1492.0 C 651.5 1492.0, 651.5 1492.0, 734.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 734.0 1492.0 C 816.5 1492.0, 816.5 1492.0, 899.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 899.0 1492.0 C 981.5 1492.0, 981.5 1492.0, 1064.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<path d="M 1064.0 1492.0 C 1146.5 1492.0, 1146.5 1492.0, 1229.0 1492.0" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-opacity="0.85"/>
+<circle cx="74.0" cy="978.2" r="6" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="84.0" y="982.2" font-size="11" font-weight="600" text-anchor="start" fill="#1F2937">src</text>
+<circle cx="239.0" cy="464.5" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="468.5" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">commonMain</text>
+<circle cx="404.0" cy="464.5" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="468.5" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="569.0" cy="464.5" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="468.5" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="734.0" cy="464.5" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="468.5" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="899.0" cy="52.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="909.0" y="56.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexDispatchers</text>
+<circle cx="899.0" cy="187.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="889.0" y="191.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">core</text>
+<circle cx="1064.0" cy="106.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="110.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">database</text>
+<circle cx="1229.0" cy="88.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="92.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">dao</text>
+<circle cx="1394.0" cy="76.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="80.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonDao</text>
+<circle cx="1394.0" cy="100.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="104.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonInfoDao</text>
+<circle cx="1229.0" cy="124.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1219.0" y="128.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">di</text>
+<circle cx="1394.0" cy="124.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="128.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DatabaseModule</text>
+<circle cx="1064.0" cy="148.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1054.0" y="152.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">di</text>
+<circle cx="1229.0" cy="148.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1239.0" y="152.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">AppModule</text>
+<circle cx="1064.0" cy="184.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="188.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">model</text>
+<circle cx="1229.0" cy="172.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="176.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">Pokemon</text>
+<circle cx="1229.0" cy="196.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="200.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonInfo</text>
+<circle cx="1064.0" cy="268.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="272.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">network</text>
+<circle cx="1229.0" cy="220.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="224.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">HttpClient</text>
+<circle cx="1229.0" cy="244.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1219.0" y="248.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">client</text>
+<circle cx="1394.0" cy="244.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="248.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonClient</text>
+<circle cx="1229.0" cy="268.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1219.0" y="272.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">di</text>
+<circle cx="1394.0" cy="268.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="272.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">NetworkModule</text>
+<circle cx="1229.0" cy="292.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="296.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">helper</text>
+<circle cx="1394.0" cy="292.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="296.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">ErrorHandler</text>
+<circle cx="1229.0" cy="316.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="320.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">model</text>
+<circle cx="1394.0" cy="316.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="320.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonResponse</text>
+<circle cx="899.0" cy="370.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="889.0" y="374.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">data</text>
+<circle cx="1064.0" cy="340.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1074.0" y="344.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">Mappers</text>
+<circle cx="1064.0" cy="364.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1054.0" y="368.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">di</text>
+<circle cx="1229.0" cy="364.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="368.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DataModule</text>
+<circle cx="1064.0" cy="400.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="404.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">repository</text>
+<circle cx="1229.0" cy="388.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="392.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonRepository</text>
+<circle cx="1229.0" cy="412.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="416.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonRepositoryImpl</text>
+<circle cx="899.0" cy="877.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="889.0" y="881.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">ui</text>
+<circle cx="1064.0" cy="526.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="530.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">details</text>
+<circle cx="1229.0" cy="436.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="440.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DetailsComponent</text>
+<circle cx="1229.0" cy="460.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="464.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DetailsScreen</text>
+<circle cx="1229.0" cy="532.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="536.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">components</text>
+<circle cx="1394.0" cy="484.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="488.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">AbilityRow</text>
+<circle cx="1394.0" cy="508.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="512.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DetailsContent</text>
+<circle cx="1394.0" cy="532.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="536.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonInfos</text>
+<circle cx="1394.0" cy="556.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="560.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonStatItem</text>
+<circle cx="1394.0" cy="580.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="584.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonStats</text>
+<circle cx="1229.0" cy="616.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="620.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">store</text>
+<circle cx="1394.0" cy="604.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="608.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DetailsStore</text>
+<circle cx="1394.0" cy="628.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="632.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">DetailsStoreFactory</text>
+<circle cx="1064.0" cy="694.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="698.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">favorite</text>
+<circle cx="1229.0" cy="652.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="656.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">FavoriteComponent</text>
+<circle cx="1229.0" cy="676.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="680.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">FavoriteScreen</text>
+<circle cx="1229.0" cy="700.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1219.0" y="704.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">components</text>
+<circle cx="1394.0" cy="700.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="704.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">FavoriteContent</text>
+<circle cx="1229.0" cy="736.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="740.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">store</text>
+<circle cx="1394.0" cy="724.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="728.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">FavoriteStore</text>
+<circle cx="1394.0" cy="748.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="752.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">FavoriteStoreFactory</text>
+<circle cx="1064.0" cy="862.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="866.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">main</text>
+<circle cx="1229.0" cy="772.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="776.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainComponent</text>
+<circle cx="1229.0" cy="796.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="800.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainScreen</text>
+<circle cx="1229.0" cy="856.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1219.0" y="860.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">components</text>
+<circle cx="1394.0" cy="820.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1404.0" y="824.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">CategoryButton</text>
+<circle cx="1394.0" cy="844.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="848.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainContent</text>
+<circle cx="1394.0" cy="868.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="872.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">VideoItem</text>
+<circle cx="1394.0" cy="892.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="896.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">VideoRow</text>
+<circle cx="1229.0" cy="916.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1219.0" y="920.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">state</text>
+<circle cx="1394.0" cy="916.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1404.0" y="920.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">CategoryState</text>
+<circle cx="1229.0" cy="952.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="956.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">store</text>
+<circle cx="1394.0" cy="940.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="944.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainStore</text>
+<circle cx="1394.0" cy="964.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="968.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainStoreFactory</text>
+<circle cx="1064.0" cy="1066.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1054.0" y="1070.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="1229.0" cy="988.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1239.0" y="992.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexComponent</text>
+<circle cx="1229.0" cy="1012.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="1016.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexScreen</text>
+<circle cx="1229.0" cy="1072.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="1076.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">components</text>
+<circle cx="1394.0" cy="1036.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="1040.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexContent</text>
+<circle cx="1394.0" cy="1060.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="1064.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonGrid</text>
+<circle cx="1394.0" cy="1084.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="1088.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonItem</text>
+<circle cx="1394.0" cy="1108.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="1112.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonLoadingItem</text>
+<circle cx="1229.0" cy="1144.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1219.0" y="1148.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">store</text>
+<circle cx="1394.0" cy="1132.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1404.0" y="1136.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexStore</text>
+<circle cx="1394.0" cy="1156.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="1404.0" y="1160.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexStoreFactory</text>
+<circle cx="1064.0" cy="1192.0" r="5" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1054.0" y="1196.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">root</text>
+<circle cx="1229.0" cy="1180.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="1184.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">RootComponent</text>
+<circle cx="1229.0" cy="1204.0" r="4" fill="#FFF" stroke="#1D4ED8" stroke-width="2.5"/>
+<text x="1239.0" y="1208.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">RootContent</text>
+<circle cx="1064.0" cy="1228.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1054.0" y="1232.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">utils</text>
+<circle cx="1229.0" cy="1228.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1239.0" y="1232.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokemonAbilityUtils</text>
+<circle cx="239.0" cy="1264.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="1268.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">androidMain</text>
+<circle cx="404.0" cy="1264.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="1268.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="569.0" cy="1264.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="1268.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="734.0" cy="1264.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="1268.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="899.0" cy="1252.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="909.0" y="1256.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexDispatchers</text>
+<circle cx="899.0" cy="1276.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="889.0" y="1280.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">ui</text>
+<circle cx="1064.0" cy="1276.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1074.0" y="1280.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">ContentView</text>
+<circle cx="239.0" cy="1324.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="1328.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">iosMain</text>
+<circle cx="404.0" cy="1324.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="1328.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="569.0" cy="1324.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="1328.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="734.0" cy="1324.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="1328.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="899.0" cy="1300.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="909.0" y="1304.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexDispatchers</text>
+<circle cx="899.0" cy="1324.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="909.0" y="1328.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">main.ios</text>
+<circle cx="899.0" cy="1348.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="889.0" y="1352.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">ui</text>
+<circle cx="1064.0" cy="1348.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1074.0" y="1352.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">ContentView</text>
+<circle cx="239.0" cy="1372.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="1376.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">commonTest</text>
+<circle cx="404.0" cy="1372.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="1376.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="569.0" cy="1372.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="1376.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="734.0" cy="1372.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="1376.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="899.0" cy="1372.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="909.0" y="1376.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">commonTest</text>
+<circle cx="239.0" cy="1408.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="1412.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">desktopMain</text>
+<circle cx="404.0" cy="1408.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="1412.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com.mocoding.pokedex</text>
+<circle cx="569.0" cy="1396.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="579.0" y="1400.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">PokedexDispatchers</text>
+<circle cx="569.0" cy="1420.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="559.0" y="1424.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">ui</text>
+<circle cx="734.0" cy="1420.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="744.0" y="1424.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">ContentView</text>
+<circle cx="239.0" cy="1444.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="229.0" y="1448.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">iosTest</text>
+<circle cx="404.0" cy="1444.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="394.0" y="1448.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="569.0" cy="1444.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="559.0" y="1448.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="734.0" cy="1444.0" r="5" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="724.0" y="1448.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="899.0" cy="1444.0" r="4" fill="#FFF" stroke="#B91C1C" stroke-width="2.5"/>
+<text x="909.0" y="1448.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">iosTest</text>
+<circle cx="239.0" cy="1468.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="229.0" y="1472.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">jvmMain</text>
+<circle cx="404.0" cy="1468.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="414.0" y="1472.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">Main</text>
+<circle cx="239.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="229.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">main</text>
+<circle cx="404.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="394.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">java</text>
+<circle cx="569.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="559.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">com</text>
+<circle cx="734.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="724.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">mocoding</text>
+<circle cx="899.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="889.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">pokedex</text>
+<circle cx="1064.0" cy="1492.0" r="5" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1054.0" y="1496.0" font-size="11" font-weight="600" text-anchor="end" fill="#1F2937">android</text>
+<circle cx="1229.0" cy="1492.0" r="4" fill="#FFF" stroke="#60A5FA" stroke-width="2.5"/>
+<text x="1239.0" y="1496.0" font-size="11" font-weight="500" text-anchor="start" fill="#1F2937">MainActivity</text>
+</svg>

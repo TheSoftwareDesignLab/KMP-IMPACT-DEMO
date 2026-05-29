@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<report name="Kover Gradle Plugin XML report for :android">
+<package name="com/mocoding/pokedex/android">
+<class name="com/mocoding/pokedex/android/BuildConfig" sourcefilename="BuildConfig.java">
+<method name="&lt;clinit&gt;" desc="()V">
+<counter type="INSTRUCTION" missed="3" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+</method>
+<method name="&lt;init&gt;" desc="()V">
+<counter type="INSTRUCTION" missed="2" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+</method>
+<counter type="INSTRUCTION" missed="5" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="2" covered="0"/>
+<counter type="METHOD" missed="2" covered="0"/>
+</class>
+<class name="com/mocoding/pokedex/android/MainActivity" sourcefilename="MainActivity.kt">
+<method name="onCreate$lambda$0" desc="(Lcom/mocoding/pokedex/android/MainActivity;Lorg/koin/core/KoinApplication;)Lkotlin/Unit;">
+<counter type="INSTRUCTION" missed="8" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+</method>
+<method name="onCreate" desc="(Landroid/os/Bundle;)V">
+<counter type="INSTRUCTION" missed="33" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="8" covered="0"/>
+</method>
+<method name="onDestroy" desc="()V">
+<counter type="INSTRUCTION" missed="2" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="2" covered="0"/>
+</method>
+<method name="&lt;init&gt;" desc="()V">
+<counter type="INSTRUCTION" missed="2" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+</method>
+<counter type="INSTRUCTION" missed="45" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="12" covered="0"/>
+<counter type="METHOD" missed="4" covered="0"/>
+</class>
+<class name="com/mocoding/pokedex/android/MainActivity$onCreate$2" sourcefilename="MainActivity.kt">
+<method name="invoke" desc="(Landroidx/compose/runtime/Composer;I)V">
+<counter type="INSTRUCTION" missed="26" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+</method>
+<counter type="INSTRUCTION" missed="26" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="1" covered="0"/>
+<counter type="METHOD" missed="1" covered="0"/>
+</class>
+<sourcefile name="BuildConfig.java">
+<line nr="6" mi="2" ci="0" mb="0" cb="0"/>
+<line nr="7" mi="3" ci="0" mb="0" cb="0"/>
+<counter type="INSTRUCTION" missed="5" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="2" covered="0"/>
+</sourcefile>
+<sourcefile name="MainActivity.kt">
+<line nr="14" mi="2" ci="0" mb="0" cb="0"/>
+<line nr="17" mi="2" ci="0" mb="0" cb="0"/>
+<line nr="19" mi="4" ci="0" mb="0" cb="0"/>
+<line nr="20" mi="1" ci="0" mb="0" cb="0"/>
+<line nr="22" mi="8" ci="0" mb="0" cb="0"/>
+<line nr="25" mi="1" ci="0" mb="0" cb="0"/>
+<line nr="26" mi="3" ci="0" mb="0" cb="0"/>
+<line nr="27" mi="4" ci="0" mb="0" cb="0"/>
+<line nr="28" mi="4" ci="0" mb="0" cb="0"/>
+<line nr="31" mi="14" ci="0" mb="0" cb="0"/>
+<line nr="32" mi="26" ci="0" mb="0" cb="0"/>
+<line nr="37" mi="1" ci="0" mb="0" cb="0"/>
+<line nr="38" mi="1" ci="0" mb="0" cb="0"/>
+<counter type="INSTRUCTION" missed="71" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="13" covered="0"/>
+</sourcefile>
+<counter type="INSTRUCTION" missed="76" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="15" covered="0"/>
+<counter type="METHOD" missed="7" covered="0"/>
+<counter type="CLASS" missed="3" covered="0"/>
+</package>
+<counter type="INSTRUCTION" missed="76" covered="0"/>
+<counter type="BRANCH" missed="0" covered="0"/>
+<counter type="LINE" missed="15" covered="0"/>
+<counter type="METHOD" missed="7" covered="0"/>
+<counter type="CLASS" missed="3" covered="0"/>
+</report>

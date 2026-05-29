@@ -1,0 +1,55 @@
+{
+  "tag": "2026-05-29_025110",
+  "event": {
+    "event_type": "touch",
+    "log_lines": null,
+    "x": null,
+    "y": null,
+    "view": {
+      "package": "com.mocoding.pokedex.android",
+      "visible": true,
+      "checkable": false,
+      "child_count": 0,
+      "editable": false,
+      "clickable": false,
+      "is_password": false,
+      "focusable": false,
+      "enabled": true,
+      "content_description": null,
+      "children": [],
+      "focused": false,
+      "bounds": [
+        [
+          20,
+          309
+        ],
+        [
+          300,
+          357
+        ]
+      ],
+      "resource_id": null,
+      "checked": false,
+      "text": "This feature is not implemented yet :D",
+      "class": "android.widget.TextView",
+      "scrollable": false,
+      "selected": false,
+      "long_clickable": false,
+      "parent": 6,
+      "temp_id": 8,
+      "size": "280*48",
+      "signature": "[class]android.widget.TextView[resource_id]None[text]This feature is not implemented yet :D[enabled,,]",
+      "view_str": "3bc1806bff706becf3b759415416cb4b",
+      "content_free_signature": "[class]android.widget.TextView[resource_id]None",
+      "allowed_actions": [
+        "touch"
+      ],
+      "special_attrs": [],
+      "local_id": "1",
+      "desc": "<p bound_box=20,309,300,357>This feature is not implemented yet :D</p>"
+    }
+  },
+  "start_state": "0ccdee7820f53ec0f8bf3b544bd0b8bc",
+  "stop_state": "0ccdee7820f53ec0f8bf3b544bd0b8bc",
+  "event_str": "TouchEvent(state=0ccdee7820f53ec0f8bf3b544bd0b8bc, view=3bc1806bff706becf3b759415416cb4b(MainActivity/TextView-This featu))"
+}

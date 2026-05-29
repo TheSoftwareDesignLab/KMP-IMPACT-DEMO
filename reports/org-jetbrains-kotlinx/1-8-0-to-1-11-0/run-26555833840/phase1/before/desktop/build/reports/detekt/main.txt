@@ -1,0 +1,1 @@
+NewLineAtEndOfFile - [Main.kt] at /tmp/output/phase1/before/desktop/src/jvmMain/kotlin/Main.kt:49:2 - Signature=Main.kt$.Main.kt

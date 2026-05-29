@@ -1,0 +1,28 @@
+{
+  "before_dir": "/tmp/output/phase1/before",
+  "after_dir": "/tmp/output/phase1/after",
+  "version_change": {
+    "dependency_group": "com.arkivanov.decompose",
+    "version_key": "decompose",
+    "before": "2.1.4-compose-experimental",
+    "after": "2.2.3"
+  },
+  "init_script_injected": false,
+  "detekt_reports": {
+    "android": "/tmp/output/phase1/before/android/build/reports/detekt/detekt.xml"
+  },
+  "kover_reports": {
+    "android": "/tmp/output/phase1/before/android/build/reports/kover/report.xml",
+    "desktop": "/tmp/output/phase1/before/desktop/build/reports/kover/report.xml"
+  },
+  "compilation_after": {
+    "status": "success",
+    "errors": [],
+    "tasks": [
+      "desktop:compileKotlinJvm",
+      "shared:compileKotlinDesktop",
+      "desktop:compileKotlinMetadata"
+    ]
+  },
+  "compile_targets": {}
+}

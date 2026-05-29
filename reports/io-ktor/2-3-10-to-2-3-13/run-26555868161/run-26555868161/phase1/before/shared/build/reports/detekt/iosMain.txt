@@ -1,0 +1,6 @@
+FunctionNaming - [ContentView] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt:8:14 - Signature=ContentView.kt$@Composable internal fun ContentView( component: RootComponent, )
+NewLineAtEndOfFile - [ContentView.kt] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/ui/ContentView.kt:12:2 - Signature=ContentView.kt$com.mocoding.pokedex.ui.ContentView.kt
+NewLineAtEndOfFile - [PokedexDispatchers.kt] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/PokedexDispatchers.kt:10:2 - Signature=PokedexDispatchers.kt$com.mocoding.pokedex.PokedexDispatchers.kt
+WildcardImport - [main.ios.kt] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/main.ios.kt:20:1 - Signature=main.ios.kt$import platform.UIKit.*
+NewLineAtEndOfFile - [HttpClientFactory.kt] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/network/HttpClientFactory.kt:8:2 - Signature=HttpClientFactory.kt$com.mocoding.pokedex.core.network.HttpClientFactory.kt
+NewLineAtEndOfFile - [SqlDriverFactory.kt] at /tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt:10:2 - Signature=SqlDriverFactory.kt$com.mocoding.pokedex.core.database.SqlDriverFactory.kt

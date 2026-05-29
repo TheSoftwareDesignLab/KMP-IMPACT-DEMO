@@ -1,0 +1,11 @@
+:shared
+shared/src/desktopMain/kotlin
+shared/build/generated/compose/resourceGenerator/kotlin/desktopMainResourceAccessors
+shared/src/commonMain/kotlin
+shared/build/generated/compose/resourceGenerator/kotlin/commonResClass
+shared/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors
+shared/build/generated/sqldelight/code/PokemonDatabase/commonMain
+
+shared/build/classes/kotlin/desktop/main
+
+shared/build/kover/bin-reports/desktopTest.ic

@@ -1,0 +1,177 @@
+{
+  "dependency_group": "io.insert-koin",
+  "version_before": "3.5.6",
+  "version_after": "4.2.1",
+  "risk_level": "high",
+  "recommendation": "Hold merge until impacted files are reviewed and targeted regression checks pass.",
+  "report_url": "",
+  "total_impacted_files": 42,
+  "total_impacted_screens": 5,
+  "direct_impacts": 13,
+  "transitive_impacts": 29,
+  "expect_actual_impacts": 0,
+  "expect_actual_pairs_total": 3,
+  "total_project_files": 90,
+  "dynamic_status": "completed",
+  "dynamic_summary": "completed (0 screen diffs)",
+  "dynamic_diffs": 0,
+  "before_screens": 6,
+  "after_screens": 6,
+  "dynamic_nodes_before": 9,
+  "dynamic_nodes_after": 9,
+  "dynamic_structures_before": 6,
+  "dynamic_structures_after": 6,
+  "screen_mappings": 5,
+  "trace_entries": 42,
+  "seed_files": [
+    "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+    "/tmp/output/phase1/before/shared/src/androidMain/kotlin/com/mocoding/pokedex/core/database/AndroidSqlDriverFactory.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/di/DataModule.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt",
+    "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt",
+    "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/database/DesktopSqlDriverFactory.kt",
+    "/tmp/output/phase1/before/shared/src/iosMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt"
+  ],
+  "impacted_screens": [
+    "ContentView",
+    "Details",
+    "Favorite",
+    "Main",
+    "Pokedex"
+  ],
+  "top_impacted_files": [
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/pokedex/store/PokedexStoreFactory.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 78,
+      "mcc": 7,
+      "declarations": [
+        "com.mocoding.pokedex.ui.pokedex.store.PokedexStoreFactory"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/data/repository/PokemonRepositoryImpl.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 61,
+      "mcc": 7,
+      "declarations": [
+        "com.mocoding.pokedex.data.repository.PokemonRepositoryImpl"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/details/store/DetailsStoreFactory.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 78,
+      "mcc": 5,
+      "declarations": [
+        "com.mocoding.pokedex.ui.details.store.DetailsStoreFactory"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/ui/favorite/store/FavoriteStoreFactory.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 57,
+      "mcc": 3,
+      "declarations": [
+        "com.mocoding.pokedex.ui.favorite.store.FavoriteStoreFactory"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/android/src/main/java/com/mocoding/pokedex/android/MainActivity.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "main",
+      "rloc": 33,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.android.MainActivity"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/di/AppModule.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 15,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.core.di.initKoin"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/di/DatabaseModule.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 12,
+      "mcc": 1,
+      "declarations": []
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/network/di/NetworkModule.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 11,
+      "mcc": 1,
+      "declarations": []
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/desktopMain/kotlin/com.mocoding.pokedex/core/database/DesktopSqlDriverFactory.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "desktopMain",
+      "rloc": 11,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.core.database.sqlDriverFactory"
+      ]
+    },
+    {
+      "file_path": "/tmp/output/phase1/before/shared/src/commonMain/kotlin/com/mocoding/pokedex/core/database/SqlDriverFactory.kt",
+      "relation": "direct",
+      "distance": 0,
+      "source_set": "commonMain",
+      "rloc": 10,
+      "mcc": 1,
+      "declarations": [
+        "com.mocoding.pokedex.core.database.sqlDriverFactory",
+        "com.mocoding.pokedex.core.database.createDatabase"
+      ]
+    }
+  ],
+  "compat_warnings": [],
+  "stack_detected": {
+    "kotlin": "2.0.21",
+    "agp": "8.5.0",
+    "compose": "1.6.10",
+    "compose-compiler": "1.5.14"
+  },
+  "version_key": "koin",
+  "compilation_after": "failure",
+  "compile_errors": 21,
+  "has_detekt": false,
+  "has_kover": true,
+  "tools_used": {
+    "tree_sitter": true,
+    "ksp": true,
+    "detekt": false,
+    "kover": true,
+    "droidbot": true,
+    "codecharta": true
+  }
+}

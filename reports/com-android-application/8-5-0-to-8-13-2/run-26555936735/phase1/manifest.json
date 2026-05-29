@@ -1,0 +1,24 @@
+{
+  "before_dir": "/tmp/output/phase1/before",
+  "after_dir": "/tmp/output/phase1/after",
+  "version_change": {
+    "dependency_group": "com.android.application",
+    "version_key": "agp",
+    "before": "8.5.0",
+    "after": "8.13.2"
+  },
+  "init_script_injected": false,
+  "detekt_reports": {},
+  "kover_reports": {
+    "android": "/tmp/output/phase1/before/android/build/reports/kover/report.xml",
+    "desktop": "/tmp/output/phase1/before/desktop/build/reports/kover/report.xml"
+  },
+  "compilation_after": {
+    "status": "failure",
+    "errors": [],
+    "tasks": [
+      ":shared:compileKotlinMetadata"
+    ]
+  },
+  "compile_targets": {}
+}
